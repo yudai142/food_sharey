@@ -8,7 +8,7 @@ $ vi config/database.yml
 ```
 
 
-- daatabase.ymlの編集
+- database.ymlの編集
 ```
 default: &default
   adapter: mysql2
