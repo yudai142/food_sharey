@@ -7,6 +7,10 @@ services:
     command: bundle exec puma -C config/puma.rb 
     ports:
       - '3000:3000'
+    environment:
+      # ↓コメントアウトでローカルと本番を切り替え
+      RAILS_ENV: development
+      # RAILS_ENV: production
     volumes:
       - .:/app
       - /var/tmp
