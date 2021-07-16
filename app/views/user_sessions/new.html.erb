@@ -1,7 +1,28 @@
-<%= form_with url: login_path, method: :post do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.submit 'ログイン' %>
-<% end %>
+    <div class="mt-2 items-center z-10">
+        <%= form_with url: login_path, method: :post ,class: "p-14 bg-white max-w-sm mx-auto rounded-xl shadow-xl overflow-hidden p-6 space-y-10" do |f|  %>
+            <h2 class="text-4xl font-bold text-center text-indigo-600">Login</h2>
+            <div class="f-outline px-2 relative border rounded-lg focus-within:border-indigo-500">
+                <%= f.text_field :email, class:"block p-2 w-full text-lg appearance-none focus:outline-none bg-transparent", plaseholder:" ", type:"email" %>
+                <%= f.label :email, class: "absolute ml-5 top-0 text-lg text-gray-700 bg-white mt-2 -z-1 duration-300 origin-0", for:"email" %>
+            </div>
+            <div class="f-outline px-2 relative border rounded-lg focus-within:border-indigo-500">
+                <%= f.password_field :password, class:"block p-2 w-full text-lg appearance-none focus:outline-none bg-transparent", placeholder:" " %>
+                <%= f.label :password, class: "absolute ml-5 top-0 text-lg text-gray-700 bg-white mt-2 -z-1 duration-300 origin-0"%>
+            </div>
+            <div class="block mt-2">
+                <label for="" class="flex items-center">
+                    <input type="checkbox"
+                        class="ml-2 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    </input>
+                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                </label>
+            </div>
+            <div class="flex items-center flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="#">
+                    Forgot Password?
+                </a>
+                <%= f.submit 'ログイン', class: "px-6 py-2 ml-4 font-semibold cursor-pointer text-center focus:outline-none transition hover:shadow-lg shadow hover:bg-indigo-700 rounded-full text-white bg-indigo-600 " %>
+    </div>
+    <% end %>
+  </div>
+

@@ -1,8 +1,15 @@
-<nav>
-  <% if logged_in? %>
-    <%= link_to 'ログアウト', logout_path, method: :delete %>
-  <% else %>
-    <%= link_to 'ログイン', login_path %>
-    <%= link_to '新規登録', new_user_path %>
-    <% end %>
-</nav>
+<header class="h-16 px-3.5 bg-white dark:bg-gray-800 border-solid border-2 border-light-blue-500">
+  <div class="h-full mx-14 flex justify-between items-center px-3 md:px-0">
+    <div class="h-full flex items-center text-2xl font-bold text-cyan-600 dark:text-cyan-500">
+      Food Diary
+    </div>
+    <div class="hidden md:flex items-center h-full text-gray-500 dark:text-gray-300">
+      <% if logged_in? %>
+        <%= link_to 'ログアウト', logout_path, method: :delete, class: "mr-5 cursor-pointer hover:underline" %>
+      <% else %>
+        <%= link_to '新規登録', new_user_path, class: "mr-10 text-base cursor-pointer hover:underline" %>
+        <%= link_to 'ログイン', login_path, class: "text-base cursor-pointer hover:underline" %>
+      <% end %>
+    </div>
+  </div>
+</header>
