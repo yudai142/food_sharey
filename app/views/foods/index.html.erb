@@ -1,3 +1,27 @@
+<div class="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0">
+  <div class="inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
+    <svg class="absolute left-0 hidden h-full text-white transform -translate-x-1/2 lg:block" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
+      <path d="M50 0H100L50 100H0L50 0Z"></path>
+    </svg>
+    <%= image_tag "B82B4BC0-BC6D-4DA5-AAB9-11F883CCB72F.jpg", class: "object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"  %>
+  </div>
+  <div class="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
+    <div class="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
+      <h2 class="mb-5 text-center font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+        よりよい食生活を送るための<br class="hidden md:block" />
+        食事管理アプリ
+      </h2>
+      <p class="pr-5 mb-5 text-center text-base text-gray-700 md:text-lg">
+        食事のアイデアを探したり、食べた食事を記録して、<br>食事内容をユーザー同士で共有することができる食事管理アプリです
+      </p>
+      <div class="flex items-center justify-around">
+        <%= link_to '新規登録', new_user_path, class: "mr-3 flex items-center shadow border-blue-500 border-2 rounded-full  px-4 py-2 text-blue-500 hover:bg-blue-500 hover:text-white" %>
+        <%= link_to 'ログイン', login_path, class: "flex items-center shadow border-blue-500 border-2 rounded-full  px-4 py-2 text-blue-500 hover:bg-blue-500 hover:text-white" %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="px-3.5 bg-white dark:bg-gray-800 flex justify-between mt-10">
   <div class="mx-14 px-3 md:px-0 w-64">
     <div class="px-6 py-3 flex justify-around text-base font-medium text-white rounded-t-xl bg-green-400">
@@ -68,7 +92,304 @@
 </div>
 <div class="px-3.5 bg-white dark:bg-gray-800 mt-10">
   <div class="mx-14 px-3 md:px-0">
-      <h2 class="text-xl text-center">おすすめレシピ</h2>
+      <h2 class="text-4xl font-bold text-center">今季のおすすめ食材</h2>
+
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24">
+          <div class="flex flex-wrap -m-4">
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 md:w-1/5">
+              <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/f2382e1200991e9271957b8cbd2ef038f25f4d24.45.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt="blog">
+                <div class="p-6">
+                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">カジキマグロ☆レモンバターソース</h1>
+                  <div class="flex items-center flex-wrap ">
+                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>1.2K
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
   </div>
 </div>

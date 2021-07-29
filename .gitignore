@@ -39,3 +39,4 @@ yarn-debug.log*
 /db/mysql/*
 development.env
 config/development.env
+app/assets/images/material
