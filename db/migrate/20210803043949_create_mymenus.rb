@@ -2,7 +2,7 @@ class CreateMymenus < ActiveRecord::Migration[6.1]
   def change
     create_table :mymenus do |t|
       t.string  :name, null: false
-      t.integer :category_id, null: false
+      t.integer :category_id, null: false, defalut: 0
       t.string :image
       t.integer :calorie
       t.integer :protein
@@ -24,6 +24,7 @@ class CreateMymenus < ActiveRecord::Migration[6.1]
       t.integer :magnesium
       t.integer :iron
       t.string  :memo
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

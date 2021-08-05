@@ -1,0 +1,180 @@
+.relative.flex.items-center.justify-center.py-12.px-4.sm:px-6.lg:px-8.relative.items-center.bg-green-200
+  .max-w-7xl.w-full.space-y-8.p-10.bg-white.rounded-xl.shadow-lg.z-10
+    = form_with url: foods_path, local: true, id: "student_application"  do |f|
+      .grid.gap-8.grid-cols-1
+        .flex.flex-col
+          .flex.flex-col.sm:flex-row.items-center
+            h1.block.w-full.text-center.text-green-400.text-2xl.font-bold.mb-6
+              | Myメニュー作成
+          .flex.flex-col.sm:flex-row.items-center
+            .w-full.sm:w-auto.sm:ml-auto.mt-3.sm:mt-0
+            img.object-cover.object-center.block[alt="ecommerce" src="https://dummyimage.com/120x120"]
+            = f.text_field :image
+            / = f.select :category_id, options_for_select_from_enum(Mymenu, :category_id), class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+            = f.number_field :category_id
+            = f.text_field :name, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+          .flex.flex-col.justify-center.items-center
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | カロリー
+              = f.label :calorie, class: "w-full text-right"
+                span
+                  = f.number_field :calorie, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | kcal
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | たんぱく質
+              = f.label :protein, class: "w-full text-right"
+                span
+                  = f.number_field :protein, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | 脂質
+              = f.label :fat, class: "w-full text-right"
+                span
+                  = f.number_field :fat, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | 炭水化物
+              = f.label :carbohydrate, class: "w-full text-right"
+                span
+                  = f.number_field :carbohydrate, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | 糖質
+              = f.label :sugar, class: "w-full text-right"
+                span
+                  = f.number_field :sugar, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | 食物繊維
+              = f.label :dietary_fiber, class: "w-full text-right"
+                span
+                  = f.number_field :dietary_fiber, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | 塩分
+              = f.label :salt, class: "w-full text-right"
+                span
+                  = f.number_field :salt, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            button
+              | ビタミン・ミネラルを入力
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | ビタミンA
+              = f.label :Vitamin_A, class: "w-full text-right"
+                span
+                  = f.number_field :Vitamin_A, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | ビタミンD
+              = f.label :Vitamin_D, class: "w-full text-right"
+                span
+                  = f.number_field :Vitamin_D, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | ビタミンE
+              = f.label :Vitamin_E, class: "w-full text-right"
+                span
+                  = f.number_field :Vitamin_E, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | ビタミンB1
+              = f.label :Vitamin_B1, class: "w-full text-right"
+                span
+                  = f.number_field :Vitamin_B1, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | ビタミンB2
+              = f.label :Vitamin_B2, class: "w-full text-right"
+                span
+                  = f.number_field :Vitamin_B2, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | ビタミンB6
+              = f.label :Vitamin_B6, class: "w-full text-right"
+                span
+                  = f.number_field :Vitamin_B6, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | ビタミンB12
+              = f.label :Vitamin_B12, class: "w-full text-right"
+                span
+                  = f.number_field :Vitamin_B12, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | ビタミンC
+              = f.label :Vitamin_C, class: "w-full text-right"
+                span
+                  = f.number_field :Vitamin_C, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | カリウム
+              = f.label :potassium, class: "w-full text-right"
+                span
+                  = f.number_field :potassium, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | カルシウム
+              = f.label :calcium, class: "w-full text-right"
+                span
+                  = f.number_field :calcium, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | マグネシウム
+              = f.label :magnesium, class: "w-full text-right"
+                span
+                  = f.number_field :magnesium, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | 鉄
+              = f.label :iron, class: "w-full text-right"
+                span
+                  = f.number_field :iron, class: "appearance-none py-2 px-3 text-grey-darker text-right min-2px"
+                p.inline-block.text-block.mr-4
+                  | g
+            .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
+              p.text-gray-400.ml-4.whitespace-nowrap
+                | メモ
+              = f.label :memo, class: "w-full text-right"
+                span
+                  = f.text_area :memo, class: "appearance-none shadow appearance-none border rounded py-2 px-3 text-grey-darker text-right min-2px"
+          .mt-5.text-right.md:space-x-3.md:block.flex.flex-col-reverse
+            button.mb-2.md:mb-0.bg-white.px-5.py-2.text-sm.shadow-sm.font-medium.tracking-wider.border.text-gray-600.rounded-full.hover:shadow-lg.hover:bg-gray-100
+              |  戻る
+            = f.submit "登録する",class: " mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
