@@ -4,8 +4,8 @@ class FoodsController < ApplicationController
   def mymenu_new
     if request.post?
       @mymenu = Mymenu.new(mymenu_params)
-      @mymenu = Mymenu.create(mymenu_params)
-      redirect_to root_path
+      @mymenu = Mymenu.create!(mymenu_params)
+      redirect_to new_food_path
     else
       @mymenu = Mymenu.new
     end
@@ -14,6 +14,6 @@ class FoodsController < ApplicationController
   private
 
   def mymenu_params
-    params.require(:mymenu).permit(:name, :image, :category_id, :calorie, :protein, :fat, :carbohydrate, :sugar, :dietary_fiber, :salt, :Vitamin_A, :Vitamin_D, :Vitamin_E, :Vitamin_B1, :Vitamin_B2, :Vitamin_B6, :Vitamin_B12, :Vitamin_C, :potassium, :calcium, :magnesium, :iron, :memo).merge(user_id: current_user.id)
+    params.permit(:name, :image, :category_id, :calorie, :protein, :fat, :carbohydrate, :sugar, :dietary_fiber, :salt, :Vitamin_A, :Vitamin_D, :Vitamin_E, :Vitamin_B1, :Vitamin_B2, :Vitamin_B6, :Vitamin_B12, :Vitamin_C, :potassium, :calcium, :magnesium, :iron, :memo).merge(user_id: current_user.id)
   end
 end

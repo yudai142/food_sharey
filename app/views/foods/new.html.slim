@@ -1,26 +1,3 @@
-nav.flex.items-center.justify-between.flex-wrap.bg-green-300.p-6
-  .flex.items-center.flex-shrink-0.text-white.mr-6
-    svg.fill-current.h-8.w-8.mr-2[width="54" height="54" viewbox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"]
-      path[d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"]
-    span.font-semibold.text-xl.tracking-tight
-      | Tailwind CSS
-  .block.lg:hidden
-    button.flex.items-center.px-3.py-2.border.rounded.text-teal-200.border-teal-400.hover:text-white.hover:border-white
-      svg.fill-current.h-3.w-3[viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"]
-        title
-          | Menu
-        path[d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"]
-  .w-full.block.flex-grow.lg:flex.lg:items-center.lg:w-auto
-    .text-sm.lg:flex-grow
-      a.block.mt-4.lg:inline-block.lg:mt-0.text-teal-200.hover:text-white.mr-4[href="#responsive-header"]
-        |  Docs 
-      a.block.mt-4.lg:inline-block.lg:mt-0.text-teal-200.hover:text-white.mr-4[href="#responsive-header"]
-        |  Examples 
-      a.block.mt-4.lg:inline-block.lg:mt-0.text-teal-200.hover:text-white[href="#responsive-header"]
-        |  Blog 
-    div
-      a.inline-block.text-sm.px-4.py-2.leading-none.border.rounded.text-white.border-white.hover:border-transparent.hover:text-teal-500.hover:bg-white.mt-4.lg:mt-0[href="#"]
-        | Download
 .relative.flex.items-center.justify-center.py-12.px-4.sm:px-6.lg:px-8.relative.items-center.bg-green-200
   .max-w-7xl.w-full.space-y-8.p-10.bg-white.rounded-xl.shadow-lg.z-10
     .grid.gap-8.grid-cols-1
@@ -54,7 +31,7 @@ nav.flex.items-center.justify-between.flex-wrap.bg-green-300.p-6
                   option
                     | 夜食
             label.block.text-gray-700.text-sm.font-bold.mb-2[for="Date"]
-              |  食事入力 
+              |  食事入力
             .relative.inline-block
               .absolute.top-4.left-3
                 i.fa.fa-search.text-gray-400.z-20.hover:text-gray-500
@@ -86,99 +63,99 @@ nav.flex.items-center.justify-between.flex-wrap.bg-green-300.p-6
           .w-full.mx-auto.mt-4.rounded
             #tab-contents
               #first.p-4
-                |  First tab 
+                = link_to "MYメニューを作成する", mymenu_new_foods_path, class: "mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
               #second.hidden.p-4
                 #tabs-id.flex.flex-wrap
                   .w-full
                     ul.flex.mb-0.list-none.flex-wrap.pt-3.pb-4.flex-row
                       li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
                         a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-white.bg-pink-600[onclick="changeAtiveTab(event,'tab-break-fast')"]
-                          |  朝 
+                          |  朝
                       li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
                         a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-morning-snack')"]
-                          |  朝間食 
+                          |  朝間食
                       li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
                         a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-lunch')"]
-                          |  昼 
+                          |  昼
                       li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
                         a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-snack')"]
-                          |  間食 
+                          |  間食
                       li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
                         a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-dinner')"]
-                          |  夕 
+                          |  夕
                       li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
                         a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-night-meal')"]
-                          |  夜食 
+                          |  夜食
                     .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-6.shadow-lg.rounded
                       .px-4.py-5.flex-auto
                         .tab-content.tab-space
                           #tab-break-fast.block
                             p
-                              |  Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. 
+                              |  Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.
                               br
                               br
-                              |  Dramatically visualize customer directed convergence without revolutionary ROI. 
+                              |  Dramatically visualize customer directed convergence without revolutionary ROI.
                           #tab-morning-snack.hidden
                             p
-                              |  Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. 
+                              |  Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
                               br
                               br
-                              |  Dynamically innovate resource-leveling customer service for state of the art customer service. 
+                              |  Dynamically innovate resource-leveling customer service for state of the art customer service.
                           #tab-lunch.hidden
                             p
-                              |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. 
+                              |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
                               br
                               br
-                              |  Dramatically maintain clicks-and-mortar solutions without functional solutions. 
+                              |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
                           #tab-snack.hidden
                             p
-                              |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. 
+                              |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
                               br
                               br
-                              |  Dramatically maintain clicks-and-mortar solutions without functional solutions. 
+                              |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
                           #tab-dinner.hidden
                             p
-                              |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. 
+                              |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
                               br
                               br
-                              |  Dramatically maintain clicks-and-mortar solutions without functional solutions. 
+                              |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
                           #tab-night-meal.hidden
                             p
-                              |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. 
+                              |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
                               br
                               br
-                              |  Dramatically maintain clicks-and-mortar solutions without functional solutions. 
+                              |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
               #third.hidden.p-4
                 #tabs-id.flex.flex-wrap
                   .w-full
                     ul.flex.mb-0.list-none.flex-wrap.pt-3.pb-4.flex-row
                       li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
                         a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-white.bg-pink-600[onclick="changeAtiveTab(event,'tab-eating-out')"]
-                          |  外食 
+                          |  外食
                       li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
                         a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-general-cooking')"]
-                          |  一般料理 
+                          |  一般料理
                     .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-6.shadow-lg.rounded
                       .px-4.py-5.flex-auto
                         .tab-content.tab-space
                           #tab-eating-out.block
                             p
-                              |  Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI. 
+                              |  Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
                           #tab-general-cooking.hidden
                             p
-                              |  Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. 
+                              |  Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
               #fourth.hidden.p-4
-                |  Fourth tab 
+                |  Fourth tab
           .mt-5.text-right.md:space-x-3.md:block.flex.flex-col-reverse
             button.mb-2.md:mb-0.bg-white.px-5.py-2.text-sm.shadow-sm.font-medium.tracking-wider.border.text-gray-600.rounded-full.hover:shadow-lg.hover:bg-gray-100
-              |  Cancel 
+              |  Cancel
             button.mb-2.md:mb-0.bg-green-400.px-5.py-2.text-sm.shadow-sm.font-medium.tracking-wider.text-white.rounded-full.hover:shadow-lg.hover:bg-green-500
               | Save
 script[type="text/javascript"]
-  |  function changeAtiveTab(event,tabID){ let element = event.target; while(element.nodeName !== "A"){ element = element.parentNode; } ulElement = element.parentNode.parentNode; aElements = ulElement.querySelectorAll("li > a"); tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div"); for(let i = 0 ; i < aElements.length; i++){ aElements[i].classList.remove("text-white"); aElements[i].classList.remove("bg-pink-600"); aElements[i].classList.add("text-pink-600"); aElements[i].classList.add("bg-white"); tabContents[i].classList.add("hidden"); tabContents[i].classList.remove("block"); } element.classList.remove("text-pink-600"); element.classList.remove("bg-white"); element.classList.add("text-white"); element.classList.add("bg-pink-600"); document.getElementById(tabID).classList.remove("hidden"); document.getElementById(tabID).classList.add("block"); } 
+  |  function changeAtiveTab(event,tabID){ let element = event.target; while(element.nodeName !== "A"){ element = element.parentNode; } ulElement = element.parentNode.parentNode; aElements = ulElement.querySelectorAll("li > a"); tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div"); for(let i = 0 ; i < aElements.length; i++){ aElements[i].classList.remove("text-white"); aElements[i].classList.remove("bg-pink-600"); aElements[i].classList.add("text-pink-600"); aElements[i].classList.add("bg-white"); tabContents[i].classList.add("hidden"); tabContents[i].classList.remove("block"); } element.classList.remove("text-pink-600"); element.classList.remove("bg-white"); element.classList.add("text-white"); element.classList.add("bg-pink-600"); document.getElementById(tabID).classList.remove("hidden"); document.getElementById(tabID).classList.add("block"); }
 script
-  |  let tabsContainer = document.querySelector("#tabs"); let tabTogglers = tabsContainer.querySelectorAll("a"); console.log(tabTogglers); tabTogglers.forEach(function(toggler) { toggler.addEventListener("click", function(e) { e.preventDefault(); let tabName = this.getAttribute("href"); let tabContents = document.querySelector("#tab-contents"); for (let i = 0; i < tabContents.children.length; i++) { tabTogglers[i].parentElement.classList.remove("border-green-400", "border-b", "-mb-px", "opacity-100"); tabContents.children[i].classList.remove("hidden"); if ("#" + tabContents.children[i].id === tabName) { continue; } tabContents.children[i].classList.add("hidden"); } e.target.parentElement.classList.add("border-green-400", "border-b-4", "-mb-px", "opacity-100"); }); }); document.getElementById("default-tab").click(); 
+  |  let tabsContainer = document.querySelector("#tabs"); let tabTogglers = tabsContainer.querySelectorAll("a"); console.log(tabTogglers); tabTogglers.forEach(function(toggler) { toggler.addEventListener("click", function(e) { e.preventDefault(); let tabName = this.getAttribute("href"); let tabContents = document.querySelector("#tab-contents"); for (let i = 0; i < tabContents.children.length; i++) { tabTogglers[i].parentElement.classList.remove("border-green-400", "border-b", "-mb-px", "opacity-100"); tabContents.children[i].classList.remove("hidden"); if ("#" + tabContents.children[i].id === tabName) { continue; } tabContents.children[i].classList.add("hidden"); } e.target.parentElement.classList.add("border-green-400", "border-b-4", "-mb-px", "opacity-100"); }); }); document.getElementById("default-tab").click();
 style
-  |  .dropdown:hover > .dropdown-content { display: block; } 
+  |  .dropdown:hover > .dropdown-content { display: block; }
 script[type="text/javascript"]
-  |  //今日の日時を表示 window.onload = function () { //今日の日時を表示 var date = new Date() var year = date.getFullYear() var month = date.getMonth() + 1 var day = date.getDate() var toTwoDigits = function (num, digit) { num += '' if (num.length < digit) { num = '0' + num } return num } var yyyy = toTwoDigits(year, 4) var mm = toTwoDigits(month, 2) var dd = toTwoDigits(day, 2) var ymd = yyyy + "-" + mm + "-" + dd; document.getElementById("today").value = ymd; } 
+  |  //今日の日時を表示 window.onload = function () { //今日の日時を表示 var date = new Date() var year = date.getFullYear() var month = date.getMonth() + 1 var day = date.getDate() var toTwoDigits = function (num, digit) { num += '' if (num.length < digit) { num = '0' + num } return num } var yyyy = toTwoDigits(year, 4) var mm = toTwoDigits(month, 2) var dd = toTwoDigits(day, 2) var ymd = yyyy + "-" + mm + "-" + dd; document.getElementById("today").value = ymd; }
