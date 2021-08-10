@@ -13,7 +13,7 @@
               = f.file_field :image, class: 'hidden'
               | 画像を選択する
             / = f.select :category_id, options_for_select_from_enum(Mymenu, :category_id), class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-            = f.number_field :category_id
+            = f.select :category_id, Mymenu.category_ids.keys ,{prompt: "---"}
             = f.text_field :name, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker"
           .flex.flex-col.justify-center.items-center
             .flex.justify-between.items-center.w-full.py-5.border-b-2.border-gray-200
