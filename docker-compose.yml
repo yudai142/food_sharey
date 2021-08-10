@@ -4,11 +4,12 @@ services:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile
-    command: bundle exec puma -C config/puma.rb
+    command: bash -c "rm -f tmp/pids/server.pid && ./bin/server"
     stdin_open: true
     tty: true
     ports:
-      - '3000:3000'
+      - '5000:5000'
+      - '3035:3035'
     environment:
       # ↓コメントアウトでローカルと本番を切り替え
       RAILS_ENV: development
