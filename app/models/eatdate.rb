@@ -1,0 +1,2 @@
+class Eatdate < ApplicationRecord
+end

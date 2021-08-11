@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_043949) do
+ActiveRecord::Schema.define(version: 2021_08_11_044539) do
+
+  create_table "eatdates", charset: "utf8mb4", force: :cascade do |t|
+    t.date "date", null: false
+    t.integer "timezone", null: false
+    t.timestamp "eat_time"
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["date"], name: "index_eatdates_on_date"
+    t.index ["timezone"], name: "index_eatdates_on_timezone"
+    t.index ["user_id"], name: "index_eatdates_on_user_id"
+  end
 
   create_table "mymenus", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -51,5 +64,6 @@ ActiveRecord::Schema.define(version: 2021_08_03_043949) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "eatdates", "users"
   add_foreign_key "mymenus", "users"
 end

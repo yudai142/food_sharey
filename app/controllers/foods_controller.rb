@@ -1,5 +1,7 @@
 class FoodsController < ApplicationController
-  def new; end
+  def new
+    @mymenu = Mymenu.where(user_id: current_user.id).order("id ASC")
+  end
 
   def mymenu_new
     if request.post?
@@ -9,6 +11,10 @@ class FoodsController < ApplicationController
     else
       @mymenu = Mymenu.new
     end
+  end
+
+  def create
+    binding.pry
   end
 
   private
