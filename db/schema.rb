@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_022105) do
+ActiveRecord::Schema.define(version: 2021_08_13_095720) do
 
   create_table "eatdates", charset: "utf8mb4", force: :cascade do |t|
     t.date "date", null: false
     t.integer "timezone", null: false
-    t.timestamp "eat_time"
+    t.time "eat_time"
     t.text "comment"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -90,9 +90,9 @@ ActiveRecord::Schema.define(version: 2021_08_12_022105) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
-    t.boolean "food_ideas_hide", null: false
-    t.boolean "user_ranking_hide", null: false
-    t.boolean "release", null: false
+    t.boolean "food_ideas_hide"
+    t.boolean "user_ranking_hide"
+    t.boolean "release"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
