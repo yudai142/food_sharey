@@ -1,9 +1,12 @@
 class FoodsController < ApplicationController
   def new
+    require "date"
+    @date = Date.today
     @mymenu = Mymenu.where(user_id: current_user.id).order("id ASC")
   end
 
   def create
+    params[:timezone] = params[:eatdate][:timezone]
     @eatdate = Eatdate.where(date: params[:date], timezone: params[:timezone], user_id: current_user.id)
     @eatdate.present? ? @eatdate.update(eat_time: params[:eat_time],comment: params[:comment]) : Eatdate.create!(eatdate_params)
     @mymenu = Mymenu.find(params[:mymenu_id])
