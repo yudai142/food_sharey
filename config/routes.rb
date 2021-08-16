@@ -9,8 +9,7 @@ Rails
 
     resources :users, only: %i[index new create show]
 
-    resources :foods do
-      collection { match :mymenu_new, to: 'foods#mymenu_new', via: %i[get post] }
-    end
+    resources :mymenus
+    resources :foods
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end

@@ -72,7 +72,7 @@
               #tabs-id.flex.flex-wrap
                 .w-full.shadow.overflow-hidden.border-b.border-gray-200.sm:rounded-lg
                   .break-words.m-5
-                    = link_to "MYメニューを作成する", mymenu_new_foods_path, class: "mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+                    = link_to "MYメニューを作成する", new_mymenu_path, class: "mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
                   table.min-w-full.divide-y.divide-gray-200
                     tbody.bg-white.divide-y.divide-gray-200
                       - @mymenu.each do |mymenu|
@@ -94,30 +94,25 @@
                                   = f.hidden_field :mymenu_id, value: mymenu.id
                                   = f.submit "記録", class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
                               span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
-                                a[href=""]
-                                  | 提案
+                                = link_to "編集" ,edit_mymenu_path(mymenu.id)
                           td.px-6.py-4.whitespace-nowrap
                             .text-sm.text-gray-900
                               | カロリー　#{mymenu.calorie}kcal
                             .text-sm.text-gray-900
-                              | たんぱく質　2.5g
+                              | たんぱく質　#{mymenu.protein}g
                           td.px-6.py-4.whitespace-nowrap
                             .text-sm.text-gray-900
-                              | 脂質　0.3g
+                              | 脂質　#{mymenu.fat}g
                             .text-sm.text-gray-900
-                              | 炭水化物　37.1g
+                              | 炭水化物　#{mymenu.carbohydrate}g
                           td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
                             .text-sm.text-gray-900
-                              | 糖質　35.6g
+                              | 糖質　#{mymenu.sugar}g
                             .text-sm.text-gray-900
-                              | 食物繊維　1.5g
+                              | 食物繊維　#{mymenu.dietary_fiber}g
                           td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
                             .text-sm.text-gray-900
-                              | 塩分　0.2g
-                .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-2.shadow-lg.rounded
-                  .px-4.py-5.flex-auto
-                    .tab-content.tab-space
-                      #tab-break-fast.block
+                              | 塩分　#{mymenu.salt}g
             #second.hidden.p-4
               #tabs-id.flex.flex-wrap
                 .w-full
