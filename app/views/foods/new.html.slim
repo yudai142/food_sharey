@@ -93,7 +93,7 @@
                             td.px-6.py-4.whitespace-nowrap
                               .text-sm.text-gray-900
                                 span.inline-block
-                                  = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                                  = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
                                 span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
                                   = link_to "編集" ,edit_mymenu_path(mymenu.id)
                                 span.inline-block
