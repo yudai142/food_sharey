@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_095720) do
+ActiveRecord::Schema.define(version: 2021_08_22_062630) do
 
   create_table "eatdates", charset: "utf8mb4", force: :cascade do |t|
     t.date "date", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_08_13_095720) do
     t.bigint "eatdate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "mymenu_id"
     t.index ["eatdate_id"], name: "index_foods_on_eatdate_id"
   end
 
@@ -57,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_08_13_095720) do
     t.string "name", null: false
     t.integer "category_id", null: false
     t.string "image"
-    t.integer "calorie"
-    t.integer "protein"
+    t.integer "calorie", default: 0
+    t.integer "protein", default: 0
     t.integer "fat"
     t.integer "carbohydrate"
     t.integer "sugar"
