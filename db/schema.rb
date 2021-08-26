@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_08_22_062630) do
     t.string "name", null: false
     t.integer "category_id", null: false
     t.string "image"
-    t.integer "calorie", default: 0
-    t.integer "protein", default: 0
+    t.integer "calorie"
+    t.integer "protein"
     t.integer "fat"
     t.integer "carbohydrate"
     t.integer "sugar"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_062630) do
     t.string "name", null: false
     t.boolean "food_ideas_hide", default: false
     t.boolean "user_ranking_hide", default: false
-    t.boolean "release", default: true
+    t.boolean "release", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -2,12 +2,14 @@ class FoodsController < ApplicationController
   def index
     require "date"
     @date = Date.today
-    @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
-    @lunch_id = Eatdate.find_by(date: @date,timezone: 3 , user_id: current_user.id)
-    @dinner_id = Eatdate.find_by(date: @date,timezone: 5 , user_id: current_user.id)
-    @morning_foods = Food.where(eatdate_id: @morning_id)
-    @lunch_foods = Food.where(eatdate_id: @lunch_id)
-    @dinner_foods = Food.where(eatdate_id: @dinner_id)
+    if logged_in?
+      @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
+      @lunch_id = Eatdate.find_by(date: @date,timezone: 3 , user_id: current_user.id)
+      @dinner_id = Eatdate.find_by(date: @date,timezone: 5 , user_id: current_user.id)
+      @morning_foods = Food.where(eatdate_id: @morning_id)
+      @lunch_foods = Food.where(eatdate_id: @lunch_id)
+      @dinner_foods = Food.where(eatdate_id: @dinner_id)
+    end
   end
 
   def new
