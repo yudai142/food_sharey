@@ -10,6 +10,8 @@ class FoodsController < ApplicationController
       @lunch_foods = Food.where(eatdate_id: @lunch_id)
       @dinner_foods = Food.where(eatdate_id: @dinner_id)
     end
+    @eatdate = Eatdate.joins(:users).where(date: @date.prev_day(7)..@date).group(:id)
+    @eatdate
   end
 
   def new
