@@ -1,0 +1,49 @@
+version: '2'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile_development
+    command: bash -c "rm -f tmp/pids/server.pid && ./bin/server"
+    stdin_open: true
+    tty: true
+    ports:
+      - '5000:5000'
+      - '3035:3035'
+    environment:
+      RAILS_ENV: development
+    volumes:
+      - .:/app
+      - /var/tmp
+      - sockets:/app/tmp/sockets
+    tty: true
+    depends_on:
+      - db
+    extends:
+      file: ./docker/mysql/password.yml
+      service: password
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    ports:
+      - '4306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+    extends:
+      file: ./docker/mysql/password.yml
+      service: password
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      - sockets:/app/tmp/sockets
+    depends_on:
+      - app
+
+volumes:
+  db_data:
+  sockets:
