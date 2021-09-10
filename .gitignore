@@ -24,6 +24,7 @@
 
 /public/assets
 .byebug_history
+public/uploads/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -39,3 +40,6 @@ yarn-debug.log*
 /db/mysql/*
 development.env
 config/development.env
+app/assets/images/material
+public/uploads/*
+production.env
