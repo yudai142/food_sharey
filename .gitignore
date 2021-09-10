@@ -42,3 +42,4 @@ development.env
 config/development.env
 app/assets/images/material
 public/uploads/*
+production.env
