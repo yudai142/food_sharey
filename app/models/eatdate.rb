@@ -2,5 +2,5 @@ class Eatdate < ApplicationRecord
   has_many :foods
   belongs_to :user
 
-  enum timezone: {"朝食": 1, "朝間食": 2, "昼食": 3, "間食": 4, "夕食": 5, "夜食": 6}
+  enum timezone: {"朝食": 1, "昼食": 2, "間食": 3, "夕食": 4, "夜食": 5}
 end
