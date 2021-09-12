@@ -32,10 +32,10 @@
             = select :eatdate ,:timezone, options_for_select(Eatdate.timezones.keys), {}, form: "food_form", id: "timezone", class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
           label.block.text-gray-700.text-sm.font-bold.mb-2[for="eattime"]
             | 食事をした時刻
-          input#eattime.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="eat_time" type="time" value="" form="food_form"]
+          input#eattime.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="eat_time" type="time" value="#{@eatdate.eat_time&.strftime("%H:%M")}" form="food_form"]
           label.block.text-gray-700.text-sm.font-bold.mb-2[for="comment"]
             | コメント
-          input#comment.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="comment" type="text" value="" form="food_form"]
+          input#comment.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="comment" type="text" value="#{@eatdate.comment}" form="food_form"]
           .mt-5.text-right.md:space-x-3.md:block.flex.flex-col-reverse
             = button_tag "Save", type: "submit", form: "food_form",class: "mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
         label.block.text-gray-700.text-sm.font-bold.mb-2

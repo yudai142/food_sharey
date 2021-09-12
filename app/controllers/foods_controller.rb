@@ -22,6 +22,7 @@ class FoodsController < ApplicationController
       @date = Date.today
     end
     @mymenu = Mymenu.where(user_id: current_user.id).order("id ASC")
+    @eatdate = Eatdate.find_by(date: @date,timezone: params[:time] , user_id: current_user.id)
     @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
     @lunch_id = Eatdate.find_by(date: @date,timezone: 2 , user_id: current_user.id)
     @snack_id = Eatdate.find_by(date: @date,timezone: 3 , user_id: current_user.id)
