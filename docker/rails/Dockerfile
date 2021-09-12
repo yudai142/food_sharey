@@ -1,6 +1,7 @@
 FROM ruby:2.7.3
 
 ENV RAILS_ENV=production
+ENV TZ Asia/Tokyo
 
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \

@@ -12,6 +12,7 @@ services:
       - '3035:3035'
     environment:
       RAILS_ENV: development
+      TZ: Asia/Tokyo
     volumes:
       - .:/app
       - /var/tmp

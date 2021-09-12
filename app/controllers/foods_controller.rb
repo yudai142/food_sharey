@@ -15,11 +15,28 @@ class FoodsController < ApplicationController
   end
 
   def new
-    if params[:date].present?
-      @date = params[:date]
+    if params[:date].present? && params[:time].present?
+      @date = Time.parse(params[:date])
     else
-      require "date"
-      @date = Date.today
+      @date = Time.now
+      if (Time.parse("03:00")..Time.parse("10:59")).cover? @date
+        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "朝食")
+        return
+      elsif (Time.parse("11:00")..Time.parse("14:59")).cover? @date
+        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "昼食")
+        return
+      elsif (Time.parse("15:00")..Time.parse("16:59")).cover? @date
+        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "間食")
+        return
+      elsif (Time.parse("17:00")..Time.parse("23:59")).cover? @date
+        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "夕食")
+        return
+      elsif (Time.parse("01:00")..Time.parse("02:59")).cover? @date
+        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "夜食")
+        return
+      end
+      redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "朝食")
+      return
     end
     @mymenu = Mymenu.where(user_id: current_user.id).order("id ASC")
     @eatdate = Eatdate.find_by(date: @date,timezone: params[:time] , user_id: current_user.id)

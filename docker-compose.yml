@@ -16,6 +16,7 @@ services:
     environment:
       RAILS_ENV: production
       NODE_ENV: production
+      TZ: Asia/Tokyo
     volumes:
       - .:/app
       - /var/tmp
