@@ -10,6 +10,7 @@ services:
     ports:
       - '5000:5000'
       - '3035:3035'
+    env_file: production.env
     environment:
       RAILS_ENV: development
       TZ: Asia/Tokyo
