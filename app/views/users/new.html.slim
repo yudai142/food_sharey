@@ -5,39 +5,27 @@
         | ユーザー新規登録
       = form_with model: @user, local: true, id: "student_application"  do |f|
         .py-4.px-8
+          -if @user.errors.any?
+            .alert
+              ul
+                -@user.errors.full_messages.each do |message|
+                  li= message
           .mb-4
             = f.label :ユーザー名, class: "block text-grey-darker text-sm font-bold mb-2"
             = f.text_field :name, class: " border rounded w-full py-2 px-3 text-grey-darker", id: "student_id", placeholder: "Enter Your Name"
-            -if @user.errors[:name].any?
-              .alert
-                ul
-                  -@user.errors[:name].each do |message|
-                    li= message
+
           .mb-4
             = f.label :メールアドレス, class: "block text-grey-darker text-sm font-bold mb-2"
             = f.text_field :email, class: " border rounded w-full py-2 px-3 text-grey-darker", id: "student_id", placeholder: "Enter Your Email"
-            -if @user.errors[:email].any?
-              .alert
-                ul
-                  -@user.errors[:email].each do |message|
-                    li= message
+
           .mb-4
             = f.label :パスワード, class: "block text-grey-darker text-sm font-bold mb-2"
             = f.password_field :password, class: " border rounded w-full py-2 px-3 text-grey-darker", id: "student_name", placeholder: "Enter Your Password"
-            -if @user.errors[:password].any?
-              .alert
-                ul
-                  -@user.errors[:password].each do |message|
-                    li= message
+
           .mb-4
             = f.label :パスワード確認, class: "block text-grey-darker text-sm font-bold mb-2"
             = f.password_field :password_confirmation,  class: " border rounded w-full py-2 px-3 text-grey-darker",  id:"course_name",  placeholder: "Enter Your Password Confirmation"
 
-            -if @user.errors[:password_confirmation].any?
-              .alert
-                ul
-                  -@user.errors[:password_confirmation].each do |message|
-                    li= message
           .mb-4
             = hidden_field_tag (:food_ideas_hide)
             = hidden_field_tag (:user_ranking_hide)
