@@ -1,5 +1,7 @@
 <div style="text-align: center;">フードダイアリー</div>
-<div style="text-align: center;">⾷事のアイデアを探したり、⾷べる予定の⾷事や⾷べた⾷事を記録して、</div><div style="text-align: center;">⾷事内容をユーザーと共有することができる⾷事管理アプリ</div>
+<div style="text-align: center;">⾷事のアイデアを探したり、⾷べる予定の⾷事や⾷べた⾷事を記録して、</div>
+<div style="text-align: center;">⾷事内容をユーザーと共有することができる⾷事管理アプリ</div>
+
 
 概要
 
