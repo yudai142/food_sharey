@@ -1,24 +1,66 @@
-# README
+<div style="text-align: center;">フードダイアリー</div>
+<div style="text-align: center;">⾷事のアイデアを探したり、⾷べる予定の⾷事や⾷べた⾷事を記録して、</div><div style="text-align: center;">⾷事内容をユーザーと共有することができる⾷事管理アプリ</div>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+概要
 
-Things you may want to cover:
+登場⼈物
 
-* Ruby version
+- ⽇々の⾷事や栄養を管理したい⽅、⾷⽣活を改善したい⽅ 
 
-* System dependencies
+ユーザーが抱える課題
 
-* Configuration
+- ⽇々の⾷事がきちんととれているかを記録して確認できるツールが欲しい
+- 普段の⾷⽣活に栄養の偏りがないかの不安があった
+- ツイッターなどで⾷事習慣を公開している⼈がいるが、情報を集約した場がない。
+- ⾃宅で料理する際にアイデアが思い浮かばない 
 
-* Database creation
+解決⽅法
 
-* Database initialization
+- ⾷べた⾷事や作る予定の⾷事を記録し、振り返ることでその⽇にしっかり⾷事したかを管理することができる
+- ⾷事に含まれる栄養値やカロリーを記録しておくことで、週や⽉にどれだけの栄養をとったのかを把握できる
+- アカウント別でとった⾷事を記録できるため、記録をサイト内で公開することで、ユーザー同⼠で⾷事習慣を 共有しあうことができる。(⾮公開も可能)
+- ⾷事が思い浮かばない場合、APIを⽤いて外部から情報を取得してアイデアを掲載してくれる。また、栄養値や カロリーも取得できるほか、検索して条件を絞り出すこともできるので、そこから⾷事を考えることができ る。 
 
-* How to run the test suite
+望む未来
 
-* Services (job queues, cache servers, search engines, etc.)
+- ⾷べた⾷事や、⾷べる予定の⾷事を記録することで、⾃分の⾷⽣活を管理できる。
+- 栄養値やカロリーを記録することで、どれだけの栄養を取ったのかを把握できる。
+- ⾃分の⾷事内容を公開することで、⾷事習慣を続けるモチベーション維持につながる。また、他の⽅の⾷事習 慣を参考にすることで、⾃分の⾷⽣活を⾒直すことができる。
+- APIを使って外部の情報を取得することで、⾷事のアイデアを得られる。 
 
-* Deployment instructions
+サービスをつくった背景
 
-* ...
+- 私は発達障害を持っており、気温や精神⾯の変化により、腹痛を起こしてしまうという特性を抱えています。 そのため、⽇々の⾷事がきちんと取れているか、栄養もバランスよく取れているのかに対して不安に感じ、このアプリを作成して⽇々の⾷事管理を⾏っていこうと思い、私以外の⽅も健康的な⾷事管理を⾏いたい⼈にも、このアプリで⾷事管理を⾏い、情報共有し合うことで、より良い⾷事習慣に繋げていければと思い、この サービスの開発を⾏いました。 
+
+開発環境
+
+- バックエンド(Ruby 2.7.3, Rails 6.1.4)
+- フロントエンド(slim, SCSS)
+- CSSフレームワーク(TailwindCSS)
+- 本番環境インフラ(AWS)
+- データベース(AWS RDS(mysql 5.7.33))
+
+テスト・解析
+
+- 単体・統合テスト(RSpec 3.9, Capybara)
+- 静的解析(RuboCop, Brakeman, ESLint)
+- N+1(bullet)
+- CI/CD(CircleCI)
+
+主要なGem
+
+- ログイン機能・認証(sorcery)
+- 管理画⾯(rails_admin)
+- ページネーション(kaminari)
+- 検索機能(ransack)
+- N+1検知(bullet)
+- テスト(rspec-rails)
+- 静的解析(RuboCop)
+
+インフラストラクチャー
+
+- ⾃動テスト・デプロイ(CircleCI)
+- Rails⼿動デプロイツール(Capistrano)
+- AWS(VPC, EC2, ElasticIP, RDS(mysql 5.7.33), S3, ALB, Route53, ACM)
+- AWS EC2インスタンス(Amazon Linux 2(t2.micro),Docker, Nginx 1.12.2, Puma 4.3.6)
+2 / 2
