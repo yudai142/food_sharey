@@ -12,11 +12,11 @@
               | 1683kcal
           .block
             |  朝食：
-            img.h-10.w-10.inline-block[src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/a7950d19b973b7570ec741d4bcc0561b00ecdd52.35.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt=""]
+            = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
             |  昼食：
-            img.h-10.w-10.inline-block[src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/a7950d19b973b7570ec741d4bcc0561b00ecdd52.35.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt=""]
+            = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
             |  夕食：
-            img.h-10.w-10.inline-block[src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/a7950d19b973b7570ec741d4bcc0561b00ecdd52.35.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt=""]
+            = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
         li
           a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
             span.inline-flex.justify-center.items-center.ml-4
@@ -39,7 +39,7 @@
               svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
                 path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"]
             span.ml-2.text-sm.tracking-wide.truncate
-              | なんもりちゃん🍇資産形成さん
+              | なんもりちゃん資産形成さん
             span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-red-500.bg-red-50.rounded-full
               | 1.2k
         li
@@ -83,7 +83,7 @@
                         - if morning_food.image.present?
                           = image_tag(morning_food.image, size: "50x50", alt: "")
                         - else
-                          img.h-10.w-10[src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/a7950d19b973b7570ec741d4bcc0561b00ecdd52.35.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt=""]
+                          = image_tag "l_e_others_501.png", class: "h-10 w-10"
                       span.ml-2.text-sm.tracking-wide.truncate
                         = morning_food.name
                 - if @morning_foods.count(7) >= 8
@@ -103,7 +103,7 @@
                         - if lunch_food.image.present?
                           = image_tag(lunch_food.image, size: "50x50", alt: "")
                         - else
-                          img.h-10.w-10[src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/a7950d19b973b7570ec741d4bcc0561b00ecdd52.35.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt=""]
+                          = image_tag "l_e_others_501.png", class: "h-10 w-10"
                       span.ml-2.text-sm.tracking-wide.truncate
                         = lunch_food.name
                 - if @lunch_foods.count(7) >= 8
@@ -123,7 +123,7 @@
                         - if dinner_food.image.present?
                           = image_tag(dinner_food.image, size: "50x50", alt: "")
                         - else
-                          img.h-10.w-10[src="https://recipe.r10s.jp/recipe-space/d/strg/ctrl/3/a7950d19b973b7570ec741d4bcc0561b00ecdd52.35.2.3.2.jpg?interpolation=lanczos-none&fit=around|716:716&crop=716:716;*,*" alt=""]
+                          = image_tag "l_e_others_501.png", class: "h-10 w-10"
                       span.ml-2.text-sm.tracking-wide.truncate
                         = dinner_food.name
                 - if @dinner_foods.count(7) >= 8
