@@ -30,12 +30,12 @@
             svg.w-2.h-2.absolute.top-0.right-0.m-4.pointer-events-none[xmlns="http://www.w3.org/2000/svg" viewbox="0 0 412 232"]
               path[d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"]
             = select :eatdate ,:timezone, options_for_select(Eatdate.timezones.keys), {}, form: "food_form", id: "timezone", class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-          label.block.text-gray-700.text-sm.font-bold.mb-2[for="eattime"]
-            | 食事をした時刻
-          input#eattime.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="eat_time" type="time" value="#{@eatdate&.eat_time&.strftime("%H:%M")}" form="food_form"]
-          label.block.text-gray-700.text-sm.font-bold.mb-2[for="comment"]
-            | コメント
-          input#comment.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="comment" type="text" value="#{@eatdate&.comment}" form="food_form"]
+          / label.block.text-gray-700.text-sm.font-bold.mb-2[for="eattime"]
+          /   | 食事をした時刻
+          / input#eattime.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="eat_time" type="time" value="#{@eatdate&.eat_time&.strftime("%H:%M")}" form="food_form"]
+          / label.block.text-gray-700.text-sm.font-bold.mb-2[for="comment"]
+          /   | コメント
+          / input#comment.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="comment" type="text" value="#{@eatdate&.comment}" form="food_form"]
         label.block.text-gray-700.text-sm.font-bold.mb-2
           |  食事入力
         .w-full.mx-auto.rounded
@@ -220,13 +220,9 @@
           table.min-w-full.divide-y.divide-gray-200
             thead.bg-green-100
               tr
-                th.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+                th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
                   |  朝食
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.relative.px-6.py-3[scope="col"]
+                th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
                   span
                     | #{@morning_calorie}
                   |  kcal
@@ -244,7 +240,7 @@
                         .ml-4.sm:inline-block.hidden
                           .text-sm.font-medium.text-gray-900
                             = food.name
-                    td.px-6.py-4.whitespace-nowrap
+                    td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
                       .w-full.text-center.inline-block.sm:hidden.pb-3
                         .text-sm.font-medium.text-gray-900.
                           = food.name
@@ -274,13 +270,9 @@
           table.min-w-full.divide-y.divide-gray-200
             thead.bg-green-100
               tr
-                th.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+                th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
                   |  昼食
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.relative.px-6.py-3[scope="col"]
+                th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
                   span
                     | #{@lunch_calorie}
                   |  kcal
@@ -298,7 +290,7 @@
                         .ml-4.sm:inline-block.hidden
                           .text-sm.font-medium.text-gray-900
                             = food.name
-                    td.px-6.py-4.whitespace-nowrap
+                    td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
                       .w-full.text-center.inline-block.sm:hidden.pb-3
                         .text-sm.font-medium.text-gray-900.
                           = food.name
@@ -328,13 +320,9 @@
           table.min-w-full.divide-y.divide-gray-200
             thead.bg-green-100
               tr
-                th.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+                th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
                   |  間食
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.relative.px-6.py-3[scope="col"]
+                th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
                   span
                     | #{@snack_calorie}
                   |  kcal
@@ -352,7 +340,7 @@
                         .ml-4.sm:inline-block.hidden
                           .text-sm.font-medium.text-gray-900
                             = food.name
-                    td.px-6.py-4.whitespace-nowrap
+                    td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
                       .w-full.text-center.inline-block.sm:hidden.pb-3
                         .text-sm.font-medium.text-gray-900.
                           = food.name
@@ -382,13 +370,9 @@
           table.min-w-full.divide-y.divide-gray-200
             thead.bg-green-100
               tr
-                th.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+                th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
                   |  夕食
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.relative.px-6.py-3[scope="col"]
+                th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
                   span
                     | #{@dinner_calorie}
                   |  kcal
@@ -406,7 +390,7 @@
                         .ml-4.sm:inline-block.hidden
                           .text-sm.font-medium.text-gray-900
                             = food.name
-                    td.px-6.py-4.whitespace-nowrap
+                    td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
                       .w-full.text-center.inline-block.sm:hidden.pb-3
                         .text-sm.font-medium.text-gray-900.
                           = food.name
@@ -436,13 +420,9 @@
           table.min-w-full.divide-y.divide-gray-200
             thead.bg-green-100
               tr
-                th.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+                th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
                   |  夜食
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider[scope="col"]
-                th.relative.px-6.py-3[scope="col"]
+                th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
                   span
                     | #{@supper_calorie}
                   |  kcal
@@ -460,7 +440,7 @@
                         .ml-4.sm:inline-block.hidden
                           .text-sm.font-medium.text-gray-900
                             = food.name
-                    td.px-6.py-4.whitespace-nowrap
+                    td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
                       .w-full.text-center.inline-block.sm:hidden.pb-3
                         .text-sm.font-medium.text-gray-900.
                           = food.name
