@@ -24,10 +24,11 @@
               p.text-gray-400.ml-4.whitespace-nowrap.w-32
                 | 食品画像
               .flex.flex-col.sm:flex-row.items-center
-                = image_tag("l_e_others_501.png", size: "120x120", alt: "")
-                label.whitespace-nowrap.sm:ml-4.mt-4.md:mt-0.bg-green-400.px-5.py-2.text-sm.shadow-sm.font-medium.tracking-wider.text-white.rounded-full.hover:shadow-lg.hover:bg-green-500
-                  = f.file_field :image, class: 'hidden'
-                  | 画像を選択する
+                label#new-image.w-20.h-20.cursor-pointer
+                  = f.file_field :image, accept: ".jpg, .png, .gif", class: 'hidden', id: "fileCheck"
+                  = image_tag("l_e_others_501.png", id: "no-image")
+                .cursor-pointer.whitespace-nowrap.sm:ml-4.mt-4.md:mt-0.bg-green-400.px-5.py-2.text-sm.shadow-sm.font-medium.tracking-wider.text-white.rounded-full.hover:shadow-lg.hover:bg-green-500#fileCheckBtn
+                  | 画像を削除する
           .flex.flex-col.justify-center.items-center
             .flex.items-center.w-full.py-5.border-b-2.border-gray-200
               p.text-gray-400.ml-4.whitespace-nowrap.w-32
