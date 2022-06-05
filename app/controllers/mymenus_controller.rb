@@ -9,8 +9,11 @@ class MymenusController < ApplicationController
   end
 
   def create
-    Mymenu.create!(mymenu_params)
-    redirect_to new_food_path
+    if Mymenu.create!(mymenu_params)
+      redirect_to new_food_path
+    else
+      redirect_to new_mymenu_path
+    end
   end
 
   def edit
