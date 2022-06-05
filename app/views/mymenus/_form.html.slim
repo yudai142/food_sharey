@@ -26,7 +26,13 @@
               .flex.flex-col.sm:flex-row.items-center
                 label#new-image.w-20.h-20.cursor-pointer
                   = f.file_field :image, accept: 'image/jpg,image/jpeg,image/png,image/gif', class: 'hidden', id: "fileCheck"
-                  = image_tag("l_e_others_501.png", id: "no-image")
+                  = f.hidden_field :image_cache
+                  - if @mymenu.image.present?
+                    = f.hidden_field :remove_image, value: "0"
+                    = image_tag @mymenu.image.url, id: "new-img"
+                    = image_tag("l_e_others_501.png", id: "no-image", style: "visibility:hidden;width:0px;")
+                  - else
+                    = image_tag("l_e_others_501.png", id: "no-image")
                 .cursor-pointer.whitespace-nowrap.sm:ml-4.mt-4.md:mt-0.bg-red-400.px-5.py-2.text-sm.shadow-sm.font-medium.tracking-wider.text-white.rounded-full.hover:shadow-lg.hover:bg-red-500#fileCheckBtn
                   | 画像を削除する
           .flex.flex-col.justify-center.items-center

@@ -1,4 +1,4 @@
-if (document.URL.match(/new/)) {
+if (document.URL.match(/new/) || document.URL.match(/edit/)) {
   document.addEventListener('DOMContentLoaded', () => {
 
     const createImageHTML = (blob) => {
@@ -9,6 +9,9 @@ if (document.URL.match(/new/)) {
       imageElement.appendChild(blobImage);
       document.getElementById('no-image').style.width = "0px";
       document.getElementById('no-image').style.visibility = "hidden";
+      if (document.getElementById("mymenu_remove_image")) {
+        document.getElementById("mymenu_remove_image").value = "0";
+      }
     };
 
     document.getElementById('fileCheck').addEventListener('change', (e) => {
@@ -24,7 +27,8 @@ if (document.URL.match(/new/)) {
     function inputCheck() {
       let fileCheck = document.getElementById("fileCheck");
       let fileCheckBtn = document.getElementById("fileCheckBtn");
-      if (fileCheck.files.length == 0) {
+      let image_cache = document.getElementById("mymenu_image_cache");
+      if (fileCheck.files.length === 0 && image_cache.value.length === 0) {
         fileCheckBtn.hidden = true;
       } else {
         fileCheckBtn.hidden = false;
@@ -42,6 +46,11 @@ if (document.URL.match(/new/)) {
       document.getElementById('no-image').style.width = "120px";;
       document.getElementById('no-image').style.visibility = "visible";
       document.getElementById("fileCheck").value = "";
+      document.getElementById("mymenu_image_cache").value = "";
+      console.log(document.getElementById("mymenu_remove_image").length)
+      if (document.getElementById("mymenu_remove_image")) {
+        document.getElementById("mymenu_remove_image").value = "1";
+      }
       inputCheck();
     });
   });
