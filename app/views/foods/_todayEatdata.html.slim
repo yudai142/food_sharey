@@ -74,7 +74,7 @@
           .px-3.5.w-full
             .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
               |  朝食
-            ul.py-4.space-y-1.border.shadow-lg.rounded-b-xl
+            ul.py-4.space-y-5.border.shadow-lg.rounded-b-xl
               - if @morning_foods.present?
                 - @morning_foods.first(7).each do |morning_food|
                   li
@@ -94,7 +94,7 @@
           .px-3.5.w-full
             .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
               |  昼食
-            ul.py-4.space-y-1.border.shadow-lg.rounded-b-xl
+            ul.py-4.space-y-5.border.shadow-lg.rounded-b-xl
               - if @lunch_foods.present?
                 - @lunch_foods.first(7).each do |lunch_food|
                   li
@@ -114,7 +114,7 @@
           .px-3.5.w-full
             .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
               |  夕食
-            ul.py-4.space-y-1.border.shadow-lg.rounded-b-xl
+            ul.py-4.space-y-5.border.shadow-lg.rounded-b-xl
               - if @dinner_foods.present?
                 - @dinner_foods.first(7).each do |dinner_food|
                   li
