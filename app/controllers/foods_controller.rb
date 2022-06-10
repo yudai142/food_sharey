@@ -9,6 +9,11 @@ class FoodsController < ApplicationController
       @morning_foods = Food.where(eatdate_id: @morning_id)
       @lunch_foods = Food.where(eatdate_id: @lunch_id)
       @dinner_foods = Food.where(eatdate_id: @dinner_id)
+      @lunking = Eatdate.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}.pluck(:id)
+      @arr = Array.new
+      @lunking.each do |lunking|
+        @arr.push(Food.where(eatdate_id: lunking).pluck(:name))
+      end 
     end
   end
 
