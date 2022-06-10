@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   has_many :eatdates
   has_many :mymenus
+  has_many :mymenu_likes
+  has_many :eatdate_likes
 end
