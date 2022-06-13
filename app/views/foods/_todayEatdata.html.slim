@@ -3,21 +3,20 @@
     .mt-10.lg:mr-14.lg:mt-0
       .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400.whitespace-nowrap
         |  食事習慣ランキング
-      = @arr
-      / ul.py-4.space-y-1.border.shadow-lg.rounded-b-xl
-      /   li.mx-4.flex.justify-between.flex-wrap.items-center.justify-center
-      /     a.items-center.h-6.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-transparent.hover:border-indigo-500[href="#"]
-      /       span.text-sm.tracking-wide.truncate
-      /         | みやまさん
-      /       span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
-      /         | 1683kcal
-      /     .block
-      /       |  朝食：
-      /       = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
-      /       |  昼食：
-      /       = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
-      /       |  夕食：
-      /       = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
+      ul.py-4.space-y-1.border.shadow-lg.rounded-b-xl.lg:w-72
+        - @arr.each do |lanking|
+          li.mx-4.flex.flex-col
+            a.justify-between.h-6.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-transparent.hover:border-indigo-500[href="#"]
+              span.text-sm.tracking-wide.truncate
+                = "#{lanking[:user]}さん"
+              span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
+                | 1683kcal
+            .flex.gap-x-3
+              - lanking[:image].each do |image|
+                - if image.present?
+                  = image_tag image, class: "h-10 w-10 inline-block"
+                - else
+                  = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
       /   li
       /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
       /       span.inline-flex.justify-center.items-center.ml-4

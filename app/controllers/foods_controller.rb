@@ -2,6 +2,22 @@ class FoodsController < ApplicationController
   def index
     require "date"
     @date = Time.now
+    if (Time.parse("03:00")..Time.parse("10:59")).cover? @date
+      @lunking = Eatdate.where(timezone: 1).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    elsif (Time.parse("11:00")..Time.parse("16:59")).cover? @date
+      @lunking = Eatdate.where(timezone: 3).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    elsif (Time.parse("17:00")..Time.parse("23:59")).cover? @date or (Time.parse("00:00")..Time.parse("02:59")).cover? @date
+      @lunking = Eatdate.where(timezone: 5).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    end
+    @arr = Array.new
+    @lunking.each do |lunking|
+      if Food.find_by(eatdate_id: lunking)
+        @arr.push(
+          user: User.find(lunking.user_id).name, 
+          image:Food.where(eatdate_id: lunking).pluck(:image)
+        )
+      end
+    end
     if logged_in?
       @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
       @lunch_id = Eatdate.find_by(date: @date,timezone: 2 , user_id: current_user.id)
@@ -9,11 +25,6 @@ class FoodsController < ApplicationController
       @morning_foods = Food.where(eatdate_id: @morning_id)
       @lunch_foods = Food.where(eatdate_id: @lunch_id)
       @dinner_foods = Food.where(eatdate_id: @dinner_id)
-      @lunking = Eatdate.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}.pluck(:id)
-      @arr = Array.new
-      @lunking.each do |lunking|
-        @arr.push(Food.where(eatdate_id: lunking).pluck(:name))
-      end 
     end
   end
 
