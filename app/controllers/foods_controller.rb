@@ -2,11 +2,11 @@ class FoodsController < ApplicationController
   def index
     require "date"
     @date = Time.now
-    if (Time.parse("03:00")..Time.parse("10:59")).cover? @date
+    if (Time.parse("03:00")..Time.parse("09:59")).cover? @date
       @lunking = Eatdate.where(timezone: 1).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    elsif (Time.parse("11:00")..Time.parse("16:59")).cover? @date
+    elsif (Time.parse("10:00")..Time.parse("15:59")).cover? @date
       @lunking = Eatdate.where(timezone: 3).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    elsif (Time.parse("17:00")..Time.parse("23:59")).cover? @date or (Time.parse("00:00")..Time.parse("02:59")).cover? @date
+    elsif (Time.parse("16:00")..Time.parse("23:59")).cover? @date or (Time.parse("00:00")..Time.parse("02:59")).cover? @date
       @lunking = Eatdate.where(timezone: 5).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
     end
     @arr = Array.new
