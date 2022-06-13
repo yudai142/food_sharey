@@ -14,7 +14,8 @@ class FoodsController < ApplicationController
       if Food.find_by(eatdate_id: lunking)
         @arr.push(
           user: User.find(lunking.user_id).name, 
-          image:Food.where(eatdate_id: lunking).pluck(:image)
+          image:Food.where(eatdate_id: lunking).pluck(:image),
+          eatdate_id: lunking.id
         )
       end
     end

@@ -11,6 +11,10 @@
                 = "#{lanking[:user]}さん"
               span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
                 | 1683kcal
+              a.flex-1.mr-8.py-3.no-underline.border-b-2.border-transparent.tracking-wide.flex.flex-col[href="#third"]
+                i.fa.fa-heart.fa-1x
+                span.pt-1
+                  | いいね
             .flex.gap-x-3
               - lanking[:image].each do |image|
                 - if image.present?
