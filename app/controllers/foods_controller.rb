@@ -4,9 +4,9 @@ class FoodsController < ApplicationController
     @date = Time.now
     if (Time.parse("03:00")..Time.parse("09:59")).cover? @date
       @lunking = Eatdate.where(timezone: 1).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    elsif (Time.parse("10:00")..Time.parse("15:59")).cover? @date
-      @lunking = Eatdate.where(timezone: 3).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    elsif (Time.parse("16:00")..Time.parse("23:59")).cover? @date or (Time.parse("00:00")..Time.parse("02:59")).cover? @date
+    elsif (Time.parse("10:00")..Time.parse("14:59")).cover? @date
+      @lunking = Eatdate.where(timezone: 1).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    elsif (Time.parse("15:00")..Time.parse("23:59")).cover? @date or (Time.parse("00:00")..Time.parse("02:59")).cover? @date
       @lunking = Eatdate.where(timezone: 5).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
     end
     @arr = Array.new
@@ -15,7 +15,8 @@ class FoodsController < ApplicationController
         @arr.push(
           user: User.find(lunking.user_id).name, 
           image:Food.where(eatdate_id: lunking).pluck(:image),
-          eatdate_id: lunking.id
+          eatdate_id: lunking.id,
+          good_count: EatdateLike.where(eatdate_id: lunking.id)
         )
       end
     end
