@@ -5,39 +5,40 @@
         |  食事習慣ランキング
       ul.divide-y.divide-gray-200.border.shadow-lg.rounded-b-xl.lg:w-72
         - @arr.each do |lanking|
-          li.p-3.flex.flex-col
-            a.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-transparent.hover:border-indigo-500[href="#"]
-              .flex.flex-row
-                span.text-sm.tracking-wide.truncate.mr-auto
-                  = "#{lanking[:user]}さん"
-                / span.px-2.leading-relaxed.mr-2.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
-                /   | 1683kcal
-                - if logged_in?
-                  - if lanking[:good_count].find_by(user_id: current_user)
-                    button.no-underline.border-b-2.border-transparent.tracking-wide.flex.flex-row.shadow.border-pink-500.border-2.rounded-full.px-2.text-pink-500.hover:bg-pink-500.hover:text-white[href=""]
-                      i.fas.fa-heart.fa-1x.my-auto
-                      span.inline.ml-1
-                        | #{lanking[:good_count].count}
-                  - else
-                    button.no-underline.border-b-2.border-transparent.tracking-wide.flex.flex-row.shadow.border-pink-500.border-2.rounded-full.px-2.text-pink-500.hover:bg-pink-500.hover:text-white[href=""]
-                      i.far.fa-heart.fa-1x.my-auto
-                      span.inline.ml-1
-                        | #{lanking[:good_count].count}
-            .flex.gap-x-3
-              - lanking[:image].each do |image|
-                - if image.present?
-                  = image_tag image, class: "h-10 w-10 inline-block"
-                - else
-                  = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
-      /   li
-      /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-      /       span.inline-flex.justify-center.items-center.ml-4
-      /         svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
-      /           path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"]
-      /       span.ml-2.text-sm.tracking-wide.truncate
-      /         | ねるねるさん
-      /       span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
-      /         | New
+          li.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800
+            a[href="#"]
+              .p-3.flex.flex-col
+                .flex.flex-row
+                  span.text-sm.tracking-wide.truncate.mr-auto
+                    = "#{lanking[:user]}さん"
+                  / span.px-2.leading-relaxed.mr-2.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
+                  /   | 1683kcal
+                  - if logged_in?
+                    - if lanking[:good_count].find_by(user_id: current_user)
+                      button.no-underline.border-b-2.border-transparent.tracking-wide.flex.flex-row.shadow.border-pink-500.border-2.rounded-full.px-2.text-pink-500.hover:bg-pink-500.hover:text-white[href="#third"]
+                        i.fas.fa-heart.fa-1x.my-auto
+                        span.inline.ml-1
+                          | #{lanking[:good_count].count}
+                    - else
+                      button.no-underline.border-b-2.border-transparent.tracking-wide.flex.flex-row.shadow.border-pink-500.border-2.rounded-full.px-2.text-pink-500.hover:bg-pink-500.hover:text-white[href="#third"]
+                        i.far.fa-heart.fa-1x.my-auto
+                        span.inline.ml-1
+                          | #{lanking[:good_count].count}
+                .flex.gap-x-3
+                  - lanking[:image].each do |image|
+                    - if image.present?
+                      = image_tag image, class: "h-10 w-10 inline-block"
+                    - else
+                      = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
+        / li
+        /   a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
+        /     span.inline-flex.justify-center.items-center.ml-4
+        /       svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
+        /         path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"]
+        /     span.ml-2.text-sm.tracking-wide.truncate
+        /       | ねるねるさん
+        /     span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
+        /       | New
       /   li
       /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
       /       span.inline-flex.justify-center.items-center.ml-4
