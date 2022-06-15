@@ -2,83 +2,25 @@
   .md:mx-14.px-3.md:px-0.flex.flex-col.lg:flex-row.flex-col-reverse
     .mt-10.lg:mr-14.lg:mt-0
       .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400.whitespace-nowrap
-        |  食事習慣ランキング
+        |  人気の#{@menu}メニュー
       ul.divide-y.divide-gray-200.border.shadow-lg.rounded-b-xl.lg:w-72
-        - @arr.each do |lanking|
+        - @arr.each do |ranking|
           li.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800
             a[href="#"]
               .p-3.flex.flex-col
                 .flex.flex-row
                   span.text-sm.tracking-wide.truncate.mr-auto
-                    = "#{lanking[:user]}さん"
+                    = "#{ranking[:user]}さん"
                   / span.px-2.leading-relaxed.mr-2.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
                   /   | 1683kcal
-                  - if logged_in?
-                    - if lanking[:good_count].find_by(user_id: current_user)
-                      button.no-underline.border-b-2.border-transparent.tracking-wide.flex.flex-row.shadow.border-pink-500.border-2.rounded-full.px-2.text-pink-500.hover:bg-pink-500.hover:text-white[href="#third"]
-                        i.fas.fa-heart.fa-1x.my-auto
-                        span.inline.ml-1
-                          | #{lanking[:good_count].count}
-                    - else
-                      / button.no-underline.border-b-2.border-transparent.tracking-wide.flex.flex-row.shadow.border-pink-500.border-2.rounded-full.px-2.text-pink-500.hover:bg-pink-500.hover:text-white[href="#third"]
-                      = button_to eatdate_likes_path(eatdate_id: lanking[:eatdate_id]), remote: true, method: :post, id: "js-like-button", class: "no-underline border-b-2 border-transparent tracking-wide flex flex-row shadow border-pink-500 border-2 rounded-full px-2 text-pink-500 hover:bg-pink-500 hover:text-white"
-                        i.far.fa-heart.fa-1x.my-auto
-                        span.inline.ml-1
-                          | #{lanking[:good_count].count}
+                  span id="js-like-button-#{ranking[:eatdate_id]}"
+                    = render 'eatdate_likes/like', ranking: ranking
                 .flex.gap-x-3
-                  - lanking[:image].each do |image|
+                  - ranking[:image].each do |image|
                     - if image.present?
                       = image_tag image, class: "h-10 w-10 inline-block"
                     - else
                       = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
-        / li
-        /   a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-        /     span.inline-flex.justify-center.items-center.ml-4
-        /       svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
-        /         path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"]
-        /     span.ml-2.text-sm.tracking-wide.truncate
-        /       | ねるねるさん
-        /     span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
-        /       | New
-      /   li
-      /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-      /       span.inline-flex.justify-center.items-center.ml-4
-      /         svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
-      /           path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"]
-      /       span.ml-2.text-sm.tracking-wide.truncate
-      /         | りり子さん
-      /   li
-      /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-      /       span.inline-flex.justify-center.items-center.ml-4
-      /         svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
-      /           path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"]
-      /       span.ml-2.text-sm.tracking-wide.truncate
-      /         | なんもりちゃん資産形成さん
-      /       span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-red-500.bg-red-50.rounded-full
-      /         | 1.2k
-      /   li
-      /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-      /       span.inline-flex.justify-center.items-center.ml-4
-      /         svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
-      /           path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"]
-      /       span.ml-2.text-sm.tracking-wide.truncate
-      /         | Hey MUCHOさん
-      /   li
-      /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-      /       span.inline-flex.justify-center.items-center.ml-4
-      /         svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
-      /           path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"]
-      /       span.ml-2.text-sm.tracking-wide.truncate
-      /         | Z@22卒さん
-      /       span.px-2.py-0.5.ml-auto.text-xs.font-medium.tracking-wide.text-green-500.bg-green-50.rounded-full
-      /         | 15
-      /   li
-      /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-      /       span.inline-flex.justify-center.items-center.ml-4
-      /         svg.w-5.h-5[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
-      /           path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"]
-      /       span.ml-2.text-sm.tracking-wide.truncate
-      /         | 鬼平ハンカチ王さん
     .p-3.bg-white.rounded-xl.shadow-lg.w-full.pb-10
       .grid.gap-8.grid-cols-1
         .flex.flex-col.md:flex-row.items-center
