@@ -1,0 +1,23 @@
+.px-3.5.bg-white.dark:bg-gray-800.mt-10.w-full
+  .md:mx-14.px-3.md:px-0.flex.flex-col.lg:flex-row.flex-col-reverse
+    .mt-10.lg:mr-14.lg:mt-0
+      .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400.whitespace-nowrap
+        |  人気のメニュー
+      ul.divide-y.divide-gray-200.border.shadow-lg.rounded-b-xl.lg:w-72
+        - @arr.each do |ranking|
+          li.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800
+            a[href="#"]
+              .p-3.flex.flex-col
+                .flex.flex-row
+                  span.text-sm.tracking-wide.truncate.mr-auto
+                    | #{ranking[:user]}さん
+                  span.px-2.leading-relaxed.mr-2.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
+                    | #{ranking[:calorie]}kcal
+                  span id="js-like-button-#{ranking[:eatdate_id]}"
+                    = render 'eatdate_likes/like', ranking: ranking
+                .flex.gap-x-3
+                  - ranking[:image].each do |image|
+                    - if image.present?
+                      = image_tag image, class: "h-10 w-10 inline-block"
+                    - else
+                      = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
