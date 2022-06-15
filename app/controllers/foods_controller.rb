@@ -22,6 +22,7 @@ class FoodsController < ApplicationController
           good_count: EatdateLike.where(eatdate_id: ranking.id)
         )
       end
+      break if @arr.length == 10
     end
     if logged_in?
       @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
