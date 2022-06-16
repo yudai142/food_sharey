@@ -1,10 +1,10 @@
 .px-3.5.bg-white.dark:bg-gray-800.mt-10.w-full
   .md:mx-14.px-3.md:px-0.flex.flex-col.lg:flex-row.flex-col-reverse
     .mt-10.lg:mr-14.lg:mt-0
-      .px-6.py-3.flex.justify-between.text-base.font-medium.text-white.rounded-t-xl.bg-green-400.whitespace-nowrap
+      .px-4.py-3.text-center.text-base.font-medium.text-white.rounded-t-xl.bg-green-400.whitespace-nowrap
         span 人気の#{@menu}メニュー
-        = link_to rankings_path
-          i.fas.fa-list-alt.fa-lg.my-auto.hover:text-gray-200
+        = link_to rankings_path, class: "float-right"
+          i.fas.fa-list-alt.fa-lg.my-auto.hover:text-gray-200.inline
       ul.divide-y.divide-gray-200.border.shadow-lg.rounded-b-xl.lg:w-72
         - @arr.each do |ranking|
           li.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800
@@ -23,6 +23,10 @@
                       = image_tag image, class: "h-10 w-10 inline-block"
                     - else
                       = image_tag "l_e_others_501.png", class: "h-10 w-10 inline-block"
+        li.focus:outline-none
+          .p-3.text-right
+            = link_to rankings_path, class: "py-1 px-2 inline-block no-underline border-b-2 border-transparent tracking-wide shadow border-green-500 border-2 rounded-full text-green-500 hover:bg-green-500 hover:text-white"
+              | ランキング一覧
     .p-3.bg-white.rounded-xl.shadow-lg.w-full.pb-10
       .grid.gap-8.grid-cols-1
         .flex.flex-col.md:flex-row.items-center
