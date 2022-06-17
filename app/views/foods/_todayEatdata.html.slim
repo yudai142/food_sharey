@@ -3,8 +3,8 @@
     .mt-10.lg:mr-14.lg:mt-0
       .px-4.py-3.text-center.text-base.font-medium.text-white.rounded-t-xl.bg-green-400.whitespace-nowrap
         span 人気の#{@menu}メニュー
-        = link_to rankings_path, class: "float-right"
-          i.fas.fa-list-alt.fa-lg.my-auto.hover:text-gray-200.inline
+        / = link_to rankings_path, class: "float-right"
+        /   i.fas.fa-list-alt.fa-lg.my-auto.hover:text-gray-200.inline
       ul.divide-y.divide-gray-200.border.shadow-lg.rounded-b-xl.lg:w-72
         - @arr.each do |ranking|
           li.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800

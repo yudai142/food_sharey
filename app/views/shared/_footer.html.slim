@@ -1,19 +1,4 @@
-doctype html
-html
-  head
-    title
-      | App
-    meta[name="viewport" content="width=device-width,initial-scale=1"]
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = render 'shared/header'
-    = yield
-    - if logged_in?
-      .w-full.h-14.md:hidden.block
+.w-full.h-14.md:hidden.block
         section#bottom-navigation.fixed.inset-x-0.bottom-0.z-10.bg-white.shadow
           #tabs.flex.justify-between
             = link_to root_path, class: "w-full focus:text-teal-500 hover:text-gray-200 inline justify-center inline-block text-center pt-2 pb-1 text-blue-500"
@@ -25,6 +10,6 @@ html
             = link_to rankings_path, class: "w-full focus:text-teal-500 hover:text-gray-200 inline justify-center inline-block text-center pt-2 pb-1 text-green-500"
               i.fas.fa-list-alt.fa-2x.my-auto
               span.block.text-xs ランキング
-            a.w-full.text-gray-500.inline.hover:text-gray-200.inline.justify-center.inline-block.text-center.pt-2.pb-1 href="#" 
-              i.fas.fa-cog.fa-2x.my-auto
-              span.block.text-xs 設定
+            / a.w-full.text-gray-500.inline.hover:text-gray-200.inline.justify-center.inline-block.text-center.pt-2.pb-1 href="#" 
+            /   i.fas.fa-cog.fa-2x.my-auto
+            /   span.block.text-xs 設定

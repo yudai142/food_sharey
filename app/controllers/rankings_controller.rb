@@ -38,7 +38,7 @@ class RankingsController < ApplicationController
     # end
     
     @ranking = Eatdate.where(timezone: @time).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    @menu = @time
+    @menu = "人気の#{@time}"
     
     @arr = Array.new
     @ranking.each do |ranking|
