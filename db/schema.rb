@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_050323) do
   create_table "foods", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "image"
+    t.integer "mymenu_id"
     t.integer "calorie"
     t.integer "protein"
     t.integer "fat"
@@ -59,7 +60,6 @@ ActiveRecord::Schema.define(version: 2022_06_09_050323) do
     t.bigint "eatdate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "mymenu_id"
     t.index ["eatdate_id"], name: "index_foods_on_eatdate_id"
   end
 
@@ -104,11 +104,11 @@ ActiveRecord::Schema.define(version: 2022_06_09_050323) do
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", null: false
+    t.string "name", null: false
     t.string "crypted_password"
     t.string "salt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name", null: false
     t.boolean "food_ideas_hide", default: false
     t.boolean "user_ranking_hide", default: false
     t.boolean "release", default: false

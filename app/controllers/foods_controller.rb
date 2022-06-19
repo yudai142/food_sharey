@@ -17,7 +17,7 @@ class FoodsController < ApplicationController
       if Food.find_by(eatdate_id: ranking)
         @arr.push(
           user: User.find(ranking.user_id).name, 
-          image: Food.where(eatdate_id: ranking).limit(3).pluck(:image),
+          image: Food.where(eatdate_id: ranking).limit(6).pluck(:image),
           calorie: Food.where(eatdate_id: ranking).sum(:calorie),
           eatdate_id: ranking.id,
           good_count: EatdateLike.where(eatdate_id: ranking.id)

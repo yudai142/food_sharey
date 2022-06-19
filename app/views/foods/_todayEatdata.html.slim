@@ -13,8 +13,9 @@
                 .flex.flex-row
                   span.text-sm.tracking-wide.truncate.mr-auto
                     | #{ranking[:user]}さん
-                  span.px-2.leading-relaxed.mr-2.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
-                    | #{ranking[:calorie]}kcal
+                  - if ranking[:calorie] != 0
+                    span.px-2.leading-relaxed.mr-2.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
+                      | #{ranking[:calorie]}kcal
                   span id="js-like-button-#{ranking[:eatdate_id]}"
                     = render 'eatdate_likes/like', ranking: ranking
                 .flex.gap-x-3
