@@ -337,6 +337,7 @@ DEPENDENCIES
   pagy
   pry-byebug
   puma (~> 5.0)
+  rack
   rails (~> 6.1.4)
   rails-i18n
   rubocop

@@ -1,16 +1,16 @@
 - if logged_in?
-  - if ranking[:good_count].find_by(user_id: current_user)
-    = button_to eatdate_like_path(ranking[:eatdate_id]), remote: true, method: :delete, id: "js-like-button", class: "no-underline border-b-2 border-transparent tracking-wide flex flex-row shadow border-pink-500 border-2 rounded-full px-2 text-pink-500 hover:bg-pink-500 hover:text-white"
+  - if eatdate.eatdate_likes.find_by(eatdate_id: eatdate.id,user_id: current_user)
+    = button_to eatdate_like_path(eatdate.id), remote: true, method: :delete, id: "js-like-button", class: "no-underline border-b-2 border-transparent tracking-wide flex flex-row shadow border-pink-500 border-2 rounded-full px-2 text-pink-500 hover:bg-pink-500 hover:text-white"
       i.fas.fa-heart.fa-1x.my-auto
       span.inline.ml-1
-        | #{ranking[:good_count].count}
+        | #{eatdate.eatdate_likes.count}
   - else
-    = button_to eatdate_likes_path(eatdate_id: ranking[:eatdate_id]), remote: true, method: :post, id: "js-like-button", class: "no-underline border-b-2 border-transparent tracking-wide flex flex-row shadow border-pink-500 border-2 rounded-full px-2 text-pink-500 hover:bg-pink-500 hover:text-white"
+    = button_to eatdate_likes_path(eatdate_id: eatdate.id), remote: true, method: :post, id: "js-like-button", class: "no-underline border-b-2 border-transparent tracking-wide flex flex-row shadow border-pink-500 border-2 rounded-full px-2 text-pink-500 hover:bg-pink-500 hover:text-white"
       i.far.fa-heart.fa-1x.my-auto
       span.inline.ml-1
-        | #{ranking[:good_count].count}
+        | #{eatdate.eatdate_likes.count}
 - else
   .no-underline.border-b-2.border-transparent.tracking-wide.flex.flex-row.shadow.border-pink-500.border-2.rounded-full.px-2.text-pink-500.hover:bg-pink-500.hover:text-white.cursor-not-allowed
     i.far.fa-heart.fa-1x.my-auto
     span.inline.ml-1
-      | #{ranking[:good_count].count}
+      | #{eatdate.eatdate_likes.count}

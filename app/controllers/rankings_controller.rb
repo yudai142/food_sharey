@@ -38,19 +38,14 @@ class RankingsController < ApplicationController
     # end
     
     @ranking = Eatdate.where(timezone: @time).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    @menu = "人気の#{@time}"
-    
     @arr = Array.new
     @ranking.each do |ranking|
       if Food.find_by(eatdate_id: ranking)
-        @arr.push(
-          user: User.find(ranking.user_id).name, 
-          image: Food.where(eatdate_id: ranking).limit(6).pluck(:image),
-          calorie: Food.where(eatdate_id: ranking).sum(:calorie),
-          eatdate_id: ranking.id,
-          good_count: EatdateLike.where(eatdate_id: ranking.id)
-        )
+        @arr.push(ranking)
       end
     end
+    @pagy, @eatdate = pagy_array(@arr)
+    @menu = "人気の#{@time}"
+    
   end
 end

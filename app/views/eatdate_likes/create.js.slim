@@ -1,1 +1,1 @@
-| document.getElementById('js-like-button-#{@ranking[:eatdate_id]}').innerHTML = "#{j(render 'eatdate_likes/like', ranking: @ranking)}";
+| document.getElementById('js-like-button-#{@eatdate.id}').innerHTML = "#{j(render 'eatdate_likes/like', eatdate: @eatdate)}";

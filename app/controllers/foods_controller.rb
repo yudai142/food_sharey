@@ -12,18 +12,12 @@ class FoodsController < ApplicationController
       @ranking = Eatdate.where(timezone: 4).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
       @menu = "夕食"
     end
-    @arr = Array.new
+    @eatdate = Array.new
     @ranking.each do |ranking|
       if Food.find_by(eatdate_id: ranking)
-        @arr.push(
-          user: User.find(ranking.user_id).name, 
-          image: Food.where(eatdate_id: ranking).limit(6).pluck(:image),
-          calorie: Food.where(eatdate_id: ranking).sum(:calorie),
-          eatdate_id: ranking.id,
-          good_count: EatdateLike.where(eatdate_id: ranking.id)
-        )
+        @eatdate.push(ranking)
       end
-      break if @arr.length == 10
+      break if @eatdate.length == 10
     end
     if logged_in?
       @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
