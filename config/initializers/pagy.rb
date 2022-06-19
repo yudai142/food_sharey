@@ -1,5 +1,5 @@
 # require 'pagy/extras/semantic'
 require 'pagy/extras/array'
-require 'pagy/extras/bootstrap'
+# require 'pagy/extras/bootstrap'
 
-Pagy::VARS[:items] = 20
+# Pagy::VARS[:items] = 20
