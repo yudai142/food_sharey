@@ -13,18 +13,4 @@ html
     = render 'shared/header'
     = yield
     - if logged_in?
-      .w-full.h-14.md:hidden.block
-        section#bottom-navigation.fixed.inset-x-0.bottom-0.z-10.bg-white.shadow
-          #tabs.flex.justify-between
-            = link_to root_path, class: "w-full focus:text-teal-500 hover:text-gray-200 inline justify-center inline-block text-center pt-2 pb-1 text-blue-500"
-              i.fas.fa-home.fa-2x
-              span.block.text-xs トップページ
-            = link_to new_food_path, 'data-turbolinks': false, class: "w-full focus:text-teal-500 hover:text-gray-200 inline justify-center inline-block text-center pt-2 pb-1 text-yellow-500"
-              i.fas.fa-utensils.fa-2x
-              span.block.text-xs 食事の記録
-            = link_to rankings_path, class: "w-full focus:text-teal-500 hover:text-gray-200 inline justify-center inline-block text-center pt-2 pb-1 text-green-500"
-              i.fas.fa-list-alt.fa-2x.my-auto
-              span.block.text-xs ランキング
-            a.w-full.text-gray-500.inline.hover:text-gray-200.inline.justify-center.inline-block.text-center.pt-2.pb-1 href="#" 
-              i.fas.fa-cog.fa-2x.my-auto
-              span.block.text-xs 設定
+      = render 'shared/footer'
