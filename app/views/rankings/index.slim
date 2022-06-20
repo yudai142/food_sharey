@@ -58,7 +58,7 @@
                 - if eatdate.foods.pluck(:calorie).map!{|x| x.to_i}.sum != 0
                   span.px-2.leading-relaxed.mr-2.text-xs.font-medium.tracking-wide.text-indigo-500.bg-indigo-50.rounded-full
                     | #{eatdate.foods.pluck(:calorie).map!{|x| x.to_i}.sum}kcal
-                span id="js-like-button-#{eatdate.id}"
+                span id="js-like-button-0#{eatdate.id}"
                   = render 'eatdate_likes/like', eatdate: eatdate
               .flex.gap-x-3
                 - eatdate.foods.pluck(:image).each_with_index do |image, i|
