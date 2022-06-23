@@ -8,16 +8,14 @@
               | ログイン
           .flex.flex-col.justify-center.items-center
             .flex.items-center.w-full.py-5.border-b-2.border-gray-200
-              p.text-gray-400.ml-4.whitespace-nowrap.w-32
+              p.text-gray-400.pl-4.p-3.whitespace-nowrap.w-32
                 | メールアドレス
-              .relative.inline-flex
-                = f.email_field :email, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker", required: true
+              = f.email_field :email, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
           .flex.flex-col.justify-center.items-center
             .flex.items-center.w-full.py-5.border-b-2.border-gray-200
-              p.text-gray-400.ml-4.whitespace-nowrap.w-32
+              p.text-gray-400.pl-4.p-3.whitespace-nowrap.w-32
                 | パスワード
-              .relative.inline-flex
-                = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker", required: true
+              = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
           / .block.mt-2
             label.flex.items-center[for=""]
               input.ml-2.rounded.border-gray-300.text-indigo-600.shadow-sm.focus:border-indigo-300.focus:ring.focus:ring-indigo-200.focus:ring-opacity-50[type="checkbox"]
