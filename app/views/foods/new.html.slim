@@ -43,8 +43,9 @@
             #first
               #tabs-id.flex.flex-wrap
                 .w-full.shadow.overflow-hidden.border-b.border-gray-200.sm:rounded-lg
-                  .break-words.m-5
+                  .break-words.m-5.tooltip1
                     = link_to "MYメニューを作成する", new_mymenu_path, class: "mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+                    .balloon ここを押して作成
                   table.min-w-full.divide-y.divide-gray-200
                     = form_with url: foods_path, local: true, id: "food_form" do
                       tbody.bg-white.divide-y.divide-gray-200
