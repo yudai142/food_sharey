@@ -1,30 +1,28 @@
 .relative.flex.items-center.justify-center.py-12.px-4.sm:px-6.lg:px-8.relative.items-center.bg-green-200
   .max-w-lg.w-full.space-y-8.p-10.bg-white.rounded-xl.shadow-lg
     = form_with url: login_path, method: :post, id: "student_application"  do |f|
-      .grid.gap-8.grid-cols-1
-        .flex.flex-col
-          .flex.flex-col.sm:flex-row.items-center
-            h1.block.w-full.text-center.text-green-400.text-2xl.font-bold.mb-6
-              | ログイン
-          .flex.flex-col.justify-center.items-center
-            .flex.items-center.w-full.py-5.border-b-2.border-gray-200
-              p.text-gray-400.pl-4.p-3.whitespace-nowrap.w-32
-                | メールアドレス
-              = f.email_field :email, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
-          .flex.flex-col.justify-center.items-center
-            .flex.items-center.w-full.py-5.border-b-2.border-gray-200
-              p.text-gray-400.pl-4.p-3.whitespace-nowrap.w-32
-                | パスワード
-              = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
-          / .block.mt-2
-            label.flex.items-center[for=""]
-              input.ml-2.rounded.border-gray-300.text-indigo-600.shadow-sm.focus:border-indigo-300.focus:ring.focus:ring-indigo-200.focus:ring-opacity-50[type="checkbox"]
-              span.ml-2.text-sm.text-gray-600
-                | 次回から自動ログイン
-          / .flex.items-center.flex.items-center.justify-end.mt-4
-            a.underline.text-sm.text-gray-600.hover:text-gray-900[href="#"]
-              |  パスワードを忘れた場合
-          .mt-5.text-right.md:space-x-3.md:block.flex.flex-col-reverse
-            = link_to '戻る', root_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
-            = link_to '新規登録', new_user_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
-            = f.submit "ログイン",class: " mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+      .flex.flex-col
+        h1.block.w-full.text-center.text-green-400.text-2xl.font-bold.md:mb-6
+          | ログイン
+        .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
+          p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
+            | メールアドレス
+          = f.email_field :email, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+        .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
+          p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
+            | パスワード
+          = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+        / .block.mt-2
+          label.flex.items-center[for=""]
+            input.ml-2.rounded.border-gray-300.text-indigo-600.shadow-sm.focus:border-indigo-300.focus:ring.focus:ring-indigo-200.focus:ring-opacity-50[type="checkbox"]
+            span.ml-2.text-sm.text-gray-600
+              | 次回から自動ログイン
+        / .flex.items-center.flex.items-center.justify-end.mt-4
+          a.underline.text-sm.text-gray-600.hover:text-gray-900[href="#"]
+            |  パスワードを忘れた場合
+        .py-5.text-right.md:space-x-3.md:block.flex.flex-col-reverse
+          = link_to '戻る', root_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
+          = f.submit "ログイン",class: " mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+        .py-5.md:text-right.md:space-x-3.md:block.flex.flex-col
+          | まだアカウントを作成されていない方は　
+          = link_to '新規登録', new_user_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
