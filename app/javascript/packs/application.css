@@ -70,17 +70,15 @@
 
 
 
-.tooltip1 {
+/* .tooltip1 {
   position: relative;
   cursor: pointer;
   display: inline-block;
-  z-index: 10
 }
 
 .tooltip1 p {
   margin: 0;
   padding: 0;
-  z-index: 10
 }
 
 .description1 {
@@ -95,7 +93,6 @@
   width: 100px;
   top: -70px;
   left: -30px;
-  z-index: 10
 }
 
 .description1:before {
@@ -106,34 +103,34 @@
   border: 15px solid transparent;
   border-top: 15px solid #000;
   margin-left: -15px;
-  z-index: 10
 }
 
 .tooltip1:hover .description1 {
   display: inline-block;
   top: -70px;
   left: -30px;
-  z-index: 10
-}
+} */
 
 .balloon {
-  position   : absolute;                /* 指定した分だけ相対的に移動 */
-  padding: 10px;                        /* テキストの前後の余白 */
-  background-color: #ff4500;       /* 背景色（透明度） */
-  width:130px;                          /* 吹き出し全体の幅 */
-  left : 110%;                           /* 表示位置 */
-  top : -50%;
+  background-color: #ff4500;
+  position: relative;
+  width:130px;
+  top: -20px;
+  left: 25px;
+  margin-top: 10px;
   border-radius: 5px;
   color: white;
+  text-align: center;
 }
-.balloon:after{
-  border-right: 20px solid #ff4500;  /* 吹き出し口の幅・色 */
-  border-top: 10px solid transparent;     /* 吹き出し口の高さ１／２ */
-  border-bottom: 10px solid transparent;  /* 吹き出し口の高さ１／２ */
-  left: -20px;                            /* 吹き出し口の位置調整 */
-  /* top : 50%;                       吹き出し口の縦位置 */
-  content: "";                       /* コンテンツの挿入 */
-  position: absolute;                /* 親要素を基準 */
+.balloon:after {
+  border-top: 12px solid #ff4500;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  content: '';
+  margin-left: -10px;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
 }
 
 .notification {
