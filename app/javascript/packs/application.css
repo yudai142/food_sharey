@@ -78,6 +78,7 @@
   border-radius: 5px;
   color: white;
   text-align: center;
+  z-index: 11;
 }
 
 .balloon1:after {
