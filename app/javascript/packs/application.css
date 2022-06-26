@@ -69,60 +69,39 @@
 }
 
 
-
-/* .tooltip1 {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.tooltip1 p {
-  margin: 0;
-  padding: 0;
-}
-
-.description1 {
-  display: inline-block;
-  position: absolute;
-  padding: 10px;
-  font-size: 12px;
-  line-height: 1.6em;
-  color: #fff;
-  border-radius: 5px;
-  background: #000;
-  width: 100px;
-  top: -70px;
-  left: -30px;
-}
-
-.description1:before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  border: 15px solid transparent;
-  border-top: 15px solid #000;
-  margin-left: -15px;
-}
-
-.tooltip1:hover .description1 {
-  display: inline-block;
-  top: -70px;
-  left: -30px;
-} */
-
-.balloon {
+.balloon1 {
   background-color: #ff4500;
-  position: relative;
-  width:130px;
-  top: -20px;
-  left: 25px;
-  margin-top: 10px;
+  position: absolute;
+  padding:1px 10px 1px;
+  top: 55px;
+  right: 112px;
   border-radius: 5px;
   color: white;
   text-align: center;
 }
-.balloon:after {
+
+.balloon1:after {
+  border-bottom: 12px solid #ff4500;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  content: '';
+  margin-left: -10px;
+  position: absolute;
+  bottom: 19px;
+  left: 50%;
+}
+
+.balloon2 {
+  background-color: #ff4500;
+  position: absolute;
+  padding:1px 10px 1px;
+  top: -34px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+
+.balloon2:after {
   border-top: 12px solid #ff4500;
   border-right: 12px solid transparent;
   border-left: 12px solid transparent;
@@ -132,6 +111,80 @@
   bottom: -12px;
   left: 50%;
 }
+
+.balloon3 {
+  background-color: #ff4500;
+  position: absolute;
+  width:130px;
+  top: -10px;
+  left: 50px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+.balloon3:after {
+  border-top: 12px solid #ff4500;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  content: '';
+  margin-left: -10px;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+}
+
+.balloon4 {
+  background-color: #ff4500;
+  position: absolute;
+  width:130px;
+  top: -5px;
+  left: 80px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+.balloon4:before {
+  border-top: 12px solid #ff4500;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  content: '';
+  margin-left: -10px;
+  position: absolute;
+  bottom: -11px;
+  left: 30px;
+}
+.balloon4:after {
+  border-top: 12px solid #ff4500;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  content: '';
+  margin-left: -10px;
+  position: absolute;
+  bottom: -11px;
+  left: 90px;
+}
+
+.balloon5 {
+  background-color: #ff4500;
+  position: absolute;
+  width:150px;
+  top: 36px;
+  left: -54px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+.balloon5:after {
+  border-bottom: 12px solid #ff4500;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  content: '';
+  margin-left: -10px;
+  position: absolute;
+  bottom: 19px;
+  left: 50%;
+}
+
 
 .notification {
   width: 100%;

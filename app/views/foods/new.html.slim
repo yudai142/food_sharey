@@ -1,490 +1,494 @@
 .relative.flex.items-center.justify-center.py-12.px-4.sm:px-6.lg:px-8.relative.items-center.bg-green-200
   .max-w-7xl.w-full.space-y-8.md:p-10.p-5.bg-white.rounded-xl.shadow-lg
-    .flex.flex-col.sm:flex-row.items-center
-      h1.block.w-full.text-center.text-green-400.text-2xl.font-bold.mb-6
-        | 食事登録
-    .mt-5
-      .mb-4
-        label.block.text-gray-700.text-sm.font-bold.mb-2[for="date"]
-          | 食事時刻
-        .balloon 食事時刻を設定
-        input#date.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="date" value="#{@date}" type="date" required form="food_form"]
-        / .relative.inline-flex
-          svg.w-2.h-2.absolute.top-0.right-0.m-4.pointer-events-none[xmlns="http://www.w3.org/2000/svg" viewbox="0 0 412 232"]
-            path[d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"]
-          input.border.border-gray-300.rounded-full.text-gray-600.h-10.pl-5.pr-10.bg-white.hover:border-gray-400.focus:outline-none.appearance-none[name="timezone" form="food_form" type="number"]
-            / option
-              / | 1
-            / option
-              / | 朝間食
-            / option
-              / | 昼食
-            / option
-              / | 間食
-            / option
-              / | 夕食
-            / option
-              | 夜食
-        .relative.inline-flex
-          svg.w-2.h-2.absolute.top-0.right-0.m-4.pointer-events-none[xmlns="http://www.w3.org/2000/svg" viewbox="0 0 412 232"]
-            path[d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"]
-          = select :eatdate ,:timezone, options_for_select(Eatdate.timezones.keys), {}, form: "food_form", id: "timezone", class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-        / label.block.text-gray-700.text-sm.font-bold.mb-2[for="eattime"]
-        /   | 食事をした時刻
-        / input#eattime.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="eat_time" type="time" value="#{@eatdate&.eat_time&.strftime("%H:%M")}" form="food_form"]
-        / label.block.text-gray-700.text-sm.font-bold.mb-2[for="comment"]
-        /   | コメント
-        / input#comment.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="comment" type="text" value="#{@eatdate&.comment}" form="food_form"]
+    h1.block.w-full.text-center.text-green-400.text-2xl.font-bold.mb-6
+      | 食事登録
+    .mb-4.relative
+      label.block.text-gray-700.text-sm.font-bold.mb-2[for="date"]
+        | 食事時刻
+      -if @tutorial2
+        .balloon4 ①食事時刻を設定
+      input#date.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="date" value="#{@date}" type="date" required form="food_form"]
+      / .relative.inline-flex
+        svg.w-2.h-2.absolute.top-0.right-0.m-4.pointer-events-none[xmlns="http://www.w3.org/2000/svg" viewbox="0 0 412 232"]
+          path[d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"]
+        input.border.border-gray-300.rounded-full.text-gray-600.h-10.pl-5.pr-10.bg-white.hover:border-gray-400.focus:outline-none.appearance-none[name="timezone" form="food_form" type="number"]
+          / option
+            / | 1
+          / option
+            / | 朝間食
+          / option
+            / | 昼食
+          / option
+            / | 間食
+          / option
+            / | 夕食
+          / option
+            | 夜食
+      .relative.inline-flex
+        svg.w-2.h-2.absolute.top-0.right-0.m-4.pointer-events-none[xmlns="http://www.w3.org/2000/svg" viewbox="0 0 412 232"]
+          path[d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"]
+        = select :eatdate ,:timezone, options_for_select(Eatdate.timezones.keys), {}, form: "food_form", id: "timezone", class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+      / label.block.text-gray-700.text-sm.font-bold.mb-2[for="eattime"]
+      /   | 食事をした時刻
+      / input#eattime.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="eat_time" type="time" value="#{@eatdate&.eat_time&.strftime("%H:%M")}" form="food_form"]
+      / label.block.text-gray-700.text-sm.font-bold.mb-2[for="comment"]
+      /   | コメント
+      / input#comment.shadow.appearance-none.border.rounded.py-2.px-3.text-gray-700.leading-tight.focus:outline-none.focus:shadow-outline[name="comment" type="text" value="#{@eatdate&.comment}" form="food_form"]
+    -if @tutorial1 || @tutorial2
+      .flex.text-blue-600.text-xl.mb-5
+        .flex.flex-col
+          span.text-blue-600.text-sm.pt-1 チュートリアル:
+          | #{@tutorial2}#{@tutorial1}
+    -elsif @tutorial3
+      .flex.text-blue-600.text-xl.mb-5
+        .flex.flex-col
+          span.text-blue-600.text-sm.pt-1 チュートリアル完了:
+          | #{@tutorial3}
+    .w-full.mx-auto.rounded
       label.block.text-gray-700.text-sm.font-bold.mb-2
         |  食事内容入力
-      .flex.text-blue-600.text-xl.mb-5
-        .border.border-blue-200.flex.flex-col
-          span.text-blue-600.text-sm.pt-1 チュートリアル:
-          | まずはMYメニューを作成して<br>メニューを登録しましょう
-      .flex.text-blue-600.text-xl.mb-5
-        .border.border-blue-200.flex.flex-col
-          span.text-blue-600.text-sm.pt-1 チュートリアル:
-          | 上の食事時刻を設定して<br>下のメニューから記録しましょう
-      .flex.text-blue-600.text-xl.mb-5
-        .border.border-blue-200.flex.flex-col
-          span.text-blue-600.text-sm.pt-1 チュートリアル完了:
-          | 下の食事記録に反映されました！<br>食事習慣を続けていきましょう
-      .w-full.mx-auto.rounded
-        #tab-contents.relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.shadow-lg.rounded
-          #first
-            #tabs-id.flex.flex-wrap
-              .w-full.shadow.overflow-hidden.border-b.border-gray-200.sm:rounded-lg
-                .break-words.m-5.tooltip1
-                  .balloon ここを押して作成
-                  = link_to "MYメニューを作成する", new_mymenu_path, class: "mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
-                table.min-w-full.divide-y.divide-gray-200
-                  = form_with url: foods_path, local: true, id: "food_form" do
-                    tbody.bg-white.divide-y.divide-gray-200
-                      - @mymenu.each do |mymenu|
-                        tr
-                          td.px-6.py-4.whitespace-nowrap
-                            .items-center.flex.flex-wrap
-                              .flex-shrink-0.h-10.w-10
-                                - if mymenu.image.present?
-                                  = image_tag(mymenu.image.url, size: "100x100", alt: "")
-                                - else
-                                  = image_tag "l_e_others_501.png", class: "h-10 w-10"
-                              .ml-4.sm:inline-block.hidden
-                                .text-sm.font-medium.text-gray-900
-                                  = mymenu.name
-                          td.pl-full.pr-6.lg:px-6.py-4.whitespace-nowrap.items-center.flex.flex-wrap
-                            .w-full.text-center.inline-block.sm:hidden.pb-3
-                              .text-sm.font-medium.text-gray-900.whitespace-normal
-                                = mymenu.name
-                            .text-sm.text-gray-900.text-right.w-full.ml-auto
-                              - if params[:time].present?
-                                - if params[:time] == "朝食"
-                                  - if @morning_foods.find_by(mymenu_id: mymenu.id)
-                                    span.inline-block
-                                      = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                  - else
-                                    span.inline-block
-                                      .balloon ここを押して記録
-                                      = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                - elsif params[:time] == "昼食"
-                                  - if @lunch_foods.find_by(mymenu_id: mymenu.id)
-                                    span.inline-block
-                                      = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                  - else
-                                    span.inline-block
-                                      .balloon ここを押して記録
-                                      = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                - elsif params[:time] == "間食"
-                                  - if @snack_foods.find_by(mymenu_id: mymenu.id)
-                                    span.inline-block
-                                      = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                  - else
-                                    span.inline-block
-                                      .balloon ここを押して記録
-                                      = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                - elsif params[:time] == "夕食"
-                                  - if @dinner_foods.find_by(mymenu_id: mymenu.id)
-                                    span.inline-block
-                                      = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                  - else
-                                    span.inline-block
-                                      .balloon ここを押して記録
-                                      = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                - elsif params[:time] == "夜食"
-                                  - if @supper_foods.find_by(mymenu_id: mymenu.id)
-                                    span.inline-block
-                                      = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                                  - else
-                                    span.inline-block
-                                      .balloon ここを押して記録
-                                      = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                              - elsif @morning_foods.find_by(mymenu_id: mymenu.id)
-                                span.inline-block
-                                  = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+      #tab-contents.relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.shadow-lg.rounded
+        #first
+          #tabs-id.flex.flex-wrap
+            .w-full.shadow.border-b.border-gray-200.sm:rounded-lg
+              .break-words.m-5
+                -if @tutorial1
+                  .balloon5 ここを押して作成
+                = link_to "MYメニューを作成する", new_mymenu_path, class: "mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+              table.min-w-full.divide-y.divide-gray-200
+                = form_with url: foods_path, local: true, id: "food_form" do
+                  tbody.bg-white.divide-y.divide-gray-200
+                    - @mymenu.each do |mymenu|
+                      tr
+                        td.px-6.py-4.whitespace-nowrap
+                          .items-center.flex.flex-wrap
+                            .flex-shrink-0.h-10.w-10
+                              - if mymenu.image.present?
+                                = image_tag(mymenu.image.url, size: "100x100", alt: "")
                               - else
-                                span.inline-block
-                                  .balloon ここを押して記録
-                                  = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                              span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
-                                = link_to "編集" ,edit_mymenu_path(mymenu.id)
+                                = image_tag "l_e_others_501.png", class: "h-10 w-10"
+                            .ml-4.sm:inline-block.hidden
+                              .text-sm.font-medium.text-gray-900
+                                = mymenu.name
+                        td.pl-full.pr-6.lg:px-6.py-4.whitespace-nowrap
+                          .w-full.text-center.inline-block.sm:hidden.pb-3
+                            .text-sm.font-medium.text-gray-900.whitespace-normal
+                              = mymenu.name
+                          .text-sm.text-gray-900.text-right.w-full.ml-auto
+                            - if params[:time].present?
+                              - if params[:time] == "朝食"
+                                - if @morning_foods.find_by(mymenu_id: mymenu.id)
+                                  span.inline-block
+                                    = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                                - else
+                                  span.inline-block.relative
+                                    -if @tutorial2
+                                      .balloon5 ②ここを押して記録
+                                    = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                              - elsif params[:time] == "昼食"
+                                - if @lunch_foods.find_by(mymenu_id: mymenu.id)
+                                  span.inline-block
+                                    = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                                - else
+                                  span.inline-block.relative
+                                    -if @tutorial2
+                                      .balloon5 ②ここを押して記録
+                                    = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                              - elsif params[:time] == "間食"
+                                - if @snack_foods.find_by(mymenu_id: mymenu.id)
+                                  span.inline-block
+                                    = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                                - else
+                                  span.inline-block.relative
+                                    -if @tutorial2
+                                      .balloon5 ②ここを押して記録
+                                    = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                              - elsif params[:time] == "夕食"
+                                - if @dinner_foods.find_by(mymenu_id: mymenu.id)
+                                  span.inline-block
+                                    = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                                - else
+                                  span.inline-block.relative
+                                    -if @tutorial2
+                                      .balloon5 ②ここを押して記録
+                                    = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                              - elsif params[:time] == "夜食"
+                                - if @supper_foods.find_by(mymenu_id: mymenu.id)
+                                  span.inline-block
+                                    = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                                - else
+                                  span.inline-block.relative
+                                    -if @tutorial2
+                                      .balloon5 ②ここを押して記録
+                                    = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                            - elsif @morning_foods.find_by(mymenu_id: mymenu.id)
                               span.inline-block
-                                = link_to "削除" ,mymenu_path(mymenu.id), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-red-800 border-red-800 border-2 hover:bg-red-800 hover:text-white"
-                          / td.px-6.py-4.whitespace-nowrap.hidden.lg:inline-block
-                          /   .text-sm.text-gray-900
-                          /     | カロリー　#{mymenu.calorie}kcal
-                          /   .text-sm.text-gray-900
-                          /     | たんぱく質　#{mymenu.protein}g
-                          / td.px-6.py-4.whitespace-nowrap.hidden.lg:inline-block
-                          /   .text-sm.text-gray-900
-                          /     | 脂質　#{mymenu.fat}g
-                          /   .text-sm.text-gray-900
-                          /     | 炭水化物　#{mymenu.carbohydrate}g
-                          / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500.hidden.lg:inline-block
-                          /   .text-sm.text-gray-900
-                          /     | 糖質　#{mymenu.sugar}g
-                          /   .text-sm.text-gray-900
-                          /     | 食物繊維　#{mymenu.dietary_fiber}g
-                          / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium.hidden.lg:inline-block
-                          /   .text-sm.text-gray-900
-                          /     | 塩分　#{mymenu.salt}g
-          #second.hidden.p-4
-            #tabs-id.flex.flex-wrap
-              .w-full
-                ul.flex.mb-0.list-none.flex-wrap.pt-3.pb-4.flex-row
-                  li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
-                    a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-white.bg-pink-600[onclick="changeAtiveTab(event,'tab-break-fast')"]
-                      |  朝
-                  li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
-                    a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-morning-snack')"]
-                      |  朝間食
-                  li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
-                    a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-lunch')"]
-                      |  昼
-                  li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
-                    a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-snack')"]
-                      |  間食
-                  li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
-                    a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-dinner')"]
-                      |  夕
-                  li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
-                    a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-night-meal')"]
-                      |  夜食
-                .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-6.shadow-lg.rounded
-                  .px-4.py-5.flex-auto
-                    .tab-content.tab-space
-                      #tab-break-fast.block
-                        p
-                          |  Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.
-                          br
-                          br
-                          |  Dramatically visualize customer directed convergence without revolutionary ROI.
-                      #tab-morning-snack.hidden
-                        p
-                          |  Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
-                          br
-                          br
-                          |  Dynamically innovate resource-leveling customer service for state of the art customer service.
-                      #tab-lunch.hidden
-                        p
-                          |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
-                          br
-                          br
-                          |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                      #tab-snack.hidden
-                        p
-                          |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
-                          br
-                          br
-                          |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                      #tab-dinner.hidden
-                        p
-                          |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
-                          br
-                          br
-                          |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                      #tab-night-meal.hidden
-                        p
-                          |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
-                          br
-                          br
-                          |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
-          #third.hidden.p-4
-            #tabs-id.flex.flex-wrap
-              .w-full
-                ul.flex.mb-0.list-none.flex-wrap.pt-3.pb-4.flex-row
-                  li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
-                    a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-white.bg-pink-600[onclick="changeAtiveTab(event,'tab-eating-out')"]
-                      |  外食
-                  li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
-                    a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-general-cooking')"]
-                      |  一般料理
-                .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-6.shadow-lg.rounded
-                  .px-4.py-5.flex-auto
-                    .tab-content.tab-space
-                      #tab-eating-out.block
-                        p
-                          |  Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
-                      #tab-general-cooking.hidden
-                        p
-                          |  Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
-          #fourth.hidden.p-4
-            |  Fourth tab
-      .shadow.overflow-hidden.mt-5.border-b.border-gray-200.sm:rounded-lg
-        .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
-          div
-            #view_date.items-center.inline
-            span.inline
-              | #{@date.strftime("%Y年%m月%d日")}の食事記録
-        table.min-w-full.divide-y.divide-gray-200
-          thead.bg-green-100
-            tr
-              th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
-                |  朝食
-              th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
-                span
-                  | #{@morning_calorie}
-                |  kcal
-          tbody.bg-white.divide-y.divide-gray-200
-            - if @morning_foods.present?
-              - @morning_foods.each do |food|
-                tr
-                  td.px-6.py-4.whitespace-nowrap
-                    .flex.items-center
-                      .flex-shrink-0.h-10.w-10
-                        - if food.image.present?
-                          = image_tag(food.image, size: "100x100", alt: "")
-                        - else
-                          = image_tag "l_e_others_501.png", class: "h-10 w-10"
-                      .ml-4.sm:inline-block.hidden
-                        .text-sm.font-medium.text-gray-900
-                          = food.name
-                  td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
-                    .w-full.text-center.inline-block.sm:hidden.pb-3
-                      .text-sm.font-medium.text-gray-900.whitespace-normal
+                                = button_tag "取り消す", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                            - else
+                              span.inline-block.relative
+                                -if @tutorial2
+                                  .balloon5 ②ここを押して記録
+                                = button_tag "記録", type: "submit", value: mymenu.id, name: "mymenu_id", form: "food_form",class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                            span.ml-2.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
+                              = link_to "編集" ,edit_mymenu_path(mymenu.id)
+                            span.ml-2.inline-block
+                              = link_to "削除" ,mymenu_path(mymenu.id), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-red-800 border-red-800 border-2 hover:bg-red-800 hover:text-white"
+                        / td.px-6.py-4.whitespace-nowrap.hidden.lg:inline-block
+                        /   .text-sm.text-gray-900
+                        /     | カロリー　#{mymenu.calorie}kcal
+                        /   .text-sm.text-gray-900
+                        /     | たんぱく質　#{mymenu.protein}g
+                        / td.px-6.py-4.whitespace-nowrap.hidden.lg:inline-block
+                        /   .text-sm.text-gray-900
+                        /     | 脂質　#{mymenu.fat}g
+                        /   .text-sm.text-gray-900
+                        /     | 炭水化物　#{mymenu.carbohydrate}g
+                        / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500.hidden.lg:inline-block
+                        /   .text-sm.text-gray-900
+                        /     | 糖質　#{mymenu.sugar}g
+                        /   .text-sm.text-gray-900
+                        /     | 食物繊維　#{mymenu.dietary_fiber}g
+                        / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium.hidden.lg:inline-block
+                        /   .text-sm.text-gray-900
+                        /     | 塩分　#{mymenu.salt}g
+        #second.hidden.p-4
+          #tabs-id.flex.flex-wrap
+            .w-full
+              ul.flex.mb-0.list-none.flex-wrap.pt-3.pb-4.flex-row
+                li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
+                  a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-white.bg-pink-600[onclick="changeAtiveTab(event,'tab-break-fast')"]
+                    |  朝
+                li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
+                  a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-morning-snack')"]
+                    |  朝間食
+                li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
+                  a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-lunch')"]
+                    |  昼
+                li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
+                  a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-snack')"]
+                    |  間食
+                li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
+                  a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-dinner')"]
+                    |  夕
+                li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
+                  a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-night-meal')"]
+                    |  夜食
+              .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-6.shadow-lg.rounded
+                .px-4.py-5.flex-auto
+                  .tab-content.tab-space
+                    #tab-break-fast.block
+                      p
+                        |  Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.
+                        br
+                        br
+                        |  Dramatically visualize customer directed convergence without revolutionary ROI.
+                    #tab-morning-snack.hidden
+                      p
+                        |  Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
+                        br
+                        br
+                        |  Dynamically innovate resource-leveling customer service for state of the art customer service.
+                    #tab-lunch.hidden
+                      p
+                        |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+                        br
+                        br
+                        |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
+                    #tab-snack.hidden
+                      p
+                        |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+                        br
+                        br
+                        |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
+                    #tab-dinner.hidden
+                      p
+                        |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+                        br
+                        br
+                        |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
+                    #tab-night-meal.hidden
+                      p
+                        |  Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+                        br
+                        br
+                        |  Dramatically maintain clicks-and-mortar solutions without functional solutions.
+        #third.hidden.p-4
+          #tabs-id.flex.flex-wrap
+            .w-full
+              ul.flex.mb-0.list-none.flex-wrap.pt-3.pb-4.flex-row
+                li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
+                  a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-white.bg-pink-600[onclick="changeAtiveTab(event,'tab-eating-out')"]
+                    |  外食
+                li.-mb-px.mr-2.last:mr-0.flex-auto.text-center
+                  a.text-xs.font-bold.uppercase.px-5.py-3.shadow-lg.rounded.block.leading-normal.text-pink-600.bg-white[onclick="changeAtiveTab(event,'tab-general-cooking')"]
+                    |  一般料理
+              .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-6.shadow-lg.rounded
+                .px-4.py-5.flex-auto
+                  .tab-content.tab-space
+                    #tab-eating-out.block
+                      p
+                        |  Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
+                    #tab-general-cooking.hidden
+                      p
+                        |  Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
+        #fourth.hidden.p-4
+          |  Fourth tab
+    .shadow.mt-5.border-b.border-gray-200.sm:rounded-lg
+      .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
+        div
+          #view_date.items-center.inline
+          span.inline
+            | #{@date.strftime("%Y年%m月%d日")}の食事記録
+      table.min-w-full.divide-y.divide-gray-200
+        thead.bg-green-100
+          tr
+            th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+              |  朝食
+            th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
+              span
+                | #{@morning_calorie}
+              |  kcal
+        tbody.bg-white.divide-y.divide-gray-200
+          - if @morning_foods.present?
+            - @morning_foods.each do |food|
+              tr
+                td.px-6.py-4.whitespace-nowrap
+                  .flex.items-center
+                    .flex-shrink-0.h-10.w-10
+                      - if food.image.present?
+                        = image_tag(food.image, size: "100x100", alt: "")
+                      - else
+                        = image_tag "l_e_others_501.png", class: "h-10 w-10"
+                    .ml-4.sm:inline-block.hidden
+                      .text-sm.font-medium.text-gray-900
                         = food.name
-                    .text-sm.text-gray-900
-                      span.inline-block
-                        = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                      / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
-                        = link_to "記録の編集" ,food_path(food.id), method: :edit
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | カロリー　#{food.calorie}kcal
-                  /   .text-sm.text-gray-900
-                  /     | たんぱく質　#{food.protein}g
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | 脂質　#{food.fat}g
-                  /   .text-sm.text-gray-900
-                  /     | 炭水化物　#{food.carbohydrate}g
-                  / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                  /   .text-sm.text-gray-900
-                  /     | 糖質　#{food.sugar}g
-                  /   .text-sm.text-gray-900
-                  /     | 食物繊維　#{food.dietary_fiber}g
-                  / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
-                  /   .text-sm.text-gray-900
-                  /     | 塩分　#{food.salt}g
-        table.min-w-full.divide-y.divide-gray-200
-          thead.bg-green-100
-            tr
-              th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
-                |  昼食
-              th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
-                span
-                  | #{@lunch_calorie}
-                |  kcal
-          tbody.bg-white.divide-y.divide-gray-200
-            - if @lunch_foods.present?
-              - @lunch_foods.each do |food|
-                tr
-                  td.px-6.py-4.whitespace-nowrap
-                    .flex.items-center
-                      .flex-shrink-0.h-10.w-10
-                        - if food.image.present?
-                          = image_tag(food.image, size: "100x100", alt: "")
-                        - else
-                          = image_tag "l_e_others_501.png", class: "h-10 w-10"
-                      .ml-4.sm:inline-block.hidden
-                        .text-sm.font-medium.text-gray-900
-                          = food.name
-                  td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
-                    .w-full.text-center.inline-block.sm:hidden.pb-3
-                      .text-sm.font-medium.text-gray-900.whitespace-normal
+                td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
+                  .w-full.text-center.inline-block.sm:hidden.pb-3
+                    .text-sm.font-medium.text-gray-900.whitespace-normal
+                      = food.name
+                  .text-sm.text-gray-900
+                    span.inline-block
+                      = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                    / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
+                      = link_to "記録の編集" ,food_path(food.id), method: :edit
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | カロリー　#{food.calorie}kcal
+                /   .text-sm.text-gray-900
+                /     | たんぱく質　#{food.protein}g
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | 脂質　#{food.fat}g
+                /   .text-sm.text-gray-900
+                /     | 炭水化物　#{food.carbohydrate}g
+                / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
+                /   .text-sm.text-gray-900
+                /     | 糖質　#{food.sugar}g
+                /   .text-sm.text-gray-900
+                /     | 食物繊維　#{food.dietary_fiber}g
+                / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
+                /   .text-sm.text-gray-900
+                /     | 塩分　#{food.salt}g
+      table.min-w-full.divide-y.divide-gray-200
+        thead.bg-green-100
+          tr
+            th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+              |  昼食
+            th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
+              span
+                | #{@lunch_calorie}
+              |  kcal
+        tbody.bg-white.divide-y.divide-gray-200
+          - if @lunch_foods.present?
+            - @lunch_foods.each do |food|
+              tr
+                td.px-6.py-4.whitespace-nowrap
+                  .flex.items-center
+                    .flex-shrink-0.h-10.w-10
+                      - if food.image.present?
+                        = image_tag(food.image, size: "100x100", alt: "")
+                      - else
+                        = image_tag "l_e_others_501.png", class: "h-10 w-10"
+                    .ml-4.sm:inline-block.hidden
+                      .text-sm.font-medium.text-gray-900
                         = food.name
-                    .text-sm.text-gray-900
-                      span.inline-block
-                        = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                      / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
-                        = link_to "記録の編集" ,food_path(food.id), method: :edit
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | カロリー　#{food.calorie}kcal
-                  /   .text-sm.text-gray-900
-                  /     | たんぱく質　#{food.protein}g
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | 脂質　#{food.fat}g
-                  /   .text-sm.text-gray-900
-                  /     | 炭水化物　#{food.carbohydrate}g
-                  / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                  /   .text-sm.text-gray-900
-                  /     | 糖質　#{food.sugar}g
-                  /   .text-sm.text-gray-900
-                  /     | 食物繊維　#{food.dietary_fiber}g
-                  / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
-                  /   .text-sm.text-gray-900
-                  /     | 塩分　#{food.salt}g
-        table.min-w-full.divide-y.divide-gray-200
-          thead.bg-green-100
-            tr
-              th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
-                |  間食
-              th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
-                span
-                  | #{@snack_calorie}
-                |  kcal
-          tbody.bg-white.divide-y.divide-gray-200
-            - if @snack_foods.present?
-              - @snack_foods.each do |food|
-                tr
-                  td.px-6.py-4.whitespace-nowrap
-                    .flex.items-center
-                      .flex-shrink-0.h-10.w-10
-                        - if food.image.present?
-                          = image_tag(food.image, size: "100x100", alt: "")
-                        - else
-                          = image_tag "l_e_others_501.png", class: "h-10 w-10"
-                      .ml-4.sm:inline-block.hidden
-                        .text-sm.font-medium.text-gray-900
-                          = food.name
-                  td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
-                    .w-full.text-center.inline-block.sm:hidden.pb-3
-                      .text-sm.font-medium.text-gray-900.whitespace-normal
+                td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
+                  .w-full.text-center.inline-block.sm:hidden.pb-3
+                    .text-sm.font-medium.text-gray-900.whitespace-normal
+                      = food.name
+                  .text-sm.text-gray-900
+                    span.inline-block
+                      = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                    / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
+                      = link_to "記録の編集" ,food_path(food.id), method: :edit
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | カロリー　#{food.calorie}kcal
+                /   .text-sm.text-gray-900
+                /     | たんぱく質　#{food.protein}g
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | 脂質　#{food.fat}g
+                /   .text-sm.text-gray-900
+                /     | 炭水化物　#{food.carbohydrate}g
+                / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
+                /   .text-sm.text-gray-900
+                /     | 糖質　#{food.sugar}g
+                /   .text-sm.text-gray-900
+                /     | 食物繊維　#{food.dietary_fiber}g
+                / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
+                /   .text-sm.text-gray-900
+                /     | 塩分　#{food.salt}g
+      table.min-w-full.divide-y.divide-gray-200
+        thead.bg-green-100
+          tr
+            th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+              |  間食
+            th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
+              span
+                | #{@snack_calorie}
+              |  kcal
+        tbody.bg-white.divide-y.divide-gray-200
+          - if @snack_foods.present?
+            - @snack_foods.each do |food|
+              tr
+                td.px-6.py-4.whitespace-nowrap
+                  .flex.items-center
+                    .flex-shrink-0.h-10.w-10
+                      - if food.image.present?
+                        = image_tag(food.image, size: "100x100", alt: "")
+                      - else
+                        = image_tag "l_e_others_501.png", class: "h-10 w-10"
+                    .ml-4.sm:inline-block.hidden
+                      .text-sm.font-medium.text-gray-900
                         = food.name
-                    .text-sm.text-gray-900
-                      span.inline-block
-                        = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                      / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
-                        = link_to "記録の編集" ,food_path(food.id), method: :edit
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | カロリー　#{food.calorie}kcal
-                  /   .text-sm.text-gray-900
-                  /     | たんぱく質　#{food.protein}g
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | 脂質　#{food.fat}g
-                  /   .text-sm.text-gray-900
-                  /     | 炭水化物　#{food.carbohydrate}g
-                  / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                  /   .text-sm.text-gray-900
-                  /     | 糖質　#{food.sugar}g
-                  /   .text-sm.text-gray-900
-                  /     | 食物繊維　#{food.dietary_fiber}g
-                  / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
-                  /   .text-sm.text-gray-900
-                  /     | 塩分　#{food.salt}g
-        table.min-w-full.divide-y.divide-gray-200
-          thead.bg-green-100
-            tr
-              th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
-                |  夕食
-              th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
-                span
-                  | #{@dinner_calorie}
-                |  kcal
-          tbody.bg-white.divide-y.divide-gray-200
-            - if @dinner_foods.present?
-              - @dinner_foods.each do |food|
-                tr
-                  td.px-6.py-4.whitespace-nowrap
-                    .flex.items-center
-                      .flex-shrink-0.h-10.w-10
-                        - if food.image.present?
-                          = image_tag(food.image, size: "100x100", alt: "")
-                        - else
-                          = image_tag "l_e_others_501.png", class: "h-10 w-10"
-                      .ml-4.sm:inline-block.hidden
-                        .text-sm.font-medium.text-gray-900
-                          = food.name
-                  td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
-                    .w-full.text-center.inline-block.sm:hidden.pb-3
-                      .text-sm.font-medium.text-gray-900.whitespace-normal
+                td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
+                  .w-full.text-center.inline-block.sm:hidden.pb-3
+                    .text-sm.font-medium.text-gray-900.whitespace-normal
+                      = food.name
+                  .text-sm.text-gray-900
+                    span.inline-block
+                      = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                    / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
+                      = link_to "記録の編集" ,food_path(food.id), method: :edit
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | カロリー　#{food.calorie}kcal
+                /   .text-sm.text-gray-900
+                /     | たんぱく質　#{food.protein}g
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | 脂質　#{food.fat}g
+                /   .text-sm.text-gray-900
+                /     | 炭水化物　#{food.carbohydrate}g
+                / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
+                /   .text-sm.text-gray-900
+                /     | 糖質　#{food.sugar}g
+                /   .text-sm.text-gray-900
+                /     | 食物繊維　#{food.dietary_fiber}g
+                / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
+                /   .text-sm.text-gray-900
+                /     | 塩分　#{food.salt}g
+      table.min-w-full.divide-y.divide-gray-200
+        thead.bg-green-100
+          tr
+            th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+              |  夕食
+            th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
+              span
+                | #{@dinner_calorie}
+              |  kcal
+        tbody.bg-white.divide-y.divide-gray-200
+          - if @dinner_foods.present?
+            - @dinner_foods.each do |food|
+              tr
+                td.px-6.py-4.whitespace-nowrap
+                  .flex.items-center
+                    .flex-shrink-0.h-10.w-10
+                      - if food.image.present?
+                        = image_tag(food.image, size: "100x100", alt: "")
+                      - else
+                        = image_tag "l_e_others_501.png", class: "h-10 w-10"
+                    .ml-4.sm:inline-block.hidden
+                      .text-sm.font-medium.text-gray-900
                         = food.name
-                    .text-sm.text-gray-900
-                      span.inline-block
-                        = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                      / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
-                        = link_to "記録の編集" ,food_path(food.id), method: :edit
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | カロリー　#{food.calorie}kcal
-                  /   .text-sm.text-gray-900
-                  /     | たんぱく質　#{food.protein}g
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | 脂質　#{food.fat}g
-                  /   .text-sm.text-gray-900
-                  /     | 炭水化物　#{food.carbohydrate}g
-                  / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                  /   .text-sm.text-gray-900
-                  /     | 糖質　#{food.sugar}g
-                  /   .text-sm.text-gray-900
-                  /     | 食物繊維　#{food.dietary_fiber}g
-                  / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
-                  /   .text-sm.text-gray-900
-                  /     | 塩分　#{food.salt}g
-        table.min-w-full.divide-y.divide-gray-200
-          thead.bg-green-100
-            tr
-              th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
-                |  夜食
-              th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
-                span
-                  | #{@supper_calorie}
-                |  kcal
-          tbody.bg-white.divide-y.divide-gray-200
-            - if @supper_foods.present?
-              - @supper_foods.each do |food|
-                tr
-                  td.px-6.py-4.whitespace-nowrap
-                    .flex.items-center
-                      .flex-shrink-0.h-10.w-10
-                        - if food.image.present?
-                          = image_tag(food.image, size: "100x100", alt: "")
-                        - else
-                          = image_tag "l_e_others_501.png", class: "h-10 w-10"
-                      .ml-4.sm:inline-block.hidden
-                        .text-sm.font-medium.text-gray-900
-                          = food.name
-                  td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
-                    .w-full.text-center.inline-block.sm:hidden.pb-3
-                      .text-sm.font-medium.text-gray-900.whitespace-normal
+                td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
+                  .w-full.text-center.inline-block.sm:hidden.pb-3
+                    .text-sm.font-medium.text-gray-900.whitespace-normal
+                      = food.name
+                  .text-sm.text-gray-900
+                    span.inline-block
+                      = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                    / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
+                      = link_to "記録の編集" ,food_path(food.id), method: :edit
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | カロリー　#{food.calorie}kcal
+                /   .text-sm.text-gray-900
+                /     | たんぱく質　#{food.protein}g
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | 脂質　#{food.fat}g
+                /   .text-sm.text-gray-900
+                /     | 炭水化物　#{food.carbohydrate}g
+                / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
+                /   .text-sm.text-gray-900
+                /     | 糖質　#{food.sugar}g
+                /   .text-sm.text-gray-900
+                /     | 食物繊維　#{food.dietary_fiber}g
+                / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
+                /   .text-sm.text-gray-900
+                /     | 塩分　#{food.salt}g
+      table.min-w-full.divide-y.divide-gray-200
+        thead.bg-green-100
+          tr
+            th.whitespace-nowrap.px-6.py-3.text-left.text-xs.font-medium.text-black.uppercase.tracking-wider[scope="col"]
+              |  夜食
+            th.whitespace-nowrap.text-right.relative.px-6.py-3[scope="col"]
+              span
+                | #{@supper_calorie}
+              |  kcal
+        tbody.bg-white.divide-y.divide-gray-200
+          - if @supper_foods.present?
+            - @supper_foods.each do |food|
+              tr
+                td.px-6.py-4.whitespace-nowrap
+                  .flex.items-center
+                    .flex-shrink-0.h-10.w-10
+                      - if food.image.present?
+                        = image_tag(food.image, size: "100x100", alt: "")
+                      - else
+                        = image_tag "l_e_others_501.png", class: "h-10 w-10"
+                    .ml-4.sm:inline-block.hidden
+                      .text-sm.font-medium.text-gray-900
                         = food.name
-                    .text-sm.text-gray-900
-                      span.inline-block
-                        = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
-                      / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
-                        = link_to "記録の編集" ,food_path(food.id), method: :edit
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | カロリー　#{food.calorie}kcal
-                  /   .text-sm.text-gray-900
-                  /     | たんぱく質　#{food.protein}g
-                  / td.px-6.py-4.whitespace-nowrap
-                  /   .text-sm.text-gray-900
-                  /     | 脂質　#{food.fat}g
-                  /   .text-sm.text-gray-900
-                  /     | 炭水化物　#{food.carbohydrate}g
-                  / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                  /   .text-sm.text-gray-900
-                  /     | 糖質　#{food.sugar}g
-                  /   .text-sm.text-gray-900
-                  /     | 食物繊維　#{food.dietary_fiber}g
-                  / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
-                  /   .text-sm.text-gray-900
-                  /     | 塩分　#{food.salt}g
+                td.px-6.py-4.whitespace-nowrap.text-right.w-full.ml-auto
+                  .w-full.text-center.inline-block.sm:hidden.pb-3
+                    .text-sm.font-medium.text-gray-900.whitespace-normal
+                      = food.name
+                  .text-sm.text-gray-900
+                    span.inline-block
+                      = link_to "取り消す", food_path(food.id, date: params[:date], time: params[:time]), method: :delete, class: "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-white text-green-800 border-green-800 border-2 hover:bg-green-800 hover:text-white"
+                    / span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-white.text-yellow-500.border-yellow-500.border-2.hover:bg-yellow-500.hover:text-white
+                      = link_to "記録の編集" ,food_path(food.id), method: :edit
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | カロリー　#{food.calorie}kcal
+                /   .text-sm.text-gray-900
+                /     | たんぱく質　#{food.protein}g
+                / td.px-6.py-4.whitespace-nowrap
+                /   .text-sm.text-gray-900
+                /     | 脂質　#{food.fat}g
+                /   .text-sm.text-gray-900
+                /     | 炭水化物　#{food.carbohydrate}g
+                / td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
+                /   .text-sm.text-gray-900
+                /     | 糖質　#{food.sugar}g
+                /   .text-sm.text-gray-900
+                /     | 食物繊維　#{food.dietary_fiber}g
+                / td.px-6.py-4.whitespace-nowrap.text-right.text-sm.font-medium
+                /   .text-sm.text-gray-900
+                /     | 塩分　#{food.salt}g
 script[type="text/javascript"]
   |  function changeAtiveTab(event,tabID){ let element = event.target; while(element.nodeName !== "A"){ element = element.parentNode; } ulElement = element.parentNode.parentNode; aElements = ulElement.querySelectorAll("li > a"); tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div"); for(let i = 0 ; i < aElements.length; i++){ aElements[i].classList.remove("text-white"); aElements[i].classList.remove("bg-pink-600"); aElements[i].classList.add("text-pink-600"); aElements[i].classList.add("bg-white"); tabContents[i].classList.add("hidden"); tabContents[i].classList.remove("block"); } element.classList.remove("text-pink-600"); element.classList.remove("bg-white"); element.classList.add("text-white"); element.classList.add("bg-pink-600"); document.getElementById(tabID).classList.remove("hidden"); document.getElementById(tabID).classList.add("block"); }
 script

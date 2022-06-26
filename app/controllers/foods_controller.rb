@@ -31,6 +31,7 @@ class FoodsController < ApplicationController
       @morning_foods = Food.where(eatdate_id: @morning_id)
       @lunch_foods = Food.where(eatdate_id: @lunch_id)
       @dinner_foods = Food.where(eatdate_id: @dinner_id)
+      @tutorial = 'ようこそ！まずは記録ボタンから食事内容を記録しましょう' if !Eatdate.find_by(user_id: current_user.id)
     end
   end
 
@@ -75,11 +76,22 @@ class FoodsController < ApplicationController
     @dinner_calorie = @dinner_foods.sum(:calorie)
     @supper_foods = Food.where(eatdate_id: @supper_id)
     @supper_calorie = @supper_foods.sum(:calorie)
+    if !Mymenu.find_by(user_id: current_user.id) && !Eatdate.find_by(user_id: current_user.id)
+      @tutorial1 = 'まずはMYメニューを作成してメニューを登録しましょう'
+    elsif !Eatdate.find_by(user_id: current_user.id)
+      @tutorial2 = '登録ができたら上の食事時刻を食事を行った日時に設定し、下の登録したメニューから食事内容を記録しましょう'
+    elsif session[:tutorial3]
+      @tutorial3 = session[:tutorial3]
+      session.delete(:tutorial3)
+    end
   end
 
   def create
     params[:timezone] = params[:eatdate][:timezone]
     @eatdate = Eatdate.find_by(date: params[:date], timezone: params[:timezone], user_id: current_user.id)
+    if !Eatdate.find_by(user_id: current_user.id)
+      session[:tutorial3] = '下のリストに食事記録が反映されました！食事習慣を続けていきましょう'
+    end
     @eatdate.present? ? @eatdate.update(eat_time: params[:eat_time],comment: params[:comment]) : @eatdate = Eatdate.create!(eatdate_params)
     if params[:mymenu_id].present? && @food = Food.find_by(eatdate_id: @eatdate.id, mymenu_id: params[:mymenu_id])
       @food.delete
