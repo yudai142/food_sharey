@@ -35,8 +35,9 @@
             | 本日の食事内容
         .flex.flex-col.lg:flex-row.gap-y-5
           .px-3.5.w-full
-            .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
-              |  朝食
+            = link_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "朝食")
+              .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
+                |  朝食
             ul.py-4.space-y-5.border.shadow-lg.rounded-b-xl
               - if @morning_foods.present?
                 - @morning_foods.first(7).each do |morning_food|
@@ -49,14 +50,15 @@
                           = image_tag "l_e_others_501.png", class: "h-10 w-10"
                       span.ml-2.text-sm.tracking-wide.truncate
                         = morning_food.name
-                / - if @morning_foods.count(7) >= 8
-                /   li
-                /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-                /       span.ml-2.text-sm.tracking-wide.truncate
-                /         | もっと見る
+                - if @morning_foods.count >= 8
+                  li
+                    = link_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "朝食"), class: "flex justify-end focus:outline-none text-gray-600 hover:text-gray-800 border-l-4 border-transparent pr-6"
+                      span.ml-2.text-sm.tracking-wide.truncate.text-indigo-500
+                        | もっと見る
           .px-3.5.w-full
-            .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
-              |  昼食
+            = link_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "昼食")
+              .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
+                |  昼食
             ul.py-4.space-y-5.border.shadow-lg.rounded-b-xl
               - if @lunch_foods.present?
                 - @lunch_foods.first(7).each do |lunch_food|
@@ -69,14 +71,15 @@
                           = image_tag "l_e_others_501.png", class: "h-10 w-10"
                       span.ml-2.text-sm.tracking-wide.truncate
                         = lunch_food.name
-                / - if @lunch_foods.count(7) >= 8
-                /   li
-                /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-                /       span.ml-2.text-sm.tracking-wide.truncate
-                /         | もっと見る
+                - if @lunch_foods.count >= 8
+                  li
+                    = link_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "昼食"), class: "flex justify-end focus:outline-none text-gray-600 hover:text-gray-800 border-l-4 border-transparent pr-6"
+                      span.ml-2.text-sm.tracking-wide.truncate.text-indigo-500
+                        | もっと見る
           .px-3.5.w-full
-            .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
-              |  夕食
+            = link_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "夕食")
+              .px-6.py-3.flex.justify-around.text-base.font-medium.text-white.rounded-t-xl.bg-green-400
+                |  夕食
             ul.py-4.space-y-5.border.shadow-lg.rounded-b-xl
               - if @dinner_foods.present?
                 - @dinner_foods.first(7).each do |dinner_food|
@@ -89,8 +92,8 @@
                           = image_tag "l_e_others_501.png", class: "h-10 w-10"
                       span.ml-2.text-sm.tracking-wide.truncate
                         = dinner_food.name
-                / - if @dinner_foods.count(7) >= 8
-                /   li
-                /     a.relative.flex.flex-row.items-center.h-11.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800.border-l-4.border-transparent.hover:border-indigo-500.pr-6[href="#"]
-                /       span.ml-2.text-sm.tracking-wide.truncate
-                /         | もっと見る
+                - if @dinner_foods.count >= 8
+                  li
+                    = link_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "夕食"), class: "flex justify-end focus:outline-none text-gray-600 hover:text-gray-800 border-l-4 border-transparent pr-6"
+                      span.ml-2.text-sm.tracking-wide.truncate.text-indigo-500
+                        | もっと見る
