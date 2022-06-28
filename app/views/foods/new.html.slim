@@ -53,7 +53,7 @@
             .w-full.shadow.border-b.border-gray-200.sm:rounded-lg
               .break-words.m-5
                 -if @tutorial1
-                  .balloon5 ここを押して作成
+                  .balloon3 ここを押して作成
                 = link_to "MYメニューを作成する", new_mymenu_path, class: "mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
               table.min-w-full.divide-y.divide-gray-200
                 = form_with url: foods_path, local: true, id: "food_form" do

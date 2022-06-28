@@ -117,20 +117,20 @@
   background-color: #ff4500;
   position: absolute;
   width:130px;
-  top: -10px;
+  top: 53px;
   left: 50px;
   border-radius: 5px;
   color: white;
   text-align: center;
 }
 .balloon3:after {
-  border-top: 12px solid #ff4500;
+  border-bottom: 12px solid #ff4500;
   border-right: 12px solid transparent;
   border-left: 12px solid transparent;
   content: '';
   margin-left: -10px;
   position: absolute;
-  bottom: -12px;
+  bottom: 19px;
   left: 50%;
 }
 
