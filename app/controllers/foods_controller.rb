@@ -1,7 +1,29 @@
 class FoodsController < ApplicationController
+  skip_before_action :require_login, only: [:index]
   def index
     require "date"
     @date = Time.now
+    if (Time.parse("03:00")..Time.parse("09:59")).cover? @date
+      @ranking = Eatdate.where(timezone: 1).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+      @menu = "人気の朝食メニュー"
+    elsif (Time.parse("10:00")..Time.parse("14:59")).cover? @date
+      @ranking = Eatdate.where(timezone: 2).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+      @menu = "人気の昼食メニュー"
+    elsif (Time.parse("15:00")..Time.parse("23:59")).cover? @date or (Time.parse("00:00")..Time.parse("02:59")).cover? @date
+      @ranking = Eatdate.where(timezone: 4).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+      @menu = "人気の夕食メニュー"
+    end
+    @eatdate = Array.new
+    @ranking.each do |ranking|
+      if Food.find_by(eatdate_id: ranking)
+        @eatdate.push(ranking)
+      end
+      if logged_in?
+        break if @eatdate.length == 10
+      else
+        break if @eatdate.length == 8
+      end
+    end
     if logged_in?
       @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
       @lunch_id = Eatdate.find_by(date: @date,timezone: 2 , user_id: current_user.id)
@@ -9,6 +31,7 @@ class FoodsController < ApplicationController
       @morning_foods = Food.where(eatdate_id: @morning_id)
       @lunch_foods = Food.where(eatdate_id: @lunch_id)
       @dinner_foods = Food.where(eatdate_id: @dinner_id)
+      @tutorial = 'ようこそ！まずは記録ボタンから食事内容を記録しましょう' if !Eatdate.find_by(user_id: current_user.id)
     end
   end
 
@@ -29,7 +52,7 @@ class FoodsController < ApplicationController
       elsif (Time.parse("17:00")..Time.parse("23:59")).cover? @date
         redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "夕食")
         return
-      elsif (Time.parse("01:00")..Time.parse("02:59")).cover? @date
+      elsif (Time.parse("00:00")..Time.parse("02:59")).cover? @date
         redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "夜食")
         return
       end
@@ -53,11 +76,22 @@ class FoodsController < ApplicationController
     @dinner_calorie = @dinner_foods.sum(:calorie)
     @supper_foods = Food.where(eatdate_id: @supper_id)
     @supper_calorie = @supper_foods.sum(:calorie)
+    if !Mymenu.find_by(user_id: current_user.id) && !Eatdate.find_by(user_id: current_user.id)
+      @tutorial1 = 'まずはMYメニューを作成してメニューを登録しましょう'
+    elsif !Eatdate.find_by(user_id: current_user.id)
+      @tutorial2 = '登録ができたら上の食事時刻を食事を行った日時に設定し、下の登録したメニューから食事内容を記録しましょう'
+    elsif session[:tutorial3]
+      @tutorial3 = session[:tutorial3]
+      session.delete(:tutorial3)
+    end
   end
 
   def create
     params[:timezone] = params[:eatdate][:timezone]
     @eatdate = Eatdate.find_by(date: params[:date], timezone: params[:timezone], user_id: current_user.id)
+    if !Eatdate.find_by(user_id: current_user.id)
+      session[:tutorial3] = '下のリストに食事記録が反映されました！食事習慣を続けていきましょう'
+    end
     @eatdate.present? ? @eatdate.update(eat_time: params[:eat_time],comment: params[:comment]) : @eatdate = Eatdate.create!(eatdate_params)
     if params[:mymenu_id].present? && @food = Food.find_by(eatdate_id: @eatdate.id, mymenu_id: params[:mymenu_id])
       @food.delete

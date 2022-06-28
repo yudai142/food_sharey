@@ -1,0 +1,4 @@
+.notification.sticky.inset-x-0.top-0.z-10
+  .notice 
+  - flash.each do |key, value|
+    = content_tag :div, value, class: key

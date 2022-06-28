@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_05_140034) do
+ActiveRecord::Schema.define(version: 2022_06_09_050323) do
+
+  create_table "eatdate_likes", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "eatdate_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["eatdate_id"], name: "index_eatdate_likes_on_eatdate_id"
+    t.index ["user_id"], name: "index_eatdate_likes_on_user_id"
+  end
 
   create_table "eatdates", charset: "utf8mb4", force: :cascade do |t|
     t.date "date", null: false
@@ -28,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_06_05_140034) do
   create_table "foods", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "image"
+    t.integer "mymenu_id"
     t.integer "calorie"
     t.integer "protein"
     t.integer "fat"
@@ -50,16 +60,24 @@ ActiveRecord::Schema.define(version: 2022_06_05_140034) do
     t.bigint "eatdate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "mymenu_id"
     t.index ["eatdate_id"], name: "index_foods_on_eatdate_id"
+  end
+
+  create_table "mymenu_likes", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "mymenu_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mymenu_id"], name: "index_mymenu_likes_on_mymenu_id"
+    t.index ["user_id"], name: "index_mymenu_likes_on_user_id"
   end
 
   create_table "mymenus", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.integer "category_id"
     t.string "image"
-    t.integer "calorie", default: 0
-    t.integer "protein", default: 0
+    t.integer "calorie"
+    t.integer "protein"
     t.integer "fat"
     t.integer "carbohydrate"
     t.integer "sugar"
@@ -86,18 +104,22 @@ ActiveRecord::Schema.define(version: 2022_06_05_140034) do
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", null: false
+    t.string "name", null: false
     t.string "crypted_password"
     t.string "salt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name", null: false
     t.boolean "food_ideas_hide", default: false
     t.boolean "user_ranking_hide", default: false
-    t.boolean "release", default: true
+    t.boolean "release", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "eatdate_likes", "eatdates"
+  add_foreign_key "eatdate_likes", "users"
   add_foreign_key "eatdates", "users"
   add_foreign_key "foods", "eatdates"
+  add_foreign_key "mymenu_likes", "mymenus"
+  add_foreign_key "mymenu_likes", "users"
   add_foreign_key "mymenus", "users"
 end

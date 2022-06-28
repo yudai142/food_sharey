@@ -1,17 +1,28 @@
-.mt-2.items-center.z-10
-  = form_with url: login_path, method: :post ,class: "p-14 bg-white max-w-sm mx-auto rounded-xl shadow-xl overflow-hidden p-6 space-y-10" do |f|
-    h2.text-4xl.font-bold.text-center.text-indigo-600
-      | Login
-    .f-outline.px-2.relative.border.rounded-lg.focus-within:border-indigo-500
-      = f.text_field :email, class:"block p-2 w-full text-lg appearance-none focus:outline-none bg-transparent", placeholder:"Email", type:"email"
-    .f-outline.px-2.relative.border.rounded-lg.focus-within:border-indigo-500
-      = f.password_field :password, class:"block p-2 w-full text-lg appearance-none focus:outline-none bg-transparent", placeholder:"Password"
-    .block.mt-2
-      label.flex.items-center[for=""]
-        input.ml-2.rounded.border-gray-300.text-indigo-600.shadow-sm.focus:border-indigo-300.focus:ring.focus:ring-indigo-200.focus:ring-opacity-50[type="checkbox"]
-        span.ml-2.text-sm.text-gray-600
-          | Remember me
-    .flex.items-center.flex.items-center.justify-end.mt-4
-      a.underline.text-sm.text-gray-600.hover:text-gray-900[href="#"]
-        |  Forgot Password? 
-      = f.submit 'ログイン', class: "px-6 py-2 ml-4 font-semibold cursor-pointer text-center focus:outline-none transition hover:shadow-lg shadow hover:bg-indigo-700 rounded-full text-white bg-indigo-600 "
+.relative.flex.items-center.justify-center.py-12.px-4.sm:px-6.lg:px-8.relative.items-center.bg-green-200
+  .max-w-lg.w-full.space-y-8.p-10.bg-white.rounded-xl.shadow-lg
+    = form_with url: login_path, method: :post, id: "student_application"  do |f|
+      .flex.flex-col
+        h1.block.w-full.text-center.text-green-400.text-2xl.font-bold.md:mb-6
+          | ログイン
+        .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
+          p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
+            | メールアドレス
+          = f.email_field :email, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+        .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
+          p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
+            | パスワード
+          = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+        / .block.mt-2
+          label.flex.items-center[for=""]
+            input.ml-2.rounded.border-gray-300.text-indigo-600.shadow-sm.focus:border-indigo-300.focus:ring.focus:ring-indigo-200.focus:ring-opacity-50[type="checkbox"]
+            span.ml-2.text-sm.text-gray-600
+              | 次回から自動ログイン
+        / .flex.items-center.flex.items-center.justify-end.mt-4
+          a.underline.text-sm.text-gray-600.hover:text-gray-900[href="#"]
+            |  パスワードを忘れた場合
+        .py-5.text-right.md:space-x-3.md:block.flex.flex-col-reverse
+          = link_to '戻る', root_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
+          = f.submit "ログイン",class: " mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+        .py-5.md:text-right.md:space-x-3.md:block.flex.flex-col
+          | まだアカウントを作成されていない方は　
+          = link_to '新規登録', new_user_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"

@@ -1,25 +1,32 @@
-.w-full.bg-grey-500
-  .container.mx-auto.py-8
-    .w-96.mx-auto.bg-white.rounded.shadow
-      .mx-16.py-4.px-8.text-black.text-xl.font-bold.border-b.border-grey-500
-        | ユーザー新規登録 
-      = form_with model: @user, local: true, id: "student_application"  do |f|
-        .py-4.px-8
-          .mb-4
-            = f.label :ユーザー名, class: "block text-grey-darker text-sm font-bold mb-2"
-            = f.text_field :name, class: " border rounded w-full py-2 px-3 text-grey-darker", id: "student_id", placeholder: "Enter Your Name"
-          .mb-4
-            = f.label :メールアドレス, class: "block text-grey-darker text-sm font-bold mb-2"
-            = f.text_field :email, class: " border rounded w-full py-2 px-3 text-grey-darker", id: "student_id", placeholder: "Enter Your Email"
-          .mb-4
-            = f.label :パスワード, class: "block text-grey-darker text-sm font-bold mb-2"
-            = f.password_field :password, class: " border rounded w-full py-2 px-3 text-grey-darker", id: "student_name", placeholder: "Enter Your Password"
-          .mb-4
-            = f.label :パスワード確認, class: "block text-grey-darker text-sm font-bold mb-2"
-            = f.password_field :password_confirmation,  class: " border rounded w-full py-2 px-3 text-grey-darker",  id:"course_name",  placeholder: "Enter Your Password Confirmation"
-            p#error_creater_id
-          .mb-4
-            = hidden_field_tag (:food_ideas_hide)
-            = hidden_field_tag (:user_ranking_hide)
-            = hidden_field_tag (:release)
-            = f.submit "登録", class: "mb-2 mx-16 rounded-full py-1 px-24 bg-gradient-to-r from-green-400 to-blue-500 "
+.relative.flex.items-center.justify-center.py-12.px-4.sm:px-6.lg:px-8.relative.items-center.bg-green-200
+  .max-w-lg.w-full.space-y-8.p-10.bg-white.rounded-xl.shadow-lg
+    = form_with model: @user, local: true, id: "student_application"  do |f|
+      .flex.flex-col
+        h1.block.w-full.text-center.text-green-400.text-2xl.font-bold.md:mb-6
+          | 新規登録
+        .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
+          p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
+            | ユーザー名
+          = f.text_field :name, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+        .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
+          p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
+            | メールアドレス
+          = f.email_field :email, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+        .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
+          p.text-gray-400.sm:ml-4.whitespace-wrap.sm:w-24
+            | パスワード　 (6文字以上)
+          = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+        .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
+          p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
+            | パスワード確認
+          = f.password_field :password_confirmation, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+              p#error_creater_id
+        .py-5.text-right.md:space-x-3.md:block.flex.flex-col-reverse
+          = link_to '戻る', root_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
+          = hidden_field_tag (:food_ideas_hide)
+          = hidden_field_tag (:user_ranking_hide)
+          = hidden_field_tag (:release)
+          = f.submit "登録",class: " mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+        .py-5.md:text-right.md:space-x-3.md:block.flex.flex-col
+          | 既にアカウントを作成されている方は　
+          = link_to 'ログイン', login_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
