@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create, :destroy]
+  skip_before_action :require_login, only: [:new, :create, :destroy, :guest_login]
   def new
     if logged_in?
       redirect_to(root_path, notice: '既にログインしています')
@@ -19,5 +19,11 @@ class UserSessionsController < ApplicationController
   def destroy
     logout
     redirect_to(root_path, notice: 'ログアウトしました')
+  end
+
+  def guest_login
+    @guest_user = User.guest_new
+    auto_login(@guest_user)
+    redirect_to foods_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 end
