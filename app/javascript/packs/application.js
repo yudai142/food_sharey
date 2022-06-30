@@ -10,8 +10,15 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "stylesheets/application"
 import "packs/application.css";
+import "packs/pagy.scss";
+import "packs/balloon.css";
 
 Rails.start()
   // Turbolinks.start()
 ActiveStorage.start()
 require('./preview')
+
+document.addEventListener('touchend', function(event) {
+  event.preventDefault();
+  $(event.target).trigger('click');
+}, false);

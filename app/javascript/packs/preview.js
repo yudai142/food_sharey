@@ -1,4 +1,4 @@
-if (document.URL.match(/new/) || document.URL.match(/edit/)) {
+if (document.URL.match("mymenus/new") || document.URL.match(/edit/)) {
   document.addEventListener('DOMContentLoaded', () => {
 
     const createImageHTML = (blob) => {
@@ -28,11 +28,12 @@ if (document.URL.match(/new/) || document.URL.match(/edit/)) {
       let fileCheck = document.getElementById("fileCheck");
       let fileCheckBtn = document.getElementById("fileCheckBtn");
       let image_cache = document.getElementById("mymenu_image_cache");
-      if (fileCheck.files.length === 0 && image_cache.value.length === 0) {
-        fileCheckBtn.hidden = true;
-      } else {
-        fileCheckBtn.hidden = false;
-      }
+      // 削除ボタンの表示・非表示処理
+      // if (fileCheck.files.length === 0 && image_cache.value.length === 0) {
+      //   fileCheckBtn.hidden = true;
+      // } else {
+      //   fileCheckBtn.hidden = false;
+      // }
     }
 
     inputCheck();
@@ -41,17 +42,18 @@ if (document.URL.match(/new/) || document.URL.match(/edit/)) {
       inputCheck();
     });
 
-    document.getElementById("fileCheckBtn").addEventListener('click', function(e) {
-      document.getElementById('new-img').remove();
-      document.getElementById('no-image').style.width = "120px";;
-      document.getElementById('no-image').style.visibility = "visible";
-      document.getElementById("fileCheck").value = "";
-      document.getElementById("mymenu_image_cache").value = "";
-      console.log(document.getElementById("mymenu_remove_image").length)
-      if (document.getElementById("mymenu_remove_image")) {
-        document.getElementById("mymenu_remove_image").value = "1";
-      }
-      inputCheck();
-    });
+    // 画像が入っている場合削除ボタンを出現させる
+    // document.getElementById("fileCheckBtn").addEventListener('click', function(e) {
+    //   document.getElementById('new-img').remove();
+    //   document.getElementById('no-image').style.width = "120px";;
+    //   document.getElementById('no-image').style.visibility = "visible";
+    //   document.getElementById("fileCheck").value = "";
+    //   document.getElementById("mymenu_image_cache").value = "";
+    //   console.log(document.getElementById("mymenu_remove_image").length)
+    //   if (document.getElementById("mymenu_remove_image")) {
+    //     document.getElementById("mymenu_remove_image").value = "1";
+    //   }
+    //   inputCheck();
+    // });
   });
 }

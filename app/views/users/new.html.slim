@@ -26,7 +26,7 @@
           = hidden_field_tag (:food_ideas_hide)
           = hidden_field_tag (:user_ranking_hide)
           = hidden_field_tag (:release)
-          = f.submit "登録",class: " mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+          = f.submit "登録",class: " mb-2 md:mb-0 cursor-pointer bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
         .py-5.md:text-right.md:space-x-3.md:block.flex.flex-col
           | 既にアカウントを作成されている方は　
           = link_to 'ログイン', login_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"

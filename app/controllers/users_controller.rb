@@ -3,20 +3,15 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new,:create]
   
   def new
-    if logged_in?
-      redirect_to(root_path, notice: '既にログインしています')
-    end
+    (redirect_to root_path, notice: '既にログインしています'; return) if logged_in?
     @user = User.new
   end
 
   def create
-    if logged_in?
-      redirect_to(root_path, notice: '既にログインしています')
-    end
+    (redirect_to root_path, notice: '既にログインしています'; return) if logged_in?
     @user = User.new(user_params)
-    if @user.save
-      redirect_to login_path
-      flash[:notice] = 'ユーザーの作成に成功しました'
+    if @user.save!
+      redirect_to login_path, notice: 'ユーザーの作成に成功しました'
     else
       flash.now[:alert] = 'ユーザーの作成に失敗しました'
       render :new
