@@ -10,6 +10,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "stylesheets/application"
 import "packs/application.css";
+import "packs/pagy.css";
+import "packs/balloon.css";
 
 Rails.start()
   // Turbolinks.start()
