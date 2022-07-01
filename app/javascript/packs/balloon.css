@@ -67,22 +67,13 @@
   background-color: #ff4500;
   position: absolute;
   width:130px;
-  top: -5px;
-  left: 80px;
+  top: -34px;
+  left: 75px;
   border-radius: 5px;
   color: white;
   text-align: center;
 }
-.balloon4:before {
-  border-top: 12px solid #ff4500;
-  border-right: 12px solid transparent;
-  border-left: 12px solid transparent;
-  content: '';
-  margin-left: -10px;
-  position: absolute;
-  bottom: -11px;
-  left: 30px;
-}
+
 .balloon4:after {
   border-top: 12px solid #ff4500;
   border-right: 12px solid transparent;
@@ -90,8 +81,8 @@
   content: '';
   margin-left: -10px;
   position: absolute;
-  bottom: -11px;
-  left: 90px;
+  bottom: -12px;
+  left: 50%;
 }
 
 .balloon5 {
