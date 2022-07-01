@@ -17,8 +17,3 @@ Rails.start()
   // Turbolinks.start()
 ActiveStorage.start()
 require('./preview')
-
-document.addEventListener('touchend', function(event) {
-  event.preventDefault();
-  $(event.target).trigger('click');
-}, false);

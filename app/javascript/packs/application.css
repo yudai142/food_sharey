@@ -1,3 +1,6 @@
+html {
+  touch-action: manipulation;
+}
 
 .notification {
   width: 100%;
