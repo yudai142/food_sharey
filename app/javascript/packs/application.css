@@ -9,7 +9,17 @@ html {
 }
 
 .window-resize {
-  height: calc(var(--vh, 1vh) * 100 - 4rem);
+  min-height: calc(var(--vh, 1vh) * 100 - 4rem);
+}
+
+.window-resize-login {
+  min-height: calc(var(--vh, 1vh) * 100 - 4rem - 55.67px);
+}
+
+@media screen and (min-width: 767px){
+  .window-resize-login {
+    min-height: calc(var(--vh, 1vh) * 100 - 4rem);
+  }
 }
 
 
