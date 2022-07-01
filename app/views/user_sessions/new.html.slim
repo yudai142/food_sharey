@@ -1,6 +1,6 @@
-.relative.flex.items-center.justify-center.py-12.px-4.sm:px-6.lg:px-8.relative.items-center.bg-green-200
-  .max-w-lg.w-full.space-y-8.p-10.bg-white.rounded-xl.shadow-lg
-    = form_with url: login_path, method: :post, id: "student_application"  do |f|
+.py-12.px-4.sm:px-6.lg:px-8.bg-green-200.window-resize
+  .max-w-lg.w-full.mx-auto.p-10.bg-white.rounded-xl.shadow-lg
+    = form_with url: login_path, method: :post do |f|
       .flex.flex-col
         h1.block.w-full.text-center.text-green-400.text-2xl.font-bold.md:mb-6
           | ログイン
@@ -12,11 +12,6 @@
           p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
             | パスワード
           = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
-        / .block.mt-2
-          label.flex.items-center[for=""]
-            input.ml-2.rounded.border-gray-300.text-indigo-600.shadow-sm.focus:border-indigo-300.focus:ring.focus:ring-indigo-200.focus:ring-opacity-50[type="checkbox"]
-            span.ml-2.text-sm.text-gray-600
-              | 次回から自動ログイン
         / .flex.items-center.flex.items-center.justify-end.mt-4
           a.underline.text-sm.text-gray-600.hover:text-gray-900[href="#"]
             |  パスワードを忘れた場合
