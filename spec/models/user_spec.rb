@@ -17,7 +17,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         is_expected.to eq false;
       end
       it '20文字以下であること' do
-        user.name = Faker::Lorem.characters(number:22)
+        user.name = Faker::Lorem.characters(number:21)
         is_expected.to eq false;
       end
     end
@@ -41,7 +41,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
 
     context "値が入っている場合" do
-      let(:user){User.new(name:"this is title")} #titleに値が入っているTodoオブジェクトを生成
+      let(:user){User.new(name:Faker::Lorem.characters(number:20))} #titleに値が入っているTodoオブジェクトを生成
 
       it "エラーを返さない" do
         user.valid? #バリデーションを実行

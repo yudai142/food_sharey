@@ -28,7 +28,9 @@ div.actions {
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table; }
+  max-width: 20rem;
+  width: 100%;
+}
 
 #error_explanation {
   width: 450px;
