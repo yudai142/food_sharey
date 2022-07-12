@@ -372,7 +372,6 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   sass-rails (>= 6)
-  selenium-webdriver
   slim-rails
   sorcery
   spring

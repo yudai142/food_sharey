@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save!
-      redirect_to login_path, notice: 'ユーザーの作成に成功しました'
+      login(params[:user][:email], params[:user][:password], true)
+      redirect_to root_path, notice: 'ユーザーの作成に成功しました'
     else
       flash.now[:alert] = 'ユーザーの作成に失敗しました'
       render :new
