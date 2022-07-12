@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザー新規登録", type: :system do
+RSpec.describe "userテスト", type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
@@ -24,6 +24,66 @@ RSpec.describe "ユーザー新規登録", type: :system do
       expect(page).to have_content('ログアウト')
       expect(page).to have_no_content('新規登録')
       expect(page).to have_no_content('ログイン')
+      expect(page).to have_selector('.notice', text: 'ユーザーの作成に成功しました')
+    end
+  end
+  
+  describe 'ログイン処理' do
+    before do
+      User.create!(
+        name: "Yamada Taro",
+        email: "taro@example.com",
+        password: 'password',
+        password_confirmation: 'password'
+      )
+    end
+  
+    it 'ユーザー認証成功' do
+      visit root_path
+      expect(page).to have_content('ログイン')
+      visit login_path
+      fill_in 'email', with: 'taro@example.com'
+      fill_in 'password', with: 'password'
+      click_button 'ログイン'
+      expect(current_path).to eq(foods_path)
+      expect(page).to have_content('ログアウト')
+      expect(page).to have_selector('.notice', text: 'ログインに成功しました')
+    end
+  
+    it 'ユーザー認証失敗' do
+      visit root_path
+      expect(page).to have_content('ログイン')
+      visit login_path
+      fill_in 'email', with: 'taro'
+      fill_in 'password', with: 'wrong_password'
+      click_button 'ログイン'
+      expect(current_path).to eq(login_path)
+      expect(page).to have_selector('.alert', text: 'ログインに失敗しました')
+    end
+  end
+  
+  describe 'ログアウト処理' do
+    before do
+      User.create!(
+        name: "Yamada Taro",
+        email: "taro@example.com",
+        password: 'password',
+        password_confirmation: 'password'
+      )
+      visit login_path
+      fill_in 'email', with: 'taro@example.com'
+      fill_in 'password', with: 'password'
+      click_button 'ログイン'
+    end
+  
+    it '正常にログアウトできるか' do
+      visit root_path
+      expect(page).to have_content('ログアウト')
+      click_link 'ログアウト'
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content('新規登録')
+      expect(page).to have_content('ログイン')
+      expect(page).to have_selector('.notice', text: 'ログアウトしました')
     end
   end
 end
