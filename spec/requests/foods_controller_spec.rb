@@ -11,4 +11,14 @@ RSpec.describe FoodsController, type: :controller do
       expect(response).to have_http_status "200"
     end
   end
+  describe "#new" do
+    it "正常なレスポンスか？" do
+      get :new
+      expect(response).to be_successful
+    end
+    it "200レスポンスが返ってきているか？" do
+      get :new
+      expect(response).to have_http_status "200"
+    end
+  end
 end
