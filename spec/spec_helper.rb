@@ -24,6 +24,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
+  config.include Sorcery::TestHelpers::Rails::Request, type: :request
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
