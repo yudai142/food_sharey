@@ -23,6 +23,22 @@ services:
       - /var/tmp
       - sockets:/app/tmp/sockets
     tty: true
+    depends_on:
+      - db
+    extends:
+      file: ./docker/mysql/password.yml
+      service: password
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    ports:
+      - '4306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+    extends:
+      file: ./docker/mysql/password.yml
+      service: password
   nginx:
     build:
       context: .
