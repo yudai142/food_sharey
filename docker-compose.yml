@@ -1,5 +1,15 @@
 version: '2'
 services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      - sockets:/app/tmp/sockets
+    depends_on:
+      - app
   app:
     build:
       context: .
@@ -39,16 +49,6 @@ services:
   #   extends:
   #     file: ./docker/mysql/password.yml
   #     service: password
-  nginx:
-    build:
-      context: .
-      dockerfile: ./docker/nginx/Dockerfile
-    ports:
-      - '80:80'
-    volumes:
-      - sockets:/app/tmp/sockets
-    depends_on:
-      - app
 
 volumes:
   db_data:

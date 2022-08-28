@@ -13,8 +13,8 @@ if Rails.env.production?
       region: 'ap-northeast-1'
     }
 
-    config.fog_directory  = 'aws-and-infra-strage-image'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/aws-and-infra-strage-image'
+    config.fog_directory  = ENV['AWS_ACCESS_FOG_DIRECTORY']
+    config.asset_host = ENV['AWS_ACCESS_ASSET_HOST']
   end
 
 else
