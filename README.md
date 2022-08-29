@@ -1,4 +1,4 @@
-# <div style="text-align: center;">Food Diary</div>
+# <div style="text-align: center;">Food Sharey</div>
 <div style="text-align: center;">⾷べた⾷事を記録して、⾷事内容を</div><div style="text-align: center;">ユーザーと共有することができる⾷事管理アプリ</div>
 
 # 概要
