@@ -17,20 +17,32 @@ class MymenusController < ApplicationController
   end
 
   def edit
-    @mymenu = Mymenu.find(params[:id])
-    @mymenu.image.cache! unless @mymenu.image.blank?
+    @mymenu = Mymenu.find_by_id(params[:id])
+    if @mymenu && @mymenu.user_id == current_user.id
+      @mymenu.image.cache! unless @mymenu.image.blank?
+    else
+      redirect_to root_path
+    end
   end
 
   def update
-    @mymenu = Mymenu.find(params[:id])
-    @mymenu.update(mymenu_params)
-    redirect_to new_food_path
+    @mymenu = Mymenu.find_by_id(params[:id])
+    if @mymenu && @mymenu.user_id == current_user.id
+      @mymenu.update(mymenu_params)
+      redirect_to new_food_path
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
-    @mymenu = Mymenu.find(params[:id])
-    @mymenu.destroy
-    redirect_to new_food_path
+    @mymenu = Mymenu.find_by_id(params[:id])
+    if @mymenu && @mymenu.user_id == current_user.id
+      @mymenu.destroy
+      redirect_to new_food_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
