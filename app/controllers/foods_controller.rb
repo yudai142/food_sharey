@@ -105,7 +105,7 @@ class FoodsController < ApplicationController
 
   def destroy
     @food = Food.find_by_id(params[:id])
-    if @food && @food.user_id == current_user.id
+    if @food && @food.eatdate.user_id == current_user.id
       @food.delete
       redirect_to new_food_path(date: params[:date], time: params[:time])
     else
