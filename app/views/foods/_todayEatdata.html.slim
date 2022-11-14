@@ -10,7 +10,7 @@
           li.focus:outline-none.hover:bg-gray-50.text-gray-600.hover:text-gray-800
             a[href="#"]
               .p-3.flex.flex-col
-                .flex.flex-row
+                .flex.flex-row.mb-2
                   span.text-sm.tracking-wide.truncate.mr-auto
                     | #{eatdate.user.name}さん
                   - if eatdate.foods.pluck(:calorie).map!{|x| x.to_i}.sum != 0

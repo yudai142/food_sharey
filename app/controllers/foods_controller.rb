@@ -38,29 +38,23 @@ class FoodsController < ApplicationController
   def new
     if params[:date].present? && params[:time].present?
       @date = Time.parse(params[:date])
+      @timezone = params[:time]
     else
-      @date = Time.now
+      @date = Time.now.to_date
       if (Time.parse("03:00")..Time.parse("10:59")).cover? @date
-        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "朝食")
-        return
+        @timezone = "朝食"
       elsif (Time.parse("11:00")..Time.parse("14:59")).cover? @date
-        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "昼食")
-        return
+        @timezone = "昼食"
       elsif (Time.parse("15:00")..Time.parse("16:59")).cover? @date
-        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "間食")
-        return
+        @timezone = "間食"
       elsif (Time.parse("17:00")..Time.parse("23:59")).cover? @date
-        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "夕食")
-        return
+        @timezone = "夕食"
       elsif (Time.parse("00:00")..Time.parse("02:59")).cover? @date
-        redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "夜食")
-        return
+        @timezone = "夜食"
       end
-      redirect_to new_food_path(date: @date.strftime("%Y-%m-%d"), time: "朝食")
-      return
     end
     @mymenu = Mymenu.where(user_id: current_user.id).order("id ASC")
-    @eatdate = Eatdate.find_by(date: @date,timezone: params[:time] , user_id: current_user.id)
+    @eatdate = Eatdate.find_by(date: @date,timezone: @timezone , user_id: current_user.id)
     @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
     @lunch_id = Eatdate.find_by(date: @date,timezone: 2 , user_id: current_user.id)
     @snack_id = Eatdate.find_by(date: @date,timezone: 3 , user_id: current_user.id)
@@ -110,10 +104,13 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-    if params[:id].present?
-      @food = Food.find(params[:id]).delete
+    @food = Food.find_by_id(params[:id])
+    if @food && @food.user_id == current_user.id
+      @food.delete
+      redirect_to new_food_path(date: params[:date], time: params[:time])
+    else
+      redirect_to root_path
     end
-    redirect_to new_food_path(date: params[:date], time: params[:time])
   end
 
   private

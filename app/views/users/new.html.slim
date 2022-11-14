@@ -7,7 +7,7 @@
         .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
           p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
             | ユーザー名
-          = f.text_field :name, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+          = f.text_field :name, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true, maxlength: "20"
         .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
           p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
             | メールアドレス
@@ -15,11 +15,11 @@
         .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
           p.text-gray-400.sm:ml-4.whitespace-wrap.sm:w-24
             | パスワード　 (6文字以上)
-          = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+          = f.password_field :password, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true, minlength: "6"
         .flex.flex-wrap.items-center.w-full.py-5.border-b-2.border-gray-200.justify-between
           p.text-gray-400.sm:ml-4.whitespace-nowrap.w-24
             | パスワード確認
-          = f.password_field :password_confirmation, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true
+          = f.password_field :password_confirmation, class: "shadow appearance-none border rounded py-2 px-3 text-grey-darker w-full max-w-xs", required: true, minlength: "6"
               p#error_creater_id
         .py-5.text-right.md:space-x-3.md:block.flex.flex-col-reverse
           = link_to '戻る', root_path, 'data-turbolinks': false, class: "text-center mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"

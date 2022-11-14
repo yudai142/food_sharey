@@ -1,7 +1,7 @@
 .w-full.h-16
   header.h-16.px-3.5.bg-white.dark:bg-gray-800.border-solid.border-2.border-light-blue-500.shadow
     .h-full.md:mx-14.flex.justify-between.items-center.px-3.md:px-0
-      = link_to 'Food Diary', root_path, class: "h-full flex items-center text-2xl font-bold text-cyan-600 dark:text-cyan-500"
+      = link_to 'Food Sharey', root_path, class: "h-full flex items-center text-2xl font-bold text-cyan-600 dark:text-cyan-500"
       .flex.items-center.h-full.text-gray-500.dark:text-gray-300.relative
         - if logged_in?
           = link_to  'ランキング一覧', rankings_path, class: "hidden md:block mr-3 flex items-center shadow border-green-500 border-2 rounded-full px-4 py-2 md:text-green-500 text-white bg-green-500 md:bg-white hover:bg-green-500 hover:text-white"

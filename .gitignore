@@ -43,3 +43,6 @@ config/development.env
 app/assets/images/material
 public/uploads/*
 production.env
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
