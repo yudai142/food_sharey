@@ -6,7 +6,6 @@ services:
       dockerfile: ./docker/rails/Dockerfile_development
     command: bash -c "rm -f tmp/pids/server.pid && ./bin/server"
     stdin_open: true
-    tty: true
     ports:
       - '5000:5000'
       - '3035:3035'
@@ -16,10 +15,10 @@ services:
       TZ: Asia/Tokyo
     volumes:
       - .:/app
+      - node_modules:/app/node_modules
       - gem_data:/usr/local/bundle
       - /var/tmp
       - sockets:/app/tmp/sockets
-    tty: true
     depends_on:
       - db
     extends:
@@ -29,6 +28,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
+    platform: linux/amd64
     ports:
       - '4306:3306'
     volumes:
@@ -51,3 +51,4 @@ volumes:
   db_data:
   sockets:
   gem_data:
+  node_modules:
