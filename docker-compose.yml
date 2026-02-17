@@ -32,7 +32,6 @@ services:
       - gem_data:/usr/local/bundle
       - /var/tmp
       - sockets:/app/tmp/sockets
-    tty: true
   #   depends_on:
   #     - db
   #   extends:
