@@ -24,4 +24,4 @@ COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
 CMD ["/start.sh"]
 
-EXPOSE 5000
+EXPOSE 0
