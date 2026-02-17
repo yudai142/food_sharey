@@ -18,10 +18,10 @@ WORKDIR /app
 COPY . /app
 RUN bundle config --local set path 'vendor/bundle' \
   && bundle install -j4
+RUN yarn install --ignore-engines && bundle exec rails assets:precompile RAILS_ENV=production
 
-
-COPY start.sh /start.sh
+COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
-CMD bundle exec rails assets:precompile RAILS_ENV=production
+CMD ["/start.sh"]
 
-EXPOSE 3000
+EXPOSE 5000
