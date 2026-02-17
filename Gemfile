@@ -63,7 +63,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'ffi', '< 1.17'
-gem 'tailwindcss-rails'
 gem 'sorcery'
 gem 'slim-rails'
 gem 'html2slim'
@@ -74,4 +73,3 @@ gem 'pagy'
 gem 'rack'
 
 gem "jsbundling-rails"
-gem "cssbundling-rails"

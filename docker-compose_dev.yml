@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile_development
-    command: bash -c "rm -f tmp/pids/server.pid && ./bin/server"
+    command: bash -c "yarn install --ignore-engines && rm -f tmp/pids/server.pid && ./bin/server"
     stdin_open: true
     ports:
       - '5000:5000'

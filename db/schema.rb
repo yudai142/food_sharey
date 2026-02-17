@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_30_040456) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_06_30_040456) do
   create_table "eatdate_likes", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "eatdate_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["eatdate_id"], name: "index_eatdate_likes_on_eatdate_id"
     t.index ["user_id"], name: "index_eatdate_likes_on_user_id"
   end
@@ -27,8 +26,8 @@ ActiveRecord::Schema.define(version: 2022_06_30_040456) do
     t.time "eat_time"
     t.text "comment"
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["date"], name: "index_eatdates_on_date"
     t.index ["timezone"], name: "index_eatdates_on_timezone"
     t.index ["user_id"], name: "index_eatdates_on_user_id"
@@ -58,16 +57,16 @@ ActiveRecord::Schema.define(version: 2022_06_30_040456) do
     t.integer "magnesium"
     t.integer "iron"
     t.bigint "eatdate_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["eatdate_id"], name: "index_foods_on_eatdate_id"
   end
 
   create_table "mymenu_likes", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "mymenu_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["mymenu_id"], name: "index_mymenu_likes_on_mymenu_id"
     t.index ["user_id"], name: "index_mymenu_likes_on_user_id"
   end
@@ -97,8 +96,8 @@ ActiveRecord::Schema.define(version: 2022_06_30_040456) do
     t.integer "iron"
     t.string "memo"
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_mymenus_on_user_id"
   end
 
@@ -107,13 +106,13 @@ ActiveRecord::Schema.define(version: 2022_06_30_040456) do
     t.string "name", null: false
     t.string "crypted_password"
     t.string "salt"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "food_ideas_hide", default: false
     t.boolean "user_ranking_hide", default: false
     t.boolean "release", default: false
     t.string "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
+    t.datetime "remember_me_token_expires_at", precision: nil
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end

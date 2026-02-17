@@ -1,8 +1,8 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
+@tailwind base;
+@tailwind components;
 
 @import "../packs/application.css";
 @import "../packs/pagy.scss";
 @import "../packs/balloon.css";
 
-@import "tailwindcss/utilities";
+@tailwind utilities;
