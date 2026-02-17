@@ -3,3 +3,7 @@ threads threads_count, threads_count
 bind "tcp://0.0.0.0:#{ENV.fetch('PORT') { 5000 }}"
 environment ENV.fetch('RAILS_ENV') { 'development' }
 plugin :tmp_restart
+
+# Single-mode for render.com (no clustering needed)
+workers 0
+silence_single_worker_warning
