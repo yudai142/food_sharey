@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: food-sharey
+    runtime: docker
+    dockerfile: ./docker/rails/Dockerfile
+    buildCache: build_image
+    startCommand: "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
+    healthCheckPath: /
+    port: 5000
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: NODE_ENV
+        value: production
+      - key: TZ
+        value: Asia/Tokyo
+      - key: DATABASE_URL
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: PORT
+        value: 5000

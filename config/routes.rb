@@ -5,7 +5,9 @@ Rails
     root 'foods#index'
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
+    get 'logout', to: 'user_sessions#destroy'
     delete 'logout', to: 'user_sessions#destroy'
+    get '/guest_login', to: 'user_sessions#guest_login'
     post '/guest_login', to: 'user_sessions#guest_login'
 
     resources :users, only: %i[index new create show]
