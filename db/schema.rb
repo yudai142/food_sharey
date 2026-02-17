@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_06_30_040456) do
-  create_table "eatdate_likes", charset: "utf8mb4", force: :cascade do |t|
+  create_table "eatdate_likes", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "eatdate_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_040456) do
     t.index ["user_id"], name: "index_eatdate_likes_on_user_id"
   end
 
-  create_table "eatdates", charset: "utf8mb4", force: :cascade do |t|
+  create_table "eatdates", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.date "date", null: false
     t.integer "timezone", null: false
     t.time "eat_time"
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_040456) do
     t.index ["user_id"], name: "index_eatdates_on_user_id"
   end
 
-  create_table "foods", charset: "utf8mb4", force: :cascade do |t|
+  create_table "foods", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "image"
     t.integer "mymenu_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_040456) do
     t.index ["eatdate_id"], name: "index_foods_on_eatdate_id"
   end
 
-  create_table "mymenu_likes", charset: "utf8mb4", force: :cascade do |t|
+  create_table "mymenu_likes", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "mymenu_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_040456) do
     t.index ["user_id"], name: "index_mymenu_likes_on_user_id"
   end
 
-  create_table "mymenus", charset: "utf8mb4", force: :cascade do |t|
+  create_table "mymenus", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.integer "category_id"
     t.string "image"
@@ -101,7 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_040456) do
     t.index ["user_id"], name: "index_mymenus_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "email", null: false
     t.string "name", null: false
     t.string "crypted_password"
