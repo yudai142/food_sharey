@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '>= 2.7.0'
+ruby '>= 3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.0'
 # Use mysql as the database for Active Record (development)
 gem 'mysql2', '~> 0.5'
 # Use pg as the database for Active Record (production with Neon.tech)
-# Ruby 2.7 compatible version with SSL support (1.4.6 is latest for Ruby 2.7)
-gem 'pg', '~> 1.4.0'
+# Ruby 3.0+ compatible version with SNI and SSL support for Neon.tech
+gem 'pg', '~> 1.5.0'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
