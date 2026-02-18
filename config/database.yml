@@ -51,3 +51,5 @@ test:
 #
 production:
   url: <%= ENV['DATABASE_URL'] %>
+  # Neon.tech PostgreSQL requires SSL connection and channel binding disable
+  # DATABASE_URL format: postgresql://user:password@host/database?sslmode=require&options=--scram-channel-binding%3Ddisable
