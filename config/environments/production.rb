@@ -28,9 +28,9 @@ Rails.application.configure do
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
-  # Disable asset compilation - use esbuild prebuilt assets
-  # esbuild (yarn build) outputs to app/assets/builds/
-  config.assets.compile = false
+  # Enable asset compilation for missing assets (images, etc.)
+  # esbuild (yarn build) handles CSS/JS, Rails handles images
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
