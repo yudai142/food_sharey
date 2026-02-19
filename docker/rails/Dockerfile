@@ -43,10 +43,12 @@ RUN mkdir -p public/assets
 ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
-# Verify esbuild outputs are ready
-RUN echo "=== Verifying esbuild outputs ===" && \
-    ls -lah app/assets/builds/ && \
-    find app/assets/builds -type f
+# Precompile assets - esbuild CSS/JS already in app/assets/builds
+RUN echo "=== Precompiling assets ===" && \
+    RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 \
+    bundle exec rails assets:precompile 2>&1 && \
+    echo "✓ Asset precompilation completed" && \
+    ls -lah public/assets/ 2>/dev/null || echo "⚠ public/assets may be empty"
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
