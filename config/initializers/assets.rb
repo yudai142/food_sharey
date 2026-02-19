@@ -13,19 +13,11 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added by default.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-# Explicitly precompile all images from app/assets/images
-if ENV['RAILS_ENV'] == 'production'
-  images_path = Rails.root.join('app/assets/images')
-  if File.directory?(images_path)
-    Dir.glob(images_path.join('**/*')).each do |file|
-      next if File.directory?(file)
-      relative_path = file.sub(images_path.to_s + '/', '')
-      Rails.application.config.assets.precompile << relative_path
-    end
-  end
+# Explicitly precompile images from app/assets/images
+# These are copied to public/assets/images in Docker
+Dir.glob(Rails.root.join('app/assets/images/**/*')).each do |file|
+  next if File.directory?(file)
+  relative_path = file.sub(Rails.root.join('app/assets/images/').to_s, '')
+  Rails.application.config.assets.precompile << relative_path
 end
 
-# Configure SASS to look for partials in app/javascript/packs
-# (only for fallback, not primary compilation)
-Rails.application.config.sass.load_paths << Rails.root.join('app/javascript/packs')
-Rails.application.config.sass.load_paths << Rails.root.join('app/javascript/stylesheets')

@@ -48,6 +48,12 @@ RUN echo "=== Verifying esbuild outputs ===" && \
     ls -lah app/assets/builds/ && \
     echo "✓ esbuild complete"
 
+# Copy esbuild outputs to public/assets (for Rails to serve with manifest)
+RUN echo "=== Copying esbuild assets to public ===" && \
+    mkdir -p public/assets && \
+    cp -r app/assets/builds/* public/assets/ 2>/dev/null && \
+    echo "✓ esbuild assets copied to public/assets"
+
 # Copy image assets to public for Rails to serve
 RUN echo "=== Copying image assets to public ===" && \
     mkdir -p public/assets/images && \
