@@ -45,7 +45,14 @@ ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
 # Verify esbuild outputs in app/assets/builds
 RUN echo "=== Verifying esbuild outputs ===" && \
-    ls -lah app/assets/builds/
+    ls -lah app/assets/builds/ && \
+    echo "✓ esbuild complete"
+
+# Copy image assets to public for Rails to serve
+RUN echo "=== Copying image assets to public ===" && \
+    mkdir -p public/assets/images && \
+    cp -r app/assets/images/* public/assets/images/ 2>/dev/null || echo "No images to copy" && \
+    ls -lah public/assets/images/ 2>/dev/null || echo "Images directory complete"
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh

@@ -10,9 +10,22 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
-# folder are already added.
+# folder are already added by default.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-# Configure SCSS/Sass load paths for on-the-fly compilation
+# Explicitly precompile all images from app/assets/images
+if ENV['RAILS_ENV'] == 'production'
+  images_path = Rails.root.join('app/assets/images')
+  if File.directory?(images_path)
+    Dir.glob(images_path.join('**/*')).each do |file|
+      next if File.directory?(file)
+      relative_path = file.sub(images_path.to_s + '/', '')
+      Rails.application.config.assets.precompile << relative_path
+    end
+  end
+end
+
+# Configure SASS to look for partials in app/javascript/packs
+# (only for fallback, not primary compilation)
 Rails.application.config.sass.load_paths << Rails.root.join('app/javascript/packs')
 Rails.application.config.sass.load_paths << Rails.root.join('app/javascript/stylesheets')
