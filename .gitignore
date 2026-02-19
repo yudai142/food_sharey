@@ -23,6 +23,7 @@
 !/storage/.keep
 
 /public/assets
+/app/assets/builds
 .byebug_history
 public/uploads/*
 

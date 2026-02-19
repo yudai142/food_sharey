@@ -1,0 +1,839 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.88kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ruby:3.1-bullseye
+#2 DONE 1.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/13] FROM docker.io/library/ruby:3.1-bullseye@sha256:4cc0e5aaa726f8c2cbf1dfc8e5ecd459dbfbebe44b5eee5da6f79ffcc1b6c36f
+#4 resolve docker.io/library/ruby:3.1-bullseye@sha256:4cc0e5aaa726f8c2cbf1dfc8e5ecd459dbfbebe44b5eee5da6f79ffcc1b6c36f 0.0s done
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 1.64MB 0.8s done
+#5 DONE 0.9s
+
+#6 [ 2/13] RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+#6 1.191 [1;31m2026-02-19 18:54:56 - 
+#6 1.191 ===============================================================================
+#6 1.191                             DEPRECATION WARNING                            
+#6 1.191 ===============================================================================
+#6 1.191 Node.js 18.x is no longer actively supported!
+#6 1.191 You will not receive security or critical stability updates for this version.
+#6 1.191 
+#6 1.191 You should migrate to a supported version of Node.js as soon as possible.
+#6 1.191 
+#6 1.191 Please see https://nodesource.com/products/distributions for details about which
+#6 1.191 version may be appropriate for you.
+#6 1.191 
+#6 1.191 The NodeSource Node.js distributions site contains
+#6 1.191 information both about supported versions of Node.js and N|Solid supported Linux
+#6 1.191 distributions. To learn more about usage, see:
+#6 1.191 https://nodesource.com/products/distributions
+#6 1.191 
+#6 1.191 ===============================================================================
+#6 1.191 
+#6 1.191 Continuing in 10 seconds ...
+#6 1.191 [0m
+#6 11.24 [38;5;79m2026-02-19 18:55:06 - Installing pre-requisites[0m
+#6 11.32 
+#6 11.32 WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+#6 11.32 
+#6 11.43 Get:1 http://deb.debian.org/debian bullseye InRelease [75.1 kB]
+#6 11.45 Get:2 http://deb.debian.org/debian-security bullseye-security InRelease [27.2 kB]
+#6 11.45 Get:3 http://deb.debian.org/debian bullseye-updates InRelease [44.0 kB]
+#6 11.70 Get:4 http://deb.debian.org/debian bullseye/main arm64 Packages [7955 kB]
+#6 11.87 Get:5 http://deb.debian.org/debian-security bullseye-security/main arm64 Packages [444 kB]
+#6 11.94 Get:6 http://deb.debian.org/debian bullseye-updates/main arm64 Packages [16.3 kB]
+#6 13.14 Fetched 8561 kB in 2s (4855 kB/s)
+#6 13.14 Reading package lists...
+#6 13.91 Building dependency tree...
+#6 14.02 Reading state information...
+#6 14.03 106 packages can be upgraded. Run 'apt list --upgradable' to see them.
+#6 14.03 
+#6 14.03 WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+#6 14.03 
+#6 14.05 Reading package lists...
+#6 14.68 Building dependency tree...
+#6 14.78 Reading state information...
+#6 14.89 ca-certificates is already the newest version (20210119).
+#6 14.89 The following additional packages will be installed:
+#6 14.89   dirmngr gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server
+#6 14.89   gpgconf gpgsm gpgv libcurl4 libcurl4-openssl-dev
+#6 14.89 Suggested packages:
+#6 14.89   dbus-user-session libpam-systemd pinentry-gnome3 tor parcimonie xloadimage
+#6 14.89   scdaemon libcurl4-doc libidn11-dev libldap2-dev librtmp-dev libssh2-1-dev
+#6 14.94 The following NEW packages will be installed:
+#6 14.94   apt-transport-https
+#6 14.94 The following packages will be upgraded:
+#6 14.94   curl dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client
+#6 14.94   gpg-wks-server gpgconf gpgsm gpgv libcurl4 libcurl4-openssl-dev
+#6 14.97 14 upgraded, 1 newly installed, 0 to remove and 92 not upgraded.
+#6 14.97 Need to get 9040 kB of archives.
+#6 14.97 After this operation, 171 kB of additional disk space will be used.
+#6 14.97 Get:1 http://deb.debian.org/debian-security bullseye-security/main arm64 gpg-wks-client arm64 2.2.27-2+deb11u3 [517 kB]
+#6 15.03 Get:2 http://deb.debian.org/debian-security bullseye-security/main arm64 dirmngr arm64 2.2.27-2+deb11u3 [743 kB]
+#6 15.05 Get:3 http://deb.debian.org/debian-security bullseye-security/main arm64 gnupg-utils arm64 2.2.27-2+deb11u3 [863 kB]
+#6 15.08 Get:4 http://deb.debian.org/debian-security bullseye-security/main arm64 gpg-wks-server arm64 2.2.27-2+deb11u3 [510 kB]
+#6 15.09 Get:5 http://deb.debian.org/debian-security bullseye-security/main arm64 gpg-agent arm64 2.2.27-2+deb11u3 [651 kB]
+#6 15.12 Get:6 http://deb.debian.org/debian-security bullseye-security/main arm64 gpg arm64 2.2.27-2+deb11u3 [885 kB]
+#6 15.15 Get:7 http://deb.debian.org/debian-security bullseye-security/main arm64 gpgconf arm64 2.2.27-2+deb11u3 [541 kB]
+#6 15.18 Get:8 http://deb.debian.org/debian-security bullseye-security/main arm64 gnupg-l10n all 2.2.27-2+deb11u3 [1084 kB]
+#6 15.20 Get:9 http://deb.debian.org/debian-security bullseye-security/main arm64 gnupg all 2.2.27-2+deb11u3 [825 kB]
+#6 15.22 Get:10 http://deb.debian.org/debian-security bullseye-security/main arm64 gpgsm arm64 2.2.27-2+deb11u3 [628 kB]
+#6 15.24 Get:11 http://deb.debian.org/debian-security bullseye-security/main arm64 gpgv arm64 2.2.27-2+deb11u3 [611 kB]
+#6 15.26 Get:12 http://deb.debian.org/debian bullseye/main arm64 apt-transport-https all 2.2.4 [160 kB]
+#6 15.27 Get:13 http://deb.debian.org/debian-security bullseye-security/main arm64 libcurl4-openssl-dev arm64 7.74.0-1.3+deb11u16 [429 kB]
+#6 15.29 Get:14 http://deb.debian.org/debian-security bullseye-security/main arm64 curl arm64 7.74.0-1.3+deb11u16 [266 kB]
+#6 15.30 Get:15 http://deb.debian.org/debian-security bullseye-security/main arm64 libcurl4 arm64 7.74.0-1.3+deb11u16 [327 kB]
+#6 15.69 debconf: delaying package configuration, since apt-utils is not installed
+#6 15.75 Fetched 9040 kB in 0s (25.1 MB/s)
+#6 15.80 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22789 files and directories currently installed.)
+#6 16.05 Preparing to unpack .../00-gpg-wks-client_2.2.27-2+deb11u3_arm64.deb ...
+#6 16.05 Unpacking gpg-wks-client (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 16.16 Preparing to unpack .../01-dirmngr_2.2.27-2+deb11u3_arm64.deb ...
+#6 16.20 Unpacking dirmngr (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 16.34 Preparing to unpack .../02-gnupg-utils_2.2.27-2+deb11u3_arm64.deb ...
+#6 16.34 Unpacking gnupg-utils (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 16.46 Preparing to unpack .../03-gpg-wks-server_2.2.27-2+deb11u3_arm64.deb ...
+#6 16.46 Unpacking gpg-wks-server (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 16.52 Preparing to unpack .../04-gpg-agent_2.2.27-2+deb11u3_arm64.deb ...
+#6 16.53 Unpacking gpg-agent (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 16.63 Preparing to unpack .../05-gpg_2.2.27-2+deb11u3_arm64.deb ...
+#6 16.63 Unpacking gpg (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 16.73 Preparing to unpack .../06-gpgconf_2.2.27-2+deb11u3_arm64.deb ...
+#6 16.73 Unpacking gpgconf (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 16.79 Preparing to unpack .../07-gnupg-l10n_2.2.27-2+deb11u3_all.deb ...
+#6 16.80 Unpacking gnupg-l10n (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 17.15 Preparing to unpack .../08-gnupg_2.2.27-2+deb11u3_all.deb ...
+#6 17.16 Unpacking gnupg (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 17.27 Preparing to unpack .../09-gpgsm_2.2.27-2+deb11u3_arm64.deb ...
+#6 17.28 Unpacking gpgsm (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 17.34 Preparing to unpack .../10-gpgv_2.2.27-2+deb11u3_arm64.deb ...
+#6 17.34 Unpacking gpgv (2.2.27-2+deb11u3) over (2.2.27-2+deb11u2) ...
+#6 17.40 Setting up gpgv (2.2.27-2+deb11u3) ...
+#6 17.43 Selecting previously unselected package apt-transport-https.
+#6 17.43 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22789 files and directories currently installed.)
+#6 17.45 Preparing to unpack .../apt-transport-https_2.2.4_all.deb ...
+#6 17.45 Unpacking apt-transport-https (2.2.4) ...
+#6 17.47 Preparing to unpack .../libcurl4-openssl-dev_7.74.0-1.3+deb11u16_arm64.deb ...
+#6 17.48 Unpacking libcurl4-openssl-dev:arm64 (7.74.0-1.3+deb11u16) over (7.74.0-1.3+deb11u14) ...
+#6 17.60 Preparing to unpack .../curl_7.74.0-1.3+deb11u16_arm64.deb ...
+#6 17.61 Unpacking curl (7.74.0-1.3+deb11u16) over (7.74.0-1.3+deb11u14) ...
+#6 17.66 Preparing to unpack .../libcurl4_7.74.0-1.3+deb11u16_arm64.deb ...
+#6 17.66 Unpacking libcurl4:arm64 (7.74.0-1.3+deb11u16) over (7.74.0-1.3+deb11u14) ...
+#6 17.73 Setting up apt-transport-https (2.2.4) ...
+#6 17.73 Setting up gnupg-l10n (2.2.27-2+deb11u3) ...
+#6 17.74 Setting up gpgconf (2.2.27-2+deb11u3) ...
+#6 17.74 Setting up libcurl4:arm64 (7.74.0-1.3+deb11u16) ...
+#6 17.75 Setting up curl (7.74.0-1.3+deb11u16) ...
+#6 17.75 Setting up gpg (2.2.27-2+deb11u3) ...
+#6 17.76 Setting up gnupg-utils (2.2.27-2+deb11u3) ...
+#6 17.76 Setting up gpg-agent (2.2.27-2+deb11u3) ...
+#6 18.23 Setting up gpgsm (2.2.27-2+deb11u3) ...
+#6 18.23 Setting up dirmngr (2.2.27-2+deb11u3) ...
+#6 18.33 Setting up libcurl4-openssl-dev:arm64 (7.74.0-1.3+deb11u16) ...
+#6 18.34 Setting up gpg-wks-server (2.2.27-2+deb11u3) ...
+#6 18.35 Setting up gpg-wks-client (2.2.27-2+deb11u3) ...
+#6 18.36 Setting up gnupg (2.2.27-2+deb11u3) ...
+#6 18.36 Processing triggers for libc-bin (2.31-13+deb11u11) ...
+#6 18.71 
+#6 18.71 WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+#6 18.71 
+#6 18.75 Hit:1 http://deb.debian.org/debian bullseye InRelease
+#6 18.76 Hit:2 http://deb.debian.org/debian-security bullseye-security InRelease
+#6 18.76 Hit:3 http://deb.debian.org/debian bullseye-updates InRelease
+#6 18.92 Get:4 https://deb.nodesource.com/node_18.x nodistro InRelease [12.1 kB]
+#6 19.36 Get:5 https://deb.nodesource.com/node_18.x nodistro/main arm64 Packages [11.6 kB]
+#6 19.38 Fetched 23.8 kB in 1s (36.3 kB/s)
+#6 19.38 Reading package lists...
+#6 20.62 Building dependency tree...
+#6 20.85 Reading state information...
+#6 20.93 92 packages can be upgraded. Run 'apt list --upgradable' to see them.
+#6 20.94 [1;34m2026-02-19 18:55:16 - Repository configured successfully.[0m
+#6 20.94 [38;5;79m2026-02-19 18:55:16 - To install Node.js, run: apt install nodejs -y[0m
+#6 20.94 [38;5;79m2026-02-19 18:55:16 - You can use N|solid Runtime as a node.js alternative[0m
+#6 20.95 [1;32m2026-02-19 18:55:16 - To install N|solid Runtime, run: apt install nsolid -y 
+#6 20.95 [0m
+#6 DONE 21.3s
+
+#7 [ 3/13] RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list   && apt-get update -qq   && apt-get install -y nodejs yarn
+#7 0.543 Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+#7 2.481 OK
+#7 2.528 deb https://dl.yarnpkg.com/debian/ stable main
+#7 5.142 Reading package lists...
+#7 5.664 Building dependency tree...
+#7 5.810 Reading state information...
+#7 5.958 The following NEW packages will be installed:
+#7 5.958   nodejs yarn
+#7 6.236 0 upgraded, 2 newly installed, 0 to remove and 92 not upgraded.
+#7 6.236 Need to get 29.8 MB of archives.
+#7 6.236 After this operation, 193 MB of additional disk space will be used.
+#7 6.236 Get:1 https://dl.yarnpkg.com/debian stable/main arm64 yarn all 1.22.22-1 [896 kB]
+#7 6.301 Get:2 https://deb.nodesource.com/node_18.x nodistro/main arm64 nodejs arm64 18.20.8-1nodesource1 [28.9 MB]
+#7 7.151 debconf: delaying package configuration, since apt-utils is not installed
+#7 7.204 Fetched 29.8 MB in 1s (38.5 MB/s)
+#7 7.243 Selecting previously unselected package nodejs.
+#7 7.243 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22793 files and directories currently installed.)
+#7 7.330 Preparing to unpack .../nodejs_18.20.8-1nodesource1_arm64.deb ...
+#7 7.335 Unpacking nodejs (18.20.8-1nodesource1) ...
+#7 14.67 Selecting previously unselected package yarn.
+#7 14.68 Preparing to unpack .../yarn_1.22.22-1_all.deb ...
+#7 14.68 Unpacking yarn (1.22.22-1) ...
+#7 14.86 Setting up nodejs (18.20.8-1nodesource1) ...
+#7 14.89 Setting up yarn (1.22.22-1) ...
+#7 DONE 15.3s
+
+#8 [ 4/13] RUN apt-get update -qq &&   apt-get install -y apt-utils   build-essential   libpq-dev   vim   default-mysql-client
+#8 1.945 Reading package lists...
+#8 2.401 Building dependency tree...
+#8 2.553 Reading state information...
+#8 2.688 The following additional packages will be installed:
+#8 2.688   libconfig-inifiles-perl libdbd-mariadb-perl libdbi-perl libgpm2 libpq5
+#8 2.688   libterm-readkey-perl mariadb-client-10.5 mariadb-client-core-10.5
+#8 2.689   mariadb-common vim-common vim-runtime xxd
+#8 2.689 Suggested packages:
+#8 2.689   libclone-perl libmldbm-perl libnet-daemon-perl libsql-statement-perl gpm
+#8 2.689   postgresql-doc-13 ctags vim-doc vim-scripts
+#8 2.769 The following NEW packages will be installed:
+#8 2.769   apt-utils build-essential default-mysql-client libconfig-inifiles-perl
+#8 2.769   libdbd-mariadb-perl libdbi-perl libgpm2 libterm-readkey-perl
+#8 2.769   mariadb-client-10.5 mariadb-client-core-10.5 vim vim-common vim-runtime xxd
+#8 2.770 The following packages will be upgraded:
+#8 2.770   libpq-dev libpq5 mariadb-common
+#8 2.813 3 upgraded, 14 newly installed, 0 to remove and 89 not upgraded.
+#8 2.813 Need to get 12.1 MB of archives.
+#8 2.813 After this operation, 77.0 MB of additional disk space will be used.
+#8 2.813 Get:1 http://deb.debian.org/debian bullseye/main arm64 apt-utils arm64 2.2.4 [426 kB]
+#8 2.856 Get:2 http://deb.debian.org/debian-security bullseye-security/main arm64 xxd arm64 2:8.2.2434-3+deb11u3 [192 kB]
+#8 2.865 Get:3 http://deb.debian.org/debian-security bullseye-security/main arm64 vim-common all 2:8.2.2434-3+deb11u3 [227 kB]
+#8 2.869 Get:4 http://deb.debian.org/debian bullseye/main arm64 build-essential arm64 12.9 [7704 B]
+#8 2.876 Get:5 http://deb.debian.org/debian bullseye/main arm64 libconfig-inifiles-perl all 3.000003-1 [52.1 kB]
+#8 2.915 Get:6 http://deb.debian.org/debian-security bullseye-security/main arm64 mariadb-common all 1:10.5.29-0+deb11u1 [38.5 kB]
+#8 2.923 Get:7 http://deb.debian.org/debian-security bullseye-security/main arm64 mariadb-client-core-10.5 arm64 1:10.5.29-0+deb11u1 [766 kB]
+#8 2.943 Get:8 http://deb.debian.org/debian-security bullseye-security/main arm64 mariadb-client-10.5 arm64 1:10.5.29-0+deb11u1 [1497 kB]
+#8 2.964 Get:9 http://deb.debian.org/debian bullseye/main arm64 default-mysql-client all 1.0.7 [3700 B]
+#8 2.972 Get:10 http://deb.debian.org/debian bullseye/main arm64 libdbi-perl arm64 1.643-3+b1 [774 kB]
+#8 2.989 Get:11 http://deb.debian.org/debian bullseye/main arm64 libdbd-mariadb-perl arm64 1.21-3 [104 kB]
+#8 3.001 Get:12 http://deb.debian.org/debian bullseye/main arm64 libgpm2 arm64 1.20.7-8 [35.9 kB]
+#8 3.019 Get:13 http://deb.debian.org/debian-security bullseye-security/main arm64 libpq-dev arm64 13.23-0+deb11u1 [144 kB]
+#8 3.029 Get:14 http://deb.debian.org/debian-security bullseye-security/main arm64 libpq5 arm64 13.23-0+deb11u1 [182 kB]
+#8 3.043 Get:15 http://deb.debian.org/debian bullseye/main arm64 libterm-readkey-perl arm64 2.38-1+b2 [27.3 kB]
+#8 3.044 Get:16 http://deb.debian.org/debian-security bullseye-security/main arm64 vim-runtime all 2:8.2.2434-3+deb11u3 [6229 kB]
+#8 3.161 Get:17 http://deb.debian.org/debian-security bullseye-security/main arm64 vim arm64 2:8.2.2434-3+deb11u3 [1388 kB]
+#8 3.402 debconf: delaying package configuration, since apt-utils is not installed
+#8 3.440 Fetched 12.1 MB in 0s (30.9 MB/s)
+#8 3.459 Selecting previously unselected package apt-utils.
+#8 3.459 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 28129 files and directories currently installed.)
+#8 3.522 Preparing to unpack .../00-apt-utils_2.2.4_arm64.deb ...
+#8 3.525 Unpacking apt-utils (2.2.4) ...
+#8 3.840 Selecting previously unselected package xxd.
+#8 3.844 Preparing to unpack .../01-xxd_2%3a8.2.2434-3+deb11u3_arm64.deb ...
+#8 3.846 Unpacking xxd (2:8.2.2434-3+deb11u3) ...
+#8 3.889 Selecting previously unselected package vim-common.
+#8 3.892 Preparing to unpack .../02-vim-common_2%3a8.2.2434-3+deb11u3_all.deb ...
+#8 3.898 Unpacking vim-common (2:8.2.2434-3+deb11u3) ...
+#8 3.993 Selecting previously unselected package build-essential.
+#8 3.996 Preparing to unpack .../03-build-essential_12.9_arm64.deb ...
+#8 4.003 Unpacking build-essential (12.9) ...
+#8 4.057 Selecting previously unselected package libconfig-inifiles-perl.
+#8 4.061 Preparing to unpack .../04-libconfig-inifiles-perl_3.000003-1_all.deb ...
+#8 4.086 Unpacking libconfig-inifiles-perl (3.000003-1) ...
+#8 4.266 Preparing to unpack .../05-mariadb-common_1%3a10.5.29-0+deb11u1_all.deb ...
+#8 4.281 Unpacking mariadb-common (1:10.5.29-0+deb11u1) over (1:10.5.28-0+deb11u1) ...
+#8 4.366 Selecting previously unselected package mariadb-client-core-10.5.
+#8 4.369 Preparing to unpack .../06-mariadb-client-core-10.5_1%3a10.5.29-0+deb11u1_arm64.deb ...
+#8 4.372 Unpacking mariadb-client-core-10.5 (1:10.5.29-0+deb11u1) ...
+#8 4.517 Selecting previously unselected package mariadb-client-10.5.
+#8 4.520 Preparing to unpack .../07-mariadb-client-10.5_1%3a10.5.29-0+deb11u1_arm64.deb ...
+#8 4.522 Unpacking mariadb-client-10.5 (1:10.5.29-0+deb11u1) ...
+#8 4.928 Selecting previously unselected package default-mysql-client.
+#8 4.931 Preparing to unpack .../08-default-mysql-client_1.0.7_all.deb ...
+#8 4.933 Unpacking default-mysql-client (1.0.7) ...
+#8 4.947 Selecting previously unselected package libdbi-perl:arm64.
+#8 4.950 Preparing to unpack .../09-libdbi-perl_1.643-3+b1_arm64.deb ...
+#8 4.953 Unpacking libdbi-perl:arm64 (1.643-3+b1) ...
+#8 5.052 Selecting previously unselected package libdbd-mariadb-perl.
+#8 5.056 Preparing to unpack .../10-libdbd-mariadb-perl_1.21-3_arm64.deb ...
+#8 5.058 Unpacking libdbd-mariadb-perl (1.21-3) ...
+#8 5.087 Selecting previously unselected package libgpm2:arm64.
+#8 5.090 Preparing to unpack .../11-libgpm2_1.20.7-8_arm64.deb ...
+#8 5.098 Unpacking libgpm2:arm64 (1.20.7-8) ...
+#8 5.118 Preparing to unpack .../12-libpq-dev_13.23-0+deb11u1_arm64.deb ...
+#8 5.122 Unpacking libpq-dev (13.23-0+deb11u1) over (13.20-0+deb11u1) ...
+#8 5.231 Preparing to unpack .../13-libpq5_13.23-0+deb11u1_arm64.deb ...
+#8 5.280 Unpacking libpq5:arm64 (13.23-0+deb11u1) over (13.20-0+deb11u1) ...
+#8 5.395 Selecting previously unselected package libterm-readkey-perl.
+#8 5.403 Preparing to unpack .../14-libterm-readkey-perl_2.38-1+b2_arm64.deb ...
+#8 5.408 Unpacking libterm-readkey-perl (2.38-1+b2) ...
+#8 5.433 Selecting previously unselected package vim-runtime.
+#8 5.436 Preparing to unpack .../15-vim-runtime_2%3a8.2.2434-3+deb11u3_all.deb ...
+#8 5.453 Adding 'diversion of /usr/share/vim/vim82/doc/help.txt to /usr/share/vim/vim82/doc/help.txt.vim-tiny by vim-runtime'
+#8 5.461 Adding 'diversion of /usr/share/vim/vim82/doc/tags to /usr/share/vim/vim82/doc/tags.vim-tiny by vim-runtime'
+#8 5.462 Unpacking vim-runtime (2:8.2.2434-3+deb11u3) ...
+#8 6.395 Selecting previously unselected package vim.
+#8 6.400 Preparing to unpack .../16-vim_2%3a8.2.2434-3+deb11u3_arm64.deb ...
+#8 6.406 Unpacking vim (2:8.2.2434-3+deb11u3) ...
+#8 6.551 Setting up libconfig-inifiles-perl (3.000003-1) ...
+#8 6.559 Setting up apt-utils (2.2.4) ...
+#8 6.563 Setting up libgpm2:arm64 (1.20.7-8) ...
+#8 6.568 Setting up libpq5:arm64 (13.23-0+deb11u1) ...
+#8 6.574 Setting up libpq-dev (13.23-0+deb11u1) ...
+#8 6.578 Setting up xxd (2:8.2.2434-3+deb11u3) ...
+#8 6.582 Setting up mariadb-common (1:10.5.29-0+deb11u1) ...
+#8 6.601 Setting up vim-common (2:8.2.2434-3+deb11u3) ...
+#8 6.614 Setting up mariadb-client-core-10.5 (1:10.5.29-0+deb11u1) ...
+#8 6.620 Setting up mariadb-client-10.5 (1:10.5.29-0+deb11u1) ...
+#8 6.630 Setting up build-essential (12.9) ...
+#8 6.635 Setting up libterm-readkey-perl (2.38-1+b2) ...
+#8 6.639 Setting up vim-runtime (2:8.2.2434-3+deb11u3) ...
+#8 6.711 Setting up libdbi-perl:arm64 (1.643-3+b1) ...
+#8 6.717 Setting up default-mysql-client (1.0.7) ...
+#8 6.721 Setting up vim (2:8.2.2434-3+deb11u3) ...
+#8 6.726 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vim (vim) in auto mode
+#8 6.729 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vimdiff (vimdiff) in auto mode
+#8 6.732 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rvim (rvim) in auto mode
+#8 6.735 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rview (rview) in auto mode
+#8 6.741 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vi (vi) in auto mode
+#8 6.746 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/view (view) in auto mode
+#8 6.751 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/ex (ex) in auto mode
+#8 6.754 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in auto mode
+#8 6.762 Setting up libdbd-mariadb-perl (1.21-3) ...
+#8 6.768 Processing triggers for libc-bin (2.31-13+deb11u11) ...
+#8 6.804 Processing triggers for hicolor-icon-theme (0.17-2) ...
+#8 DONE 7.0s
+
+#9 [ 5/13] WORKDIR /app
+#9 DONE 0.1s
+
+#10 [ 6/13] COPY . /app
+#10 DONE 4.4s
+
+#11 [ 7/13] RUN bundle config --local set path 'vendor/bundle'   && bundle install -j4
+#11 2.499 Fetching gem metadata from https://rubygems.org/.........
+#11 6.056 Resolving dependencies......
+#11 8.377 Fetching rake 13.3.1
+#11 8.521 Installing rake 13.3.1
+#11 8.571 Fetching base64 0.3.0
+#11 8.572 Fetching benchmark 0.5.0
+#11 8.573 Fetching bigdecimal 3.3.1
+#11 8.578 Fetching concurrent-ruby 1.3.6
+#11 8.614 Installing base64 0.3.0
+#11 8.621 Fetching drb 2.2.3
+#11 8.650 Installing benchmark 0.5.0
+#11 8.651 Installing concurrent-ruby 1.3.6
+#11 8.664 Installing drb 2.2.3
+#11 8.677 Fetching logger 1.7.0
+#11 8.696 Fetching minitest 5.27.0
+#11 8.700 Installing bigdecimal 3.3.1 with native extensions
+#11 8.740 Installing logger 1.7.0
+#11 8.867 Installing minitest 5.27.0
+#11 8.892 Fetching mutex_m 0.3.0
+#11 8.947 Installing mutex_m 0.3.0
+#11 8.974 Fetching securerandom 0.4.1
+#11 8.985 Fetching builder 3.3.0
+#11 9.017 Fetching erubi 1.13.1
+#11 9.029 Installing securerandom 0.4.1
+#11 9.046 Installing builder 3.3.0
+#11 9.052 Fetching racc 1.8.1
+#11 9.075 Installing erubi 1.13.1
+#11 9.153 Fetching crass 1.0.6
+#11 9.174 Fetching rack 2.2.22
+#11 9.180 Installing racc 1.8.1 with native extensions
+#11 9.292 Installing crass 1.0.6
+#11 9.312 Installing rack 2.2.22
+#11 9.326 Fetching nio4r 2.7.5
+#11 9.407 Installing nio4r 2.7.5 with native extensions
+#11 9.424 Fetching websocket-extensions 0.1.5
+#11 9.520 Installing websocket-extensions 0.1.5
+#11 9.542 Fetching marcel 1.0.4
+#11 9.591 Installing marcel 1.0.4
+#11 9.602 Fetching mini_mime 1.1.5
+#11 9.658 Installing mini_mime 1.1.5
+#11 9.680 Fetching date 3.5.1
+#11 9.742 Installing date 3.5.1 with native extensions
+#11 10.37 Fetching timeout 0.6.0
+#11 10.43 Installing timeout 0.6.0
+#11 10.44 Fetching public_suffix 6.0.2
+#11 10.51 Installing public_suffix 6.0.2
+#11 10.53 Fetching ast 2.4.3
+#11 10.56 Installing ast 2.4.3
+#11 10.56 Fetching bcrypt 3.1.21
+#11 10.63 Installing bcrypt 3.1.21 with native extensions
+#11 11.99 Fetching bindex 0.8.1
+#11 12.07 Installing bindex 0.8.1 with native extensions
+#11 12.39 Fetching msgpack 1.8.0
+#11 12.45 Installing msgpack 1.8.0 with native extensions
+#11 13.96 Using bundler 2.3.27
+#11 13.96 Fetching byebug 12.0.0
+#11 14.03 Installing byebug 12.0.0 with native extensions
+#11 16.36 Fetching matrix 0.4.3
+#11 16.46 Installing matrix 0.4.3
+#11 16.48 Fetching regexp_parser 2.11.3
+#11 16.54 Installing regexp_parser 2.11.3
+#11 16.60 Fetching ffi 1.16.3
+#11 18.02 Fetching ssrf_filter 1.3.0
+#11 18.12 Installing ffi 1.16.3 with native extensions
+#11 18.21 Installing ssrf_filter 1.3.0
+#11 18.39 Fetching coderay 1.1.3
+#11 18.65 Installing coderay 1.1.3
+#11 18.80 Fetching diff-lcs 1.6.2
+#11 18.88 Installing diff-lcs 1.6.2
+#11 19.11 Fetching method_source 1.1.0
+#11 19.19 Installing method_source 1.1.0
+#11 19.22 Fetching thor 1.5.0
+#11 19.28 Installing thor 1.5.0
+#11 19.34 Fetching zeitwerk 2.6.18
+#11 19.39 Installing zeitwerk 2.6.18
+#11 19.41 Fetching uri 1.1.1
+#11 19.74 Installing uri 1.1.1
+#11 19.80 Fetching json 2.18.1
+#11 19.88 Installing json 2.18.1 with native extensions
+#11 20.25 Fetching io-console 0.8.2
+#11 20.40 Installing io-console 0.8.2 with native extensions
+#11 23.87 Fetching mime-types-data 3.2026.0203
+#11 24.47 Installing mime-types-data 3.2026.0203
+#11 24.65 Fetching multi_json 1.19.1
+#11 24.79 Installing multi_json 1.19.1
+#11 24.88 Fetching hpricot 0.8.6
+#11 25.04 Installing hpricot 0.8.6 with native extensions
+#11 34.66 Fetching language_server-protocol 3.17.0.5
+#11 35.52 Installing language_server-protocol 3.17.0.5
+#11 37.33 Fetching lint_roller 1.1.0
+#11 37.72 Installing lint_roller 1.1.0
+#11 37.81 Fetching rb-fsevent 0.11.2
+#11 37.98 Installing rb-fsevent 0.11.2
+#11 38.36 Fetching version_gem 1.1.9
+#11 38.85 Installing version_gem 1.1.9
+#11 39.25 Fetching pagy 9.4.0
+#11 39.38 Installing pagy 9.4.0
+#11 39.65 Fetching parallel 1.27.0
+#11 39.73 Installing parallel 1.27.0
+#11 39.81 Fetching pg 1.5.9
+#11 40.20 Installing pg 1.5.9 with native extensions
+#11 48.67 Fetching prism 1.9.0
+#11 49.42 Installing prism 1.9.0 with native extensions
+#11 57.95 Fetching rainbow 3.1.1
+#11 60.17 Installing rainbow 3.1.1
+#11 60.76 Fetching rexml 3.4.4
+#11 61.65 Installing rexml 3.4.4
+#11 62.90 Fetching rspec-support 3.13.7
+#11 63.40 Installing rspec-support 3.13.7
+#11 63.53 Fetching ruby-progressbar 1.13.0
+#11 63.62 Installing ruby-progressbar 1.13.0
+#11 63.70 Fetching unicode-emoji 4.2.0
+#11 63.84 Installing unicode-emoji 4.2.0
+#11 63.94 Fetching rubyzip 2.4.1
+#11 64.10 Installing rubyzip 2.4.1
+#11 64.24 Fetching tilt 2.7.0
+#11 64.36 Installing tilt 2.7.0
+#11 64.51 Fetching websocket 1.2.11
+#11 64.65 Installing websocket 1.2.11
+#11 64.83 Fetching temple 0.10.4
+#11 64.94 Installing temple 0.10.4
+#11 65.05 Fetching spring 4.4.2
+#11 65.11 Installing spring 4.4.2
+#11 65.19 Fetching turbolinks-source 5.2.0
+#11 65.25 Installing turbolinks-source 5.2.0
+#11 65.30 Fetching jwt 3.1.2
+#11 65.38 Installing jwt 3.1.2
+#11 65.54 Fetching mini_magick 5.3.1
+#11 65.63 Installing mini_magick 5.3.1
+#11 65.67 Fetching excon 1.3.2
+#11 65.79 Installing excon 1.3.2
+#11 65.87 Fetching hashie 5.1.0
+#11 65.93 Installing hashie 5.1.0
+#11 66.00 Fetching i18n 1.14.8
+#11 66.07 Installing i18n 1.14.8
+#11 66.13 Fetching tzinfo 2.0.6
+#11 66.24 Installing tzinfo 2.0.6
+#11 66.30 Fetching rack-test 2.2.0
+#11 66.37 Installing rack-test 2.2.0
+#11 66.42 Fetching sprockets 4.2.2
+#11 66.58 Installing sprockets 4.2.2
+#11 66.76 Fetching websocket-driver 0.8.0
+#11 66.88 Installing websocket-driver 0.8.0 with native extensions
+#11 67.97 Fetching nokogiri 1.18.10 (aarch64-linux-gnu)
+#11 90.78 Fetching net-protocol 0.2.2
+#11 91.34 Installing nokogiri 1.18.10 (aarch64-linux-gnu)
+#11 91.40 Installing net-protocol 0.2.2
+#11 94.71 Fetching addressable 2.8.8
+#11 96.14 Installing addressable 2.8.8
+#11 97.26 Fetching parser 3.3.10.2
+#11 98.51 Installing parser 3.3.10.2
+#11 102.8 Fetching puma 5.6.9
+#11 103.4 Installing puma 5.6.9 with native extensions
+#11 103.6 Fetching multi_xml 0.7.1
+#11 103.7 Installing multi_xml 0.7.1
+#11 103.9 Fetching mysql2 0.5.7
+#11 104.3 Installing mysql2 0.5.7 with native extensions
+#11 105.0 Fetching pry 0.15.2
+#11 105.3 Installing pry 0.15.2
+#11 105.6 Fetching foreman 0.90.0
+#11 105.7 Installing foreman 0.90.0
+#11 106.0 Fetching net-http 0.9.1
+#11 106.3 Installing net-http 0.9.1
+#11 106.5 Fetching bootsnap 1.23.0
+#11 106.6 Installing bootsnap 1.23.0 with native extensions
+#11 111.3 Fetching mime-types 3.7.0
+#11 111.7 Installing mime-types 3.7.0
+#11 111.9 Fetching reline 0.6.3
+#11 112.1 Installing reline 0.6.3
+#11 112.2 Fetching oauth-tty 1.0.6
+#11 112.4 Installing oauth-tty 1.0.6
+#11 112.5 Fetching ruby-vips 2.3.0
+#11 112.8 Installing ruby-vips 2.3.0
+#11 113.1 Fetching rb-inotify 0.11.1
+#11 113.2 Installing rb-inotify 0.11.1
+#11 113.2 Fetching sassc 2.4.0
+#11 123.3 Installing sassc 2.4.0 with native extensions
+#11 127.5 Fetching rspec-core 3.13.6
+#11 127.9 Installing rspec-core 3.13.6
+#11 128.1 Fetching rspec-expectations 3.13.5
+#11 128.3 Installing rspec-expectations 3.13.5
+#11 128.5 Fetching rspec-mocks 3.13.7
+#11 128.7 Installing rspec-mocks 3.13.7
+#11 129.0 Fetching unicode-display_width 3.2.0
+#11 129.1 Installing unicode-display_width 3.2.0
+#11 129.2 Fetching selenium-webdriver 4.10.0
+#11 134.2 Installing selenium-webdriver 4.10.0
+#11 140.0 Fetching slim 5.2.1
+#11 140.1 Fetching turbolinks 5.2.1
+#11 140.5 Installing turbolinks 5.2.1
+#11 140.5 Installing slim 5.2.1
+#11 140.7 Fetching snaky_hash 2.0.3
+#11 140.9 Installing snaky_hash 2.0.3
+#11 141.0 Fetching faker 3.6.0
+#11 141.8 Fetching activesupport 7.0.10
+#11 142.8 Installing activesupport 7.0.10
+#11 143.3 Installing faker 3.6.0
+#11 144.3 Fetching html2slim 0.2.0
+#11 144.7 Installing html2slim 0.2.0
+#11 144.8 Fetching net-imap 0.5.13
+#11 145.0 Installing net-imap 0.5.13
+#11 145.3 Fetching net-pop 0.1.2
+#11 145.5 Installing net-pop 0.1.2
+#11 145.6 Fetching net-smtp 0.5.1
+#11 145.8 Installing net-smtp 0.5.1
+#11 145.9 Fetching loofah 2.25.0
+#11 146.1 Installing loofah 2.25.0
+#11 146.2 Fetching xpath 3.2.0
+#11 146.3 Installing xpath 3.2.0
+#11 146.5 Fetching pry-byebug 3.11.0
+#11 146.6 Installing pry-byebug 3.11.0
+#11 146.8 Fetching faraday-net_http 3.4.2
+#11 146.9 Installing faraday-net_http 3.4.2
+#11 147.0 Fetching formatador 1.2.3
+#11 148.6 Installing formatador 1.2.3
+#11 148.8 Fetching image_processing 1.14.0
+#11 149.0 Installing image_processing 1.14.0
+#11 149.0 Fetching listen 3.10.0
+#11 149.1 Fetching webdrivers 5.3.1
+#11 149.3 Installing listen 3.10.0
+#11 149.3 Installing webdrivers 5.3.1
+#11 149.4 Fetching oauth 1.1.3
+#11 149.4 Fetching rails-dom-testing 2.3.0
+#11 149.6 Installing rails-dom-testing 2.3.0
+#11 149.6 Installing oauth 1.1.3
+#11 149.8 Fetching globalid 1.3.0
+#11 150.0 Fetching activemodel 7.0.10
+#11 150.0 Installing globalid 1.3.0
+#11 150.2 Fetching factory_bot 6.5.6
+#11 150.2 Installing activemodel 7.0.10
+#11 150.4 Installing factory_bot 6.5.6
+#11 150.6 Fetching mail 2.9.0
+#11 150.6 Fetching rails-html-sanitizer 1.6.2
+#11 150.7 Installing rails-html-sanitizer 1.6.2
+#11 151.0 Fetching capybara 3.40.0
+#11 151.1 Installing mail 2.9.0
+#11 152.1 Installing capybara 3.40.0
+#11 154.2 Fetching faraday 2.14.1
+#11 154.5 Installing faraday 2.14.1
+#11 156.7 Fetching fog-core 2.6.0
+#11 156.9 Fetching activejob 7.0.10
+#11 157.1 Installing fog-core 2.6.0
+#11 157.2 Installing activejob 7.0.10
+#11 159.7 Fetching activerecord 7.0.10
+#11 160.3 Fetching carrierwave 3.1.2
+#11 160.5 Installing carrierwave 3.1.2
+#11 160.7 Installing activerecord 7.0.10
+#11 161.0 Fetching actionview 7.0.10
+#11 161.5 Installing actionview 7.0.10
+#11 162.3 Fetching oauth2 2.0.18
+#11 162.7 Installing oauth2 2.0.18
+#11 171.0 Fetching fog-json 1.2.0
+#11 171.5 Installing fog-json 1.2.0
+#11 171.8 Fetching fog-xml 0.1.5
+#11 172.0 Fetching actionpack 7.0.10
+#11 172.2 Installing fog-xml 0.1.5
+#11 172.3 Installing actionpack 7.0.10
+#11 172.4 Fetching jbuilder 2.14.1
+#11 172.4 Installing jbuilder 2.14.1
+#11 172.7 Fetching sorcery 0.17.0
+#11 173.1 Installing sorcery 0.17.0
+#11 173.3 Fetching fog-aws 3.33.1
+#11 173.9 Installing fog-aws 3.33.1
+#11 174.6 Fetching actioncable 7.0.10
+#11 175.1 Installing actioncable 7.0.10
+#11 175.5 Fetching activestorage 7.0.10
+#11 175.6 Installing activestorage 7.0.10
+#11 176.2 Fetching actionmailer 7.0.10
+#11 176.4 Installing actionmailer 7.0.10
+#11 176.6 Fetching railties 7.0.10
+#11 177.7 Installing railties 7.0.10
+#11 179.5 Fetching sprockets-rails 3.5.2
+#11 179.9 Installing sprockets-rails 3.5.2
+#11 180.0 Fetching actionmailbox 7.0.10
+#11 180.2 Installing actionmailbox 7.0.10
+#11 180.5 Fetching actiontext 7.0.10
+#11 180.6 Installing actiontext 7.0.10
+#11 180.8 Fetching factory_bot_rails 6.5.1
+#11 180.9 Fetching jsbundling-rails 1.3.1
+#11 181.0 Installing factory_bot_rails 6.5.1
+#11 181.0 Installing jsbundling-rails 1.3.1
+#11 181.0 Fetching rails-i18n 7.0.10
+#11 181.0 Fetching rspec-rails 4.0.2
+#11 181.1 Installing rspec-rails 4.0.2
+#11 181.2 Installing rails-i18n 7.0.10
+#11 181.8 Fetching slim-rails 4.0.0
+#11 181.8 Fetching web-console 4.2.1
+#11 181.9 Installing slim-rails 4.0.0
+#11 181.9 Installing web-console 4.2.1
+#11 182.1 Fetching rails 7.0.10
+#11 182.2 Installing rails 7.0.10
+#11 182.3 Fetching rubocop-ast 1.49.0
+#11 182.4 Installing rubocop-ast 1.49.0
+#11 182.7 Fetching rubocop 1.84.2
+#11 183.0 Installing rubocop 1.84.2
+#11 184.1 Fetching rubocop-rails 2.34.3
+#11 184.1 Fetching rubocop-performance 1.26.1
+#11 184.5 Installing rubocop-performance 1.26.1
+#11 184.5 Installing rubocop-rails 2.34.3
+#11 297.3 Fetching sassc-rails 2.1.2
+#11 298.2 Installing sassc-rails 2.1.2
+#11 298.4 Fetching sass-rails 6.0.0
+#11 298.5 Installing sass-rails 6.0.0
+#11 299.0 Bundle complete! 34 Gemfile dependencies, 151 gems now installed.
+#11 299.0 Use `bundle info [gemname]` to see where a bundled gem is installed.
+#11 299.0 Post-install message from minitest:
+#11 299.0 NOTE: minitest 5 will be the last in the minitest family to support
+#11 299.0       ruby 1.8 to 2.7. If you need to keep using these versions,
+#11 299.0       you need to pin your dependency to minitest with something
+#11 299.0       like "~> 5.0". See History.rdoc to locate compatible
+#11 299.0       versions.
+#11 299.0 
+#11 299.0       Further, minitest 6 will be dropping the following:
+#11 299.0 
+#11 299.0       + MiniTest (it's been Minitest for >10 years)
+#11 299.0       + MiniTest::Unit
+#11 299.0       + MiniTest::Unit::TestCase
+#11 299.0       + assert_send (unless you argue for it well)
+#11 299.0       + assert_equal nil, obj
+#11 299.0       + mocks and stubs: moving minitest/mock.rb to its own gem
+#11 299.0 Post-install message from oauth2:
+#11 299.0 
+#11 299.0 ---+++--- oauth2 v2.0.18 ---+++---
+#11 299.0 
+#11 299.0 (minor) ⚠️ BREAKING CHANGES ⚠️ when upgrading from < v2
+#11 299.0 • Summary of breaking changes: https://gitlab.com/ruby-oauth/oauth2#what-is-new-for-v20
+#11 299.0 • Changes in this patch: https://gitlab.com/ruby-oauth/oauth2/-/blob/v2.0.18/CHANGELOG.md#2015-2025-09-08
+#11 299.0 
+#11 299.0 News:
+#11 299.0 1. New documentation website, including for OAuth 2.1 and OIDC: https://oauth2.galtzo.com
+#11 299.0 2. New official Discord for discussion and support: https://discord.gg/3qme4XHNKN
+#11 299.0 3. New org name "ruby-oauth" on Open Source Collective, GitHub, GitLab, Codeberg (update git remotes!)
+#11 299.0 4. Non-commercial support for the 2.x series will end by April, 2026. Please make a plan to upgrade to the next version prior to that date.
+#11 299.0 Support will be dropped for Ruby 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 3.0, 3.1 and any other Ruby versions which will also have reached EOL by then.
+#11 299.0 5. Gem releases are cryptographically signed with a 20-year cert; SHA-256 & SHA-512 checksums by stone_checksums.
+#11 299.0 6. Please consider supporting this project:
+#11 299.0    • https://opencollective.com/ruby-oauth (new!)
+#11 299.0    • https://liberapay.com/pboling
+#11 299.0    • https://github.com/sponsors/pboling
+#11 299.0    • https://www.paypal.com/paypalme/peterboling
+#11 299.0    • https://ko-fi.com/pboling
+#11 299.0    • https://www.buymeacoffee.com/pboling
+#11 299.0    • https://tidelift.com/funding/github/rubygems/oauth
+#11 299.0    • Hire me - I can build anything
+#11 299.0    • Report issues, and star the project
+#11 299.0 Thanks, @pboling / @galtzo
+#11 299.0 Post-install message from rubyzip:
+#11 299.0 RubyZip 3.0 is coming!
+#11 299.0 **********************
+#11 299.0 
+#11 299.0 The public API of some Rubyzip classes has been modernized to use named
+#11 299.0 parameters for optional arguments. Please check your usage of the
+#11 299.0 following classes:
+#11 299.0   * `Zip::File`
+#11 299.0   * `Zip::Entry`
+#11 299.0   * `Zip::InputStream`
+#11 299.0   * `Zip::OutputStream`
+#11 299.0   * `Zip::DOSTime`
+#11 299.0 
+#11 299.0 Run your test suite with the `RUBYZIP_V3_API_WARN` environment
+#11 299.0 variable set to see warnings about usage of the old API. This will
+#11 299.0 help you to identify any changes that you need to make to your code.
+#11 299.0 See https://github.com/rubyzip/rubyzip/wiki/Updating-to-version-3.x for
+#11 299.0 more information.
+#11 299.0 
+#11 299.0 Please ensure that your Gemfiles and .gemspecs are suitably restrictive
+#11 299.0 to avoid an unexpected breakage when 3.0 is released (e.g. ~> 2.3.0).
+#11 299.0 See https://github.com/rubyzip/rubyzip for details. The Changelog also
+#11 299.0 lists other enhancements and bugfixes that have been implemented since
+#11 299.0 version 2.3.0.
+#11 299.0 Post-install message from sorcery:
+#11 299.0 As of version 1.0 oauth/oauth2 won't be automatically bundled so you may need to add those dependencies to your Gemfile.
+#11 299.0 You may need oauth2 if you use external providers such as any of these: https://github.com/Sorcery/sorcery/tree/master/lib/sorcery/providers
+#11 299.0 Post-install message from webdrivers:
+#11 299.0 Webdrivers gem update options
+#11 299.0 *****************************
+#11 299.0 
+#11 299.0 Selenium itself now manages drivers by default: https://www.selenium.dev/documentation/selenium_manager
+#11 299.0 * If you are using Ruby 3+ — please update to Selenium 4.11+ and stop requiring this gem
+#11 299.0 * If you are using Ruby 2.6+ and Selenium 4.0+ — this version will work for now
+#11 299.0 * If you use Ruby < 2.6 or Selenium 3, a 6.0 version of this gem with additional support is planned
+#11 299.0 
+#11 299.0 Restrict your gemfile to "webdrivers", "= 5.3.0" to stop seeing this message
+#11 DONE 302.8s
+
+#12 [ 8/13] RUN yarn install --ignore-engines
+#12 2.659 yarn install v1.22.22
+#12 2.839 [1/4] Resolving packages...
+#12 2.928 [2/4] Fetching packages...
+#12 14.22 [3/4] Linking dependencies...
+#12 15.77 [4/4] Building fresh packages...
+#12 17.31 Done in 14.66s.
+#12 DONE 21.1s
+
+#13 [ 9/13] RUN echo "=== Building assets with esbuild ===" &&     NODE_ENV=production yarn build &&     echo "✓ yarn build completed" &&     echo "Checking app/assets/builds directory:" &&     ls -lah app/assets/builds/ 2>/dev/null || echo "Directory not found yet"
+#13 2.199 === Building assets with esbuild ===
+#13 3.509 yarn run v1.22.22
+#13 3.661 $ node build-css.mjs && node esbuild.config.mjs
+#13 5.735 [7:01:13 PM] ✓ CSS built successfully (33223 bytes)
+#13 6.557 Done in 3.07s.
+#13 7.010 ✓ yarn build completed
+#13 7.010 Checking app/assets/builds directory:
+#13 7.140 total 3.6M
+#13 7.140 drwxr-xr-x 1 root root 4.0K Feb 18 16:03 .
+#13 7.140 drwxr-xr-x 1 root root 4.0K Sep 18 02:31 ..
+#13 7.140 -rw-r--r-- 1 root root    0 Sep 18 02:31 .keep
+#13 7.140 -rw-r--r-- 1 root root  33K Feb 19 19:01 application.css
+#13 7.140 -rw-r--r-- 1 root root 1.6M Feb 19 19:01 application.js
+#13 7.140 -rw-r--r-- 1 root root 1.9M Feb 18 11:51 application.js.map
+#13 DONE 8.2s
+
+#14 [10/13] RUN mkdir -p config &&     touch config/master.key &&     echo "0" > config/master.key || true
+#14 DONE 1.2s
+
+#15 [11/13] RUN echo "=== Starting Rails asset precompilation ===" &&     RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails assets:precompile --trace 2>&1 &&     echo "✓ Asset precompilation completed successfully" &&     echo "Assets directory contents:" &&     find public/assets -type f | head -30 || echo "⚠ No assets found in public/assets"
+#15 1.765 === Starting Rails asset precompilation ===
+#15 12.08 ** Invoke assets:precompile (first_time)
+#15 12.08 ** Invoke assets:environment (first_time)
+#15 12.08 ** Execute assets:environment
+#15 12.08 ** Invoke environment (first_time)
+#15 12.08 ** Execute environment
+#15 12.53 rails aborted!
+#15 12.53 ActiveRecord::AdapterNotSpecified: database configuration does not specify adapter
+#15 12.53 /usr/local/bundle/gems/activerecord-7.0.10/lib/active_record/connection_adapters/abstract/connection_handler.rb:261:in `resolve_pool_config'
+#15 12.53 /usr/local/bundle/gems/activerecord-7.0.10/lib/active_record/connection_adapters/abstract/connection_handler.rb:129:in `establish_connection'
+#15 12.53 /usr/local/bundle/gems/activerecord-7.0.10/lib/active_record/connection_handling.rb:52:in `establish_connection'
+#15 12.53 /usr/local/bundle/gems/activerecord-7.0.10/lib/active_record/railtie.rb:268:in `block (2 levels) in <class:Railtie>'
+#15 12.53 /usr/local/bundle/gems/activesupport-7.0.10/lib/active_support/lazy_load_hooks.rb:95:in `class_eval'
+#15 12.53 /usr/local/bundle/gems/activesupport-7.0.10/lib/active_support/lazy_load_hooks.rb:95:in `block in execute_hook'
+#15 12.53 /usr/local/bundle/gems/activesupport-7.0.10/lib/active_support/lazy_load_hooks.rb:85:in `with_execution_control'
+#15 12.53 /usr/local/bundle/gems/activesupport-7.0.10/lib/active_support/lazy_load_hooks.rb:90:in `execute_hook'
+#15 12.53 /usr/local/bundle/gems/activesupport-7.0.10/lib/active_support/lazy_load_hooks.rb:60:in `block in on_load'
+#15 12.53 /usr/local/bundle/gems/activesupport-7.0.10/lib/active_support/lazy_load_hooks.rb:59:in `each'
+#15 12.53 /usr/local/bundle/gems/activesupport-7.0.10/lib/active_support/lazy_load_hooks.rb:59:in `on_load'
+#15 12.53 /usr/local/bundle/gems/activerecord-7.0.10/lib/active_record/railtie.rb:262:in `block in <class:Railtie>'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/initializable.rb:32:in `instance_exec'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/initializable.rb:32:in `run'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/initializable.rb:61:in `block in run_initializers'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:228:in `block in tsort_each'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:350:in `block (2 levels) in each_strongly_connected_component'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:431:in `each_strongly_connected_component_from'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:349:in `block in each_strongly_connected_component'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:347:in `each'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:347:in `call'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:347:in `each_strongly_connected_component'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:226:in `tsort_each'
+#15 12.53 /usr/local/lib/ruby/3.1.0/tsort.rb:205:in `tsort_each'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/initializable.rb:60:in `run_initializers'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/application.rb:375:in `initialize!'
+#15 12.53 /app/config/environment.rb:5:in `<main>'
+#15 12.53 /usr/local/bundle/gems/bootsnap-1.23.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:33:in `require'
+#15 12.53 /usr/local/bundle/gems/bootsnap-1.23.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:33:in `require'
+#15 12.53 /usr/local/bundle/gems/zeitwerk-2.6.18/lib/zeitwerk/kernel.rb:34:in `require'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/application.rb:351:in `require_environment!'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/application.rb:509:in `block in run_tasks_blocks'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:281:in `block in execute'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:281:in `each'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:281:in `execute'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:219:in `block in invoke_with_call_chain'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:199:in `synchronize'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:199:in `invoke_with_call_chain'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:188:in `invoke'
+#15 12.53 /usr/local/bundle/gems/sprockets-rails-3.5.2/lib/sprockets/rails/task.rb:61:in `block (2 levels) in define'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:281:in `block in execute'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:281:in `each'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:281:in `execute'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:219:in `block in invoke_with_call_chain'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:199:in `synchronize'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:199:in `invoke_with_call_chain'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:243:in `block in invoke_prerequisites'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:241:in `each'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:241:in `invoke_prerequisites'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:218:in `block in invoke_with_call_chain'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:199:in `synchronize'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:199:in `invoke_with_call_chain'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/task.rb:188:in `invoke'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/application.rb:188:in `invoke_task'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/application.rb:138:in `block (2 levels) in top_level'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/application.rb:138:in `each'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/application.rb:138:in `block in top_level'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/application.rb:147:in `run_with_threads'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/application.rb:132:in `top_level'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/commands/rake/rake_command.rb:24:in `block (2 levels) in perform'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/application.rb:214:in `standard_exception_handling'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/commands/rake/rake_command.rb:24:in `block in perform'
+#15 12.53 /usr/local/bundle/gems/rake-13.3.1/lib/rake/rake_module.rb:59:in `with_application'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/commands/rake/rake_command.rb:18:in `perform'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/command.rb:51:in `invoke'
+#15 12.53 /usr/local/bundle/gems/railties-7.0.10/lib/rails/commands.rb:18:in `<main>'
+#15 12.53 /usr/local/bundle/gems/bootsnap-1.23.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:33:in `require'
+#15 12.53 /usr/local/bundle/gems/bootsnap-1.23.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:33:in `require'
+#15 12.53 bin/rails:5:in `<main>'
+#15 12.53 Tasks: TOP => environment
+#15 12.62 ⚠ No assets found in public/assets
+#15 DONE 13.2s
+
+#16 [12/13] COPY docker/rails/start.sh /start.sh
+#16 DONE 0.1s
+
+#17 [13/13] RUN chmod 744 /start.sh
+#17 DONE 0.6s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 67.3s done
+#18 exporting manifest sha256:1ae2b9142cd8edd69357a5a2857041e5d57c48979430bb4a9b2fff8399a8d6e6 0.0s done
+#18 exporting config sha256:31ea3dd85ca07ce00eef539d9a98d5809f1207849516d83ff843f6652c8008cb 0.0s done
+#18 exporting attestation manifest sha256:6dc863c2d5ec72c97a33b739bf1d446a31842ce31236c18b5d5a8c09cfdac97b
+#18 exporting attestation manifest sha256:6dc863c2d5ec72c97a33b739bf1d446a31842ce31236c18b5d5a8c09cfdac97b 0.1s done
+#18 exporting manifest list sha256:a11b489edf489ca89ac559a524e134440944849285e917293fe717346b22ab4f 0.0s done
+#18 naming to docker.io/library/food_sharey:test 0.1s done
+#18 unpacking to docker.io/library/food_sharey:test
+#18 unpacking to docker.io/library/food_sharey:test 67.9s done
+#18 DONE 135.7s
+
+ [33m3 warnings found (use docker --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 4)
+ - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "SECRET_KEY_BASE") (line 36)
+ - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "SECRET_KEY_BASE") (line 37)
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/qksztd29gbo04fiwv47w7tjl7
