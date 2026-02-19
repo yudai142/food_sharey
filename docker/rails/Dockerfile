@@ -21,18 +21,27 @@ RUN bundle config --local set path 'vendor/bundle' \
 RUN yarn install --ignore-engines
 
 # Build JavaScript and CSS with esbuild (CRITICAL: must run before assets:precompile)
-RUN NODE_ENV=production yarn build
+RUN echo "=== Building assets with esbuild ===" && \
+    NODE_ENV=production yarn build && \
+    echo "✓ yarn build completed" && \
+    echo "Checking app/assets/builds directory:" && \
+    ls -lah app/assets/builds/ 2>/dev/null || echo "Directory not found yet"
 
 # Generate empty master key for asset precompilation if needed
 RUN mkdir -p config && \
     touch config/master.key && \
     echo "0" > config/master.key || true
 
+# Accept SECRET_KEY_BASE from build args (from Render environment)
+ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
+ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
+
 # Precompile assets for production (skip database connection)
-RUN echo "Starting asset precompilation..." && \
-    RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails assets:precompile SECRET_KEY_BASE=0000000000000000000000000000000000000000000 && \
+RUN echo "=== Starting Rails asset precompilation ===" && \
+    RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails assets:precompile --trace 2>&1 && \
     echo "✓ Asset precompilation completed successfully" && \
-    ls -lah public/assets/ 2>/dev/null | head -20 || echo "Assets not in public/assets"
+    echo "Assets directory contents:" && \
+    find public/assets -type f | head -30 || echo "⚠ No assets found in public/assets"
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh

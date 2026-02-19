@@ -13,18 +13,9 @@ fi
 echo "Running database migrations..."
 bundle exec rails db:migrate 2>&1 || true
 
-# Check if assets were precompiled during build
-echo "Checking precompiled assets..."
-if [ -d "public/assets" ]; then
-  echo "✓ Precompiled assets directory found"
-  ls -la public/assets/ | head -10
-else
-  echo "⚠ Warning: Precompiled assets directory not found"
-  if [ "$RAILS_ENV" = "production" ]; then
-    echo "Attempting to precompile assets at runtime..."
-    bundle exec rails assets:precompile 2>&1
-  fi
-fi
+# Assets should be precompiled during Docker build
+# Do NOT attempt to precompile at runtime to avoid SCSS path issues
+echo "✓ Skipping runtime asset precompilation (should be done at build time)"
 
 # Start Puma server
 echo "Starting Puma server..."
