@@ -13,3 +13,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
+# Explicitly precompile all images in app/assets/images
+Dir.glob(Rails.root.join('app/assets/images/**/*')).each do |file|
+  next if File.directory?(file)
+  relative_path = file.sub(Rails.root.join('app/assets/images/').to_s, '')
+  Rails.application.config.assets.precompile << relative_path
+end
