@@ -36,10 +36,14 @@ RUN mkdir -p config && \
 ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
-# Pre-populate esbuild outputs (already built by "yarn build" above)
-RUN echo "=== Confirming esbuild outputs ===" && \
-    ls -lah app/assets/builds/ && \
-    echo "✓ esbuild assets ready, Rails will handle image assets at runtime"
+# Precompile assets for production with proper SCSS load paths
+RUN echo "=== Starting Rails asset precompilation ===" && \
+    RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 \
+    bundle exec rails assets:precompile --trace 2>&1 && \
+    echo "✓ Asset precompilation completed successfully" && \
+    echo "Checking public/assets directory:" && \
+    ls -lah public/assets/ 2>/dev/null && \
+    find public/assets -type f 2>/dev/null | wc -l || echo "⚠ No assets in public/assets"
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
