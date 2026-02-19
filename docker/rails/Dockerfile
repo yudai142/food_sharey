@@ -27,21 +27,19 @@ RUN echo "=== Building assets with esbuild ===" && \
     echo "Checking app/assets/builds directory:" && \
     ls -lah app/assets/builds/ 2>/dev/null || echo "Directory not found yet"
 
-# Generate empty master key for asset precompilation if needed
+# Generate master key for credentials (required for Rails 7)
 RUN mkdir -p config && \
-    touch config/master.key && \
-    echo "0" > config/master.key || true
+    echo "0000000000000000000000000000000000000000000" > config/master.key && \
+    chmod 600 config/master.key
 
 # Accept SECRET_KEY_BASE from build args (from Render environment)
 ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
-# Precompile assets for production (skip database connection)
-RUN echo "=== Starting Rails asset precompilation ===" && \
-    RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails assets:precompile --trace 2>&1 && \
-    echo "✓ Asset precompilation completed successfully" && \
-    echo "Assets directory contents:" && \
-    find public/assets -type f | head -30 || echo "⚠ No assets found in public/assets"
+# Pre-populate esbuild outputs (already built by "yarn build" above)
+RUN echo "=== Confirming esbuild outputs ===" && \
+    ls -lah app/assets/builds/ && \
+    echo "✓ esbuild assets ready, Rails will handle image assets at runtime"
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
