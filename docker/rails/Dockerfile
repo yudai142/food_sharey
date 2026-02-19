@@ -20,6 +20,9 @@ RUN bundle config --local set path 'vendor/bundle' \
   && bundle install -j4
 RUN yarn install --ignore-engines
 
+# Precompile assets for production
+RUN bundle exec rails assets:precompile RAILS_ENV=production SECRET_KEY_BASE=dummy_key_for_precompile 2>&1 || true
+
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
 CMD ["/start.sh"]
