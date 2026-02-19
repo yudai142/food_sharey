@@ -20,8 +20,18 @@ RUN bundle config --local set path 'vendor/bundle' \
   && bundle install -j4
 RUN yarn install --ignore-engines
 
-# Precompile assets for production
-RUN bundle exec rails assets:precompile RAILS_ENV=production SECRET_KEY_BASE=dummy_key_for_precompile 2>&1 || true
+# Generate empty master key for asset precompilation if needed
+RUN mkdir -p config && \
+    touch config/master.key && \
+    echo "0" > config/master.key || true
+
+# Precompile assets for production (with proper error handling)
+RUN echo "Starting asset precompilation..." && \
+    bundle exec rails assets:precompile RAILS_ENV=production SECRET_KEY_BASE=0000000000000000000000000000000000000000000 && \
+    echo "Asset precompilation completed successfully" && \
+    ls -lah public/assets/ && \
+    echo "Assets directory structure:" && \
+    find public/assets -type f | head -20
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
