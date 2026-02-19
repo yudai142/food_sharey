@@ -43,20 +43,9 @@ RUN mkdir -p public/assets
 ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
-# Precompile assets - esbuild CSS/JS already in app/assets/builds
-RUN echo "=== Precompiling assets ===" && \
-    RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 \
-    bundle exec rails assets:precompile 2>&1 && \
-    echo "✓ Asset precompilation completed"
-
-# Ensure all image assets are available in public/assets
-RUN echo "=== Copying image assets ===" && \
-    mkdir -p public/assets/images && \
-    if [ -d app/assets/images ]; then \
-      cp -r app/assets/images/* public/assets/images/ 2>/dev/null || echo "No images to copy"; \
-    fi && \
-    echo "Image files available:" && \
-    ls -lah public/assets/images/ 2>/dev/null || echo "Images directory empty"
+# Verify esbuild outputs in app/assets/builds
+RUN echo "=== Verifying esbuild outputs ===" && \
+    ls -lah app/assets/builds/
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
