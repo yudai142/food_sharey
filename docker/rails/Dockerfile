@@ -36,14 +36,17 @@ RUN mkdir -p config && \
 ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
-# Precompile assets for production with proper SCSS load paths
-RUN echo "=== Starting Rails asset precompilation ===" && \
-    RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 \
-    bundle exec rails assets:precompile --trace 2>&1 && \
-    echo "✓ Asset precompilation completed successfully" && \
-    echo "Checking public/assets directory:" && \
-    ls -lah public/assets/ 2>/dev/null && \
-    find public/assets -type f 2>/dev/null | wc -l || echo "⚠ No assets in public/assets"
+# Create public directory if not exists
+RUN mkdir -p public/assets
+
+# Accept SECRET_KEY_BASE from build args (from Render environment)
+ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
+ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
+
+# Verify esbuild outputs are ready
+RUN echo "=== Verifying esbuild outputs ===" && \
+    ls -lah app/assets/builds/ && \
+    find app/assets/builds -type f
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
