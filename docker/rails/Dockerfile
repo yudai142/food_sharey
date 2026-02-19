@@ -20,6 +20,9 @@ RUN bundle config --local set path 'vendor/bundle' \
   && bundle install -j4
 RUN yarn install --ignore-engines
 
+# Build JavaScript and CSS with esbuild (CRITICAL: must run before assets:precompile)
+RUN NODE_ENV=production yarn build
+
 # Generate empty master key for asset precompilation if needed
 RUN mkdir -p config && \
     touch config/master.key && \
