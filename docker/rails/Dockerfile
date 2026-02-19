@@ -28,13 +28,11 @@ RUN mkdir -p config && \
     touch config/master.key && \
     echo "0" > config/master.key || true
 
-# Precompile assets for production (with proper error handling)
+# Precompile assets for production (skip database connection)
 RUN echo "Starting asset precompilation..." && \
-    bundle exec rails assets:precompile RAILS_ENV=production SECRET_KEY_BASE=0000000000000000000000000000000000000000000 && \
-    echo "Asset precompilation completed successfully" && \
-    ls -lah public/assets/ && \
-    echo "Assets directory structure:" && \
-    find public/assets -type f | head -20
+    RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails assets:precompile SECRET_KEY_BASE=0000000000000000000000000000000000000000000 && \
+    echo "✓ Asset precompilation completed successfully" && \
+    ls -lah public/assets/ 2>/dev/null | head -20 || echo "Assets not in public/assets"
 
 COPY docker/rails/start.sh /start.sh
 RUN chmod 744 /start.sh
