@@ -21,12 +21,18 @@ if (watch) {
   opts.logLevel = 'info'
 }
 
-const ctx = await esbuild.context(opts)
+;(async () => {
+  const ctx = await esbuild.context(opts)
 
-if (watch) {
-  await ctx.watch()
-} else {
-  await ctx.rebuild()
-  await ctx.dispose()
-}
+  if (watch) {
+    await ctx.watch()
+  } else {
+    await ctx.rebuild()
+    await ctx.dispose()
+  }
+})().catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
+
 
