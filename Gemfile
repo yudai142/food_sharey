@@ -12,6 +12,8 @@ gem 'mysql2', '~> 0.5'
 gem 'pg', '~> 1.5.0'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+# Asset pipeline with Sprockets (required for config.assets configuration)
+gem 'sprockets-rails', '>= 3.2'
 # Use SCSS for stylesheets with Dart Sass
 gem 'dartsass-rails', '~> 0.4.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
