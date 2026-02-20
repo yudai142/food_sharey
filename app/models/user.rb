@@ -28,7 +28,7 @@ class User < ApplicationRecord
       end
     # rescue ActiveRecord::RecordNotUnique
     #   find_by(email: 'guestda@example.com')
-    # end
+    end
   end
 
   def self.guest_new
