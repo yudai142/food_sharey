@@ -18,14 +18,17 @@ class User < ApplicationRecord
   has_many :eatdate_likes
 
   def self.guest
+    user = find_by(email: 'guestda@example.com')
+    return user if user.present?
+    
     begin
-      find_or_create_by!(email: 'guestda@example.com') do |user|
-        user.name = "ゲストユーザー"
-        @password = SecureRandom.urlsafe_base64
-        user.password = @password
-        user.password_confirmation = @password
-        user.user_ranking_hide = 1
-      end
+      create!(
+        email: 'guestda@example.com',
+        name: "ゲストユーザー",
+        password: "guestda",
+        password_confirmation: "guestda",
+        user_ranking_hide: 1
+      )
     rescue ActiveRecord::RecordNotUnique
       find_by(email: 'guestda@example.com')
     end
