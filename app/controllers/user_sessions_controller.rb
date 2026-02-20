@@ -23,7 +23,7 @@ class UserSessionsController < ApplicationController
 
   def guest_login
     (redirect_to root_path, alert: 'すでにログインしています'; return) if logged_in?
-    @guest_user = User.guest_new
+    @guest_user = User.guest
     auto_login(@guest_user)
     redirect_to foods_path, notice: 'ゲストユーザーとしてログインしました。'
   end
