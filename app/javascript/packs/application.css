@@ -1,1 +1,39 @@
 /* Application CSS - Empty placeholder */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  touch-action: manipulation;
+}
+
+.window-resize {
+  min-height: calc(var(--vh, 1vh) * 100 - 4rem);
+}
+
+.window-resize-login {
+  min-height: calc(var(--vh, 1vh) * 100 - 4rem - 55.67px);
+}
+
+@media screen and (min-width: 767px){
+  .window-resize-login {
+    min-height: calc(var(--vh, 1vh) * 100 - 4rem);
+  }
+}
+
+
+.notification {
+  width: 100%;
+}
+.notification .notice {
+  background-color: #38AEF0;
+  color: #fff;
+  text-align: center;
+}
+.notification .alert {
+  background-color: #ea352d;
+  color: #fff;
+  text-align: center;
+}
