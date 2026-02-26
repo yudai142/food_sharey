@@ -22,6 +22,9 @@ RUN bundle config --local set path 'vendor/bundle' && \
 # Install Node dependencies (including devDependencies for build tools)
 RUN npm install
 
+# Create app/assets/builds directory for build output
+RUN mkdir -p app/assets/builds
+
 # Set production environment and build assets
 ENV NODE_ENV=production
 RUN npm run build
