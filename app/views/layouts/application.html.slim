@@ -6,8 +6,6 @@ html
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
-    / Include both esbuild CSS and Rails-compiled SCSS
-    link[rel="stylesheet" href="/assets/application.css"]
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
   body

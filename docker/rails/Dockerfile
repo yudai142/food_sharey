@@ -1,61 +1,47 @@
 FROM ruby:3.1-bullseye
 
 ENV RAILS_ENV=production
-ENV TZ Asia/Tokyo
+ENV NODE_ENV=production
+ENV TZ=Asia/Tokyo
 
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && apt-get update -qq \
-  && apt-get install -y nodejs yarn
-RUN apt-get update -qq && \
-  apt-get install -y apt-utils \
-  build-essential \
-  libpq-dev \
-  vim \
-  default-mysql-client
+# Install Node.js and build utilities
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get update -qq && \
+    apt-get install -y nodejs && \
+    apt-get install -y apt-utils build-essential libpq-dev vim default-mysql-client && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
+
+# Copy application code
 COPY . /app
-RUN bundle config --local set path 'vendor/bundle' \
-  && bundle install -j4
-RUN yarn install --ignore-engines
 
-# Create app/assets/builds directory before yarn build
-RUN mkdir -p app/assets/builds
+# Install Ruby dependencies
+RUN bundle config --local set path 'vendor/bundle' && \
+    bundle install -j4 --no-cache
 
-# Build JavaScript and CSS with esbuild (CRITICAL: must run before other steps)
-RUN echo "=== Building assets with esbuild ===" && \
-    NODE_ENV=production yarn build && \
-    echo "✓ yarn build completed"
+# Install Node dependencies
+RUN npm install
 
-# Generate master key for credentials (required for Rails 7)
-RUN mkdir -p config && \
-    echo "0000000000000000000000000000000000000000000" > config/master.key && \
+# Build assets (CSS + JavaScript)
+RUN npm run build
+
+# Setup Rails (master key and directories)
+RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
+    echo "${SECRET_KEY_BASE:-0000000000000000000000000000000000000000000}" > config/master.key && \
     chmod 600 config/master.key
 
-# Accept SECRET_KEY_BASE from build args (from Render environment)
-ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
+# Accept SECRET_KEY_BASE from build arguments
+ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
-# Create public directory if not exists
-RUN mkdir -p public/assets
+# Verify assets were built
+RUN ls -lh app/assets/builds/
 
-# Accept SECRET_KEY_BASE from build args (from Render environment)
-ARG SECRET_KEY_BASE=0000000000000000000000000000000000000000000
-ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
-
-# Verify esbuild outputs (should exist after yarn build)
-RUN echo "=== Verifying esbuild outputs ===" && \
-    ls -lah app/assets/builds/ 2>/dev/null || echo "⚠ app/assets/builds may be empty but will be used at runtime"
-
-# Copy esbuild outputs to public/assets
-RUN echo "=== Copying esbuild assets to public ===" && \
-    mkdir -p public/assets && \
-    cp -r app/assets/builds/* public/assets/ 2>/dev/null || echo "Note: app/assets/builds may be empty" && \
-    echo "✓ Asset handling complete"
-
+# Copy and setup start script
 COPY docker/rails/start.sh /start.sh
-RUN chmod 744 /start.sh
+RUN chmod +x /start.sh
+
 CMD ["/start.sh"]
 
-EXPOSE 0
+EXPOSE 3000
