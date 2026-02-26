@@ -1,7 +1,6 @@
 FROM ruby:3.1-bullseye
 
 ENV RAILS_ENV=production
-ENV NODE_ENV=production
 ENV TZ=Asia/Tokyo
 
 # Install Node.js and build utilities
@@ -20,10 +19,11 @@ COPY . /app
 RUN bundle config --local set path 'vendor/bundle' && \
     bundle install -j4 --no-cache
 
-# Install Node dependencies
+# Install Node dependencies (including devDependencies for build tools)
 RUN npm install
 
-# Build assets (CSS + JavaScript)
+# Set production environment and build assets
+ENV NODE_ENV=production
 RUN npm run build
 
 # Setup Rails (master key and directories)
