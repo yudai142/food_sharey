@@ -25,9 +25,16 @@ RUN npm install
 # Create app/assets/builds directory for build output
 RUN mkdir -p app/assets/builds
 
-# Set production environment and build assets
+# Set production environment before building assets
 ENV NODE_ENV=production
-RUN npm run build
+
+# Build CSS and JavaScript assets
+RUN echo "=== Building assets ===" && \
+    npm run build && \
+    echo "=== Asset build completed ===" && \
+    echo "=== Verifying built assets ===" && \
+    ls -lh app/assets/builds/ && \
+    echo "=== Done ===" || (echo "Asset build failed"; exit 1)
 
 # Setup Rails (master key and directories)
 RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
@@ -38,8 +45,10 @@ RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
-# Verify assets were built
-RUN ls -lh app/assets/builds/
+# Verify Rails can find the assets
+RUN echo "=== Verifying asset files are accessible ===" && \
+    test -f app/assets/builds/application.css && echo "✓ CSS found" || echo "✗ CSS missing" && \
+    test -f app/assets/builds/application.js && echo "✓ JS found" || echo "✗ JS missing"
 
 # Copy and setup start script
 COPY docker/rails/start.sh /start.sh

@@ -27,6 +27,8 @@ services:
       RAILS_ENV: production
       NODE_ENV: production
       TZ: Asia/Tokyo
+      RAILS_SERVE_STATIC_FILES: 'true'
+      RAILS_LOG_TO_STDOUT: 'true'
     volumes:
       - .:/app
       - gem_data:/usr/local/bundle
