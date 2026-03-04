@@ -4,6 +4,8 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import postcss from 'postcss'
+import postcssImport from 'postcss-import'
+import postcssScss from 'postcss-scss'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import { createRequire } from 'module'
@@ -22,9 +24,14 @@ async function buildCSS() {
     const config = require(configFile)
     
     const result = await postcss([
+      postcssImport(),
       tailwindcss(config),
       autoprefixer(),
-    ]).process(input, { from: inputFile, to: outputFile })
+    ]).process(input, { 
+      from: inputFile, 
+      to: outputFile,
+      syntax: postcssScss 
+    })
     
     fs.writeFileSync(outputFile, result.css)
     const timestamp = new Date().toLocaleTimeString()
@@ -39,6 +46,13 @@ async function buildCSS() {
 if (watchMode) {
   console.log('Watching for CSS changes...')
   fs.watch(inputFile, () => {
+    buildCSS()
+  })
+  fs.watch(path.dirname(inputFile), () => {
+    buildCSS()
+  })
+  fs.watch(path.join(__dirname, 'app/javascript/packs'), () => {
+    console.log('Packs directory changed, rebuilding CSS...')
     buildCSS()
   })
   fs.watch(configFile, () => {
