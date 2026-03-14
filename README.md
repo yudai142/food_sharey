@@ -48,3 +48,112 @@
 - Rails⼿動デプロイツール(Capistrano)
 - AWS(VPC, EC2, ElasticIP, RDS(mysql 5.7.33), S3, ALB, Route53, ACM)
 - AWS EC2インスタンス(Amazon Linux 2(t2.micro),Docker, Nginx 1.12.2, Puma 4.3.6)
+
+# ER図
+
+```mermaid
+erDiagram
+    USERS ||--o{ MYMENUS : ""
+    USERS ||--o{ EATDATES : ""
+    USERS ||--o{ EATDATE_LIKES : ""
+    USERS ||--o{ MYMENU_LIKES : ""
+    EATDATES ||--o{ FOODS : ""
+    EATDATES ||--o{ EATDATE_LIKES : ""
+    MYMENUS ||--o{ MYMENU_LIKES : ""
+    MYMENUS ||--o{ FOODS : ""
+
+    USERS {
+        int id PK
+        string email UK
+        string crypted_password
+        string salt
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    MYMENUS {
+        int id PK
+        string name
+        int category_id
+        string image
+        int calorie
+        int protein
+        int fat
+        int carbohydrate
+        int sugar
+        int dietary_fiber
+        int salt
+        int Vitamin_A
+        int Vitamin_D
+        int Vitamin_E
+        int Vitamin_B1
+        int Vitamin_B2
+        int Vitamin_B6
+        int Vitamin_B12
+        int Vitamin_C
+        int potassium
+        int calcium
+        int magnesium
+        int iron
+        string memo
+        int user_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    EATDATES {
+        int id PK
+        date date
+        int timezone
+        time eat_time
+        text comment
+        int user_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    FOODS {
+        int id PK
+        string name
+        string image
+        int mymenu_id FK
+        int calorie
+        int protein
+        int fat
+        int carbohydrate
+        int sugar
+        int dietary_fiber
+        int salt
+        int Vitamin_A
+        int Vitamin_D
+        int Vitamin_E
+        int Vitamin_B1
+        int Vitamin_B2
+        int Vitamin_B6
+        int Vitamin_B12
+        int Vitamin_C
+        int potassium
+        int calcium
+        int magnesium
+        int iron
+        int eatdate_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    EATDATE_LIKES {
+        int id PK
+        int eatdate_id FK
+        int user_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    MYMENU_LIKES {
+        int id PK
+        int mymenu_id FK
+        int user_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+```
