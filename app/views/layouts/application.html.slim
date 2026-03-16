@@ -9,7 +9,7 @@ html
     / Include both esbuild CSS and Rails-compiled SCSS
     link[rel="stylesheet" href="/assets/application.css"]
     = stylesheet_link_tag 'application', media: 'all'
-    = javascript_include_tag 'application'
+    = javascript_import_module_tag 'application'
   body
     = render 'shared/header'
     = render 'shared/notifications'
