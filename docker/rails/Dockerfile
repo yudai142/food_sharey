@@ -33,22 +33,22 @@ RUN echo "=== Building assets ===" && \
     npm run build && \
     echo "=== Asset build completed ==="
 
-# Precompile Rails assets (SCSS compilation happens here)
-RUN echo "=== Precompiling Rails assets ===" && \
-    bundle exec rails assets:precompile RAILS_ENV=development DATABASE_URL=postgresql://localhost/noop && \
+# Precompile Rails assets (SCSS + Tailwind compilation happens here)
+RUN echo "=== Precompiling Rails assets (RAILS_ENV=production) ===" && \
+    bundle exec rails assets:precompile RAILS_ENV=production DATABASE_URL=postgresql://localhost/noop && \
     echo "=== Rails asset precompilation completed ===" && \
     echo "=== Verifying built assets ===" && \
     ls -lh app/assets/builds/ && \
     echo "=== Done ===" || (echo "Asset precompilation failed"; exit 1)
 
-# Setup Rails (master key and directories)
-RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
-    echo "${SECRET_KEY_BASE:-0000000000000000000000000000000000000000000}" > config/master.key && \
-    chmod 600 config/master.key
-
-# Accept SECRET_KEY_BASE from build arguments
+# Accept SECRET_KEY_BASE from build arguments (required for production)
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
+
+# Setup Rails (master key and directories)
+RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
+    echo "${SECRET_KEY_BASE}" > config/master.key && \
+    chmod 600 config/master.key
 
 # Verify Rails can find the assets
 RUN echo "=== Verifying asset files are accessible ===" && \
