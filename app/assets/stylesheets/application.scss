@@ -1,9 +1,11 @@
 /*
  * This is a manifest file that'll be compiled into application.css
  * by the Rails asset pipeline.
+ *
+ * esbuild generates app/assets/builds/application.css which is imported
+ * via @import url() in app/views/layouts/application.slim
  */
 
-@import url('./builds/application.css');
 @import 'base';
 @import 'balloon';
 @import 'pagy';
