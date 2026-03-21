@@ -14,7 +14,7 @@ const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const watchMode = process.argv.includes('--watch')
 
-const inputFile = path.join(__dirname, 'app/javascript/stylesheets/application.scss')
+const inputFile = path.join(__dirname, 'app/assets/stylesheets/application.scss')
 const outputFile = path.join(__dirname, 'app/assets/builds/application.css')
 const configFile = path.join(__dirname, 'tailwind.config.cjs')
 
@@ -51,8 +51,8 @@ if (watchMode) {
   fs.watch(path.dirname(inputFile), () => {
     buildCSS()
   })
-  fs.watch(path.join(__dirname, 'app/javascript/packs'), () => {
-    console.log('Packs directory changed, rebuilding CSS...')
+  fs.watch(path.join(__dirname, 'app/assets/stylesheets'), () => {
+    console.log('Stylesheets directory changed, rebuilding CSS...')
     buildCSS()
   })
   fs.watch(configFile, () => {
