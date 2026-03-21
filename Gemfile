@@ -77,4 +77,3 @@ gem 'rails-i18n'
 gem 'pagy'
 gem 'rack'
 
-gem "jsbundling-rails"

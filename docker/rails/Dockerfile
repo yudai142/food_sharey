@@ -35,7 +35,7 @@ RUN echo "=== Building assets ===" && \
 
 # Precompile Rails assets (SCSS compilation happens here)
 RUN echo "=== Precompiling Rails assets ===" && \
-    SKIP_BUILD_JAVASCRIPT=true bundle exec rails assets:precompile RAILS_ENV=development DATABASE_URL=postgresql://localhost/noop && \
+    bundle exec rails assets:precompile RAILS_ENV=development DATABASE_URL=postgresql://localhost/noop && \
     echo "=== Rails asset precompilation completed ===" && \
     echo "=== Verifying built assets ===" && \
     ls -lh app/assets/builds/ && \
