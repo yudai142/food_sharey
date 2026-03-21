@@ -1,60 +1,4 @@
 import esbuild from 'esbuild'
-import fs from 'fs'
-import path from 'path'
-import postcss from 'postcss'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
-import sass from 'sass'
-import { createRequire } from 'module'
-import { fileURLToPath } from 'url'
-
-const require = createRequire(import.meta.url)
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
-// PostCSS処理用のプラグイン
-const cssPlugin = {
-  name: 'css',
-  setup(build) {
-    // SCSS ファイルの処理（sass を使用）
-    build.onLoad({ filter: /\.scss$/ }, async (args) => {
-      const source = fs.readFileSync(args.path, 'utf-8')
-      
-      // sass でコンパイル（@import を処理）
-      const sassResult = sass.renderSync({
-        data: source,
-        includePaths: [path.dirname(args.path), path.join(__dirname, 'app/javascript/stylesheets')],
-      })
-      
-      const configFile = path.join(__dirname, 'tailwind.config.cjs')
-      const config = require(configFile)
-      
-      // PostCSS で処理（Tailwind + autoprefixer）
-      const result = await postcss([
-        tailwindcss(config),
-        autoprefixer(),
-      ]).process(sassResult.css.toString(), { from: args.path })
-      
-      return {
-        contents: `export default ${JSON.stringify(result.css)}`,
-        loader: 'js',
-      }
-    })
-
-    // CSS ファイルの処理
-    build.onLoad({ filter: /\.css$/ }, async (args) => {
-      const source = fs.readFileSync(args.path, 'utf-8')
-      
-      const result = await postcss([
-        autoprefixer(),
-      ]).process(source, { from: args.path })
-      
-      return {
-        contents: `export default ${JSON.stringify(result.css)}`,
-        loader: 'js',
-      }
-    })
-  },
-}
 
 const args = process.argv.slice(2)
 const watch = args.includes('--watch')
@@ -67,7 +11,6 @@ let opts = {
   publicPath: '/assets',
   entryPoints: ['app/javascript/application.js'],
   format: 'esm',
-  plugins: [cssPlugin],
 }
 
 if (watch) {

@@ -3,12 +3,10 @@
   "private": "true",
   "type": "module",
   "scripts": {
-    "build": "node build-css.mjs && node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs",
     "build:js": "node esbuild.config.mjs",
-    "build:css": "node build-css.mjs",
-    "watch": "node build-css.mjs & node esbuild.config.mjs --watch",
-    "watch:js": "node esbuild.config.mjs --watch",
-    "watch:css": "node build-css.mjs --watch"
+    "watch": "node esbuild.config.mjs --watch",
+    "watch:js": "node esbuild.config.mjs --watch"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",

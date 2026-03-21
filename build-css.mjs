@@ -4,8 +4,6 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import postcss from 'postcss'
-import postcssImport from 'postcss-import'
-import postcssScss from 'postcss-scss'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import { createRequire } from 'module'
@@ -14,7 +12,8 @@ const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const watchMode = process.argv.includes('--watch')
 
-const inputFile = path.join(__dirname, 'app/assets/stylesheets/application.scss')
+// ジェネレートされた CSS ファイルだけを処理 (Tailwind + Autoprefixer)
+const inputFile = path.join(__dirname, 'app/assets/builds/tailwind.css')
 const outputFile = path.join(__dirname, 'app/assets/builds/application.css')
 const configFile = path.join(__dirname, 'tailwind.config.cjs')
 
@@ -24,13 +23,11 @@ async function buildCSS() {
     const config = require(configFile)
     
     const result = await postcss([
-      postcssImport(),
       tailwindcss(config),
       autoprefixer(),
     ]).process(input, { 
       from: inputFile, 
       to: outputFile,
-      syntax: postcssScss 
     })
     
     fs.writeFileSync(outputFile, result.css)
