@@ -31,10 +31,15 @@ ENV NODE_ENV=production
 # Build CSS and JavaScript assets
 RUN echo "=== Building assets ===" && \
     npm run build && \
-    echo "=== Asset build completed ===" && \
+    echo "=== Asset build completed ==="
+
+# Precompile Rails assets (SCSS compilation happens here)
+RUN echo "=== Precompiling Rails assets ===" && \
+    bundle exec rails assets:precompile && \
+    echo "=== Rails asset precompilation completed ===" && \
     echo "=== Verifying built assets ===" && \
     ls -lh app/assets/builds/ && \
-    echo "=== Done ===" || (echo "Asset build failed"; exit 1)
+    echo "=== Done ===" || (echo "Asset precompilation failed"; exit 1)
 
 # Setup Rails (master key and directories)
 RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
