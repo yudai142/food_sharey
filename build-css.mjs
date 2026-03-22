@@ -4,28 +4,39 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import postcss from 'postcss'
+import postcssImport from 'postcss-import'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
+import sass from 'sass'
 import { createRequire } from 'module'
 
 const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const watchMode = process.argv.includes('--watch')
 
-// ジェネレートされた CSS ファイルだけを処理 (Tailwind + Autoprefixer)
-const inputFile = path.join(__dirname, 'app/assets/builds/tailwind.css')
+const inputFile = path.join(__dirname, 'app/assets/stylesheets/application.scss')
 const outputFile = path.join(__dirname, 'app/assets/builds/application.css')
 const configFile = path.join(__dirname, 'tailwind.config.cjs')
 
 async function buildCSS() {
   try {
-    const input = fs.readFileSync(inputFile, 'utf-8')
+    // Step 1: Compile SCSS to CSS using sass
+    const scssSource = fs.readFileSync(inputFile, 'utf-8')
+    const sassResult = sass.renderSync({
+      data: scssSource,
+      includePaths: [path.dirname(inputFile)],
+    })
+    
+    const compiledCSS = sassResult.css.toString()
+    
+    // Step 2: Process with PostCSS (postcss-import, Tailwind, autoprefixer)
     const config = require(configFile)
     
     const result = await postcss([
+      postcssImport(),
       tailwindcss(config),
       autoprefixer(),
-    ]).process(input, { 
+    ]).process(compiledCSS, { 
       from: inputFile, 
       to: outputFile,
     })
@@ -46,10 +57,6 @@ if (watchMode) {
     buildCSS()
   })
   fs.watch(path.dirname(inputFile), () => {
-    buildCSS()
-  })
-  fs.watch(path.join(__dirname, 'app/assets/stylesheets'), () => {
-    console.log('Stylesheets directory changed, rebuilding CSS...')
     buildCSS()
   })
   fs.watch(configFile, () => {
