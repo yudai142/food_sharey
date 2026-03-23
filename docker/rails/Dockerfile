@@ -22,8 +22,8 @@ RUN bundle config --local set path 'vendor/bundle' && \
 # Install Node dependencies (including devDependencies for build tools)
 RUN npm install
 
-# Create public/assets directory for build output (CSS and JS will go here)
-RUN mkdir -p public/assets app/assets/stylesheets
+# Create directories for asset build output and stylesheets
+RUN mkdir -p app/assets/builds app/assets/stylesheets
 
 # Set production environment before building assets
 ENV NODE_ENV=production
@@ -41,7 +41,7 @@ RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
 
 # Verify that npm build generated both CSS and JS correctly
 RUN echo "=== Verifying asset build outputs ===" && \
-    ls -lh public/assets/ && \
+    ls -lh app/assets/builds/ && \
     echo "=== Done ===" || (echo "Asset build verification failed"; exit 1)
 
 # Copy and setup start script

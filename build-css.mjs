@@ -15,7 +15,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const watchMode = process.argv.includes('--watch')
 
 const inputFile = path.join(__dirname, 'app/assets/stylesheets/application.scss')
-const outputFile = path.join(__dirname, 'public/assets/application.css')
+const outputFile = path.join(__dirname, 'app/assets/builds/application.css')
 const configFile = path.join(__dirname, 'tailwind.config.cjs')
 
 async function buildCSS() {
