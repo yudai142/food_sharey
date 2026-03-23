@@ -7,7 +7,7 @@ import postcss from 'postcss'
 import postcssImport from 'postcss-import'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
-import sass from 'sass'
+import * as sass from 'sass'
 import { createRequire } from 'module'
 
 const require = createRequire(import.meta.url)
