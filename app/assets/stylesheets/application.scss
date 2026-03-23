@@ -3,12 +3,14 @@
  * by build-css.mjs (npm build script).
  *
  * build-css.mjs handles SCSS compilation, Tailwind CSS, and Autoprefixer.
- * Generated app/assets/builds/application.css is imported via <link> in HTML layout.
+ * @tailwind directives are automatically added by build-css.mjs.
+ * Generated public/assets/application.css is imported via <link> in HTML layout.
  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// Tailwind CSS directives are added automatically by build-css.mjs
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
 
 @import 'base';
 @import 'balloon';

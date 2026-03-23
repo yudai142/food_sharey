@@ -20,8 +20,15 @@ const configFile = path.join(__dirname, 'tailwind.config.cjs')
 
 async function buildCSS() {
   try {
-    // Step 1: Compile SCSS to CSS using sass
-    const scssSource = fs.readFileSync(inputFile, 'utf-8')
+    // Step 1: Read SCSS source and add @tailwind directives if not present
+    let scssSource = fs.readFileSync(inputFile, 'utf-8')
+    
+    // Ensure @tailwind directives are present (as CSS, will be processed by PostCSS)
+    if (!scssSource.includes('@tailwind base')) {
+      scssSource = '@tailwind base;\n@tailwind components;\n@tailwind utilities;\n' + scssSource
+    }
+    
+    // Step 2: Compile SCSS to CSS using sass
     const sassResult = sass.renderSync({
       data: scssSource,
       includePaths: [path.dirname(inputFile)],
@@ -29,7 +36,7 @@ async function buildCSS() {
     
     const compiledCSS = sassResult.css.toString()
     
-    // Step 2: Process with PostCSS (postcss-import, Tailwind, autoprefixer)
+    // Step 3: Process with PostCSS (postcss-import, Tailwind, autoprefixer)
     const config = require(configFile)
     
     const result = await postcss([
@@ -40,6 +47,12 @@ async function buildCSS() {
       from: inputFile, 
       to: outputFile,
     })
+    
+    // Create output directory if it doesn't exist
+    const outputDir = path.dirname(outputFile)
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true })
+    }
     
     fs.writeFileSync(outputFile, result.css)
     const timestamp = new Date().toLocaleTimeString()

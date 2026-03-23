@@ -22,8 +22,8 @@ RUN bundle config --local set path 'vendor/bundle' && \
 # Install Node dependencies (including devDependencies for build tools)
 RUN npm install
 
-# Create app/assets/builds directory for build output
-RUN mkdir -p app/assets/builds
+# Create public/assets directory for build output (CSS and JS will go here)
+RUN mkdir -p public/assets app/assets/stylesheets
 
 # Set production environment before building assets
 ENV NODE_ENV=production
@@ -43,11 +43,6 @@ RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
 RUN echo "=== Verifying asset build outputs ===" && \
     ls -lh public/assets/ && \
     echo "=== Done ===" || (echo "Asset build verification failed"; exit 1)
-
-# Verify Rails can find the assets
-RUN echo "=== Verifying asset files are accessible ===" && \
-    test -f app/assets/builds/application.css && echo "✓ CSS found" || echo "✗ CSS missing" && \
-    test -f app/assets/builds/application.js && echo "✓ JS found" || echo "✗ JS missing"
 
 # Copy and setup start script
 COPY docker/rails/start.sh /start.sh
