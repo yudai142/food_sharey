@@ -22,7 +22,7 @@ class FoodsController < ApplicationController
     end
     @eatdate = Array.new
     @ranking.each do |ranking|
-      if Food.find_by(eatdate_id: ranking)
+      if Food.find_by(eatdate_id: ranking.id)
         @eatdate.push(ranking)
       end
       if logged_in?
@@ -35,9 +35,9 @@ class FoodsController < ApplicationController
       @morning_id = Eatdate.find_by(date: @date,timezone: 1 , user_id: current_user.id)
       @lunch_id = Eatdate.find_by(date: @date,timezone: 2 , user_id: current_user.id)
       @dinner_id = Eatdate.find_by(date: @date,timezone: 4 , user_id: current_user.id)
-      @morning_foods = Food.where(eatdate_id: @morning_id)
-      @lunch_foods = Food.where(eatdate_id: @lunch_id)
-      @dinner_foods = Food.where(eatdate_id: @dinner_id)
+      @morning_foods = @morning_id ? Food.where(eatdate_id: @morning_id.id) : []
+      @lunch_foods = @lunch_id ? Food.where(eatdate_id: @lunch_id.id) : []
+      @dinner_foods = @dinner_id ? Food.where(eatdate_id: @dinner_id.id) : []
       @tutorial = 'ようこそ！まずは記録ボタンから食事内容を記録しましょう' if !Eatdate.find_by(user_id: current_user.id)
     end
   end
@@ -68,15 +68,15 @@ class FoodsController < ApplicationController
     @snack_id = Eatdate.find_by(date: @date,timezone: 3 , user_id: current_user.id)
     @dinner_id = Eatdate.find_by(date: @date,timezone: 4 , user_id: current_user.id)
     @supper_id = Eatdate.find_by(date: @date,timezone: 5 , user_id: current_user.id)
-    @morning_foods = Food.where(eatdate_id: @morning_id)
+    @morning_foods = @morning_id ? Food.where(eatdate_id: @morning_id.id) : []
     @morning_calorie = @morning_foods.sum(:calorie)
-    @lunch_foods = Food.where(eatdate_id: @lunch_id)
+    @lunch_foods = @lunch_id ? Food.where(eatdate_id: @lunch_id.id) : []
     @lunch_calorie = @lunch_foods.sum(:calorie)
-    @snack_foods = Food.where(eatdate_id: @snack_id)
+    @snack_foods = @snack_id ? Food.where(eatdate_id: @snack_id.id) : []
     @snack_calorie = @snack_foods.sum(:calorie)
-    @dinner_foods = Food.where(eatdate_id: @dinner_id)
+    @dinner_foods = @dinner_id ? Food.where(eatdate_id: @dinner_id.id) : []
     @dinner_calorie = @dinner_foods.sum(:calorie)
-    @supper_foods = Food.where(eatdate_id: @supper_id)
+    @supper_foods = @supper_id ? Food.where(eatdate_id: @supper_id.id) : []
     @supper_calorie = @supper_foods.sum(:calorie)
     if !Mymenu.find_by(user_id: current_user.id) && !Eatdate.find_by(user_id: current_user.id)
       @tutorial1 = 'まずはMYメニューを作成してメニューを登録しましょう'
