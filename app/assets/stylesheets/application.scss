@@ -6,6 +6,10 @@
  * Generated app/assets/builds/application.css is imported via <link> in HTML layout.
  */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'base';
 @import 'balloon';
 @import 'pagy';
