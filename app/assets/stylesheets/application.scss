@@ -1,16 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*
  * This is a manifest file that'll be compiled into application.css
  * by build-css.mjs (npm build script).
  *
  * build-css.mjs handles SCSS compilation, Tailwind CSS, and Autoprefixer.
- * @tailwind directives are automatically added by build-css.mjs.
- * Generated public/assets/application.css is imported via <link> in HTML layout.
+ * @tailwind directives are defined above and processed by Tailwind CSS.
+ * Generated app/assets/builds/application.css is imported via stylesheet_link_tag in HTML layout.
  */
-
-// Tailwind CSS directives are added automatically by build-css.mjs
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
 
 @import 'base';
 @import 'balloon';

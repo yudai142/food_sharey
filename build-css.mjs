@@ -20,13 +20,8 @@ const configFile = path.join(__dirname, 'tailwind.config.cjs')
 
 async function buildCSS() {
   try {
-    // Step 1: Read SCSS source and add @tailwind directives if not present
+    // Step 1: Read SCSS source (which now includes @tailwind directives)
     let scssSource = fs.readFileSync(inputFile, 'utf-8')
-    
-    // Ensure @tailwind directives are present (as CSS, will be processed by PostCSS)
-    if (!scssSource.includes('@tailwind base')) {
-      scssSource = '@tailwind base;\n@tailwind components;\n@tailwind utilities;\n' + scssSource
-    }
     
     // Step 2: Compile SCSS to CSS using sass
     const sassResult = sass.renderSync({
