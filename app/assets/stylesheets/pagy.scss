@@ -1,15 +1,29 @@
 /* Pagy Pagination CSS */
+/* Based on pagy v9.4.0 default HTML template structure:
+   <nav class="pagy-nav">
+     <span class="page prev disabled">...</span>
+     <span class="page active">1</span>
+     <a class="page" href="...">2</a>
+     <span class="page next"><a href="...">Next...</a></span>
+   </nav>
+*/
 
-// Base nav styles
+// Base nav container
 .pagy-nav,
 .pagy-nav-js {
-  @apply flex space-x-2;
+  @apply flex flex-wrap justify-center items-center space-x-1;
 }
 
-// Page link base styles
+// All page elements (span or a)
+.pagy-nav .page,
+.pagy-nav-js .page {
+  @apply inline-block rounded-lg px-3 py-1 text-sm font-semibold transition-colors;
+}
+
+// Page links (a elements)
 .pagy-nav .page a,
 .pagy-nav-js .page a {
-  @apply block rounded-lg px-3 py-1 text-sm text-green-500 font-semibold bg-green-200 shadow-md transition-colors;
+  @apply text-green-500 bg-green-200 shadow-md;
 
   &:hover {
     @apply bg-green-300;
@@ -20,10 +34,16 @@
   }
 }
 
-// Active page styles
+// Page span elements
+.pagy-nav span.page,
+.pagy-nav-js span.page {
+  @apply text-green-500 bg-green-200 shadow-md;
+}
+
+// Active page (current page - can be span or a)
 .pagy-nav .page.active,
 .pagy-nav-js .page.active {
-  @apply block rounded-lg px-3 py-1 text-sm text-white font-semibold bg-green-400 shadow-md cursor-default;
+  @apply text-white bg-green-400 shadow-md cursor-default;
 
   &:hover {
     @apply bg-green-400;
@@ -34,12 +54,12 @@
   }
 }
 
-// Disabled prev/next styles
+// Disabled prev/next
 .pagy-nav .page.prev.disabled,
 .pagy-nav .page.next.disabled,
 .pagy-nav-js .page.prev.disabled,
 .pagy-nav-js .page.next.disabled {
-  @apply block rounded-lg px-3 py-1 text-sm text-green-400 font-semibold bg-green-200 shadow-md cursor-default;
+  @apply text-green-400 bg-green-200 shadow-md cursor-default;
 
   &:hover {
     @apply text-green-400 bg-green-200;
@@ -50,7 +70,31 @@
   }
 }
 
-// Combo nav styles
+// Next control with nested link
+.pagy-nav .page.next,
+.pagy-nav-js .page.next {
+  a {
+    @apply text-green-500;
+
+    &:hover {
+      @apply text-green-700;
+    }
+  }
+}
+
+// Prev control with nested link
+.pagy-nav .page.prev,
+.pagy-nav-js .page.prev {
+  a {
+    @apply text-green-500;
+
+    &:hover {
+      @apply text-green-700;
+    }
+  }
+}
+
+// Combo nav styles (for later use)
 .pagy-combo-nav-js {
   @apply flex max-w-max rounded-full px-3 py-1 text-sm text-green-500 font-semibold bg-green-200 shadow-md;
 }
