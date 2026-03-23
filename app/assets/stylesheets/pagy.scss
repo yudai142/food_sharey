@@ -1,57 +1,62 @@
 /* Pagy Pagination CSS */
+
+// Base nav styles
 .pagy-nav,
 .pagy-nav-js {
   @apply flex space-x-2;
 }
 
+// Page link base styles
 .pagy-nav .page a,
-.pagy-nav .page.active,
-.pagy-nav .page.prev.disabled,
-.pagy-nav .page.next.disabled,
-.pagy-nav-js .page a,
-.pagy-nav-js .page.active,
-.pagy-nav-js .page.prev.disabled,
-.pagy-nav-js .page.next.disabled {
-  @apply block rounded-lg px-3 py-1 text-sm text-green-500 font-semibold bg-green-200 shadow-md;
-  &:hover{
+.pagy-nav-js .page a {
+  @apply block rounded-lg px-3 py-1 text-sm text-green-500 font-semibold bg-green-200 shadow-md transition-colors;
+
+  &:hover {
     @apply bg-green-300;
   }
-  &:active{
+
+  &:active {
     @apply bg-green-400 text-white;
   }
 }
 
+// Active page styles
+.pagy-nav .page.active,
+.pagy-nav-js .page.active {
+  @apply block rounded-lg px-3 py-1 text-sm text-white font-semibold bg-green-400 shadow-md cursor-default;
+
+  &:hover {
+    @apply bg-green-400;
+  }
+
+  &:active {
+    @apply bg-green-400 text-white;
+  }
+}
+
+// Disabled prev/next styles
 .pagy-nav .page.prev.disabled,
 .pagy-nav .page.next.disabled,
 .pagy-nav-js .page.prev.disabled,
 .pagy-nav-js .page.next.disabled {
-  @apply text-green-400 cursor-default;
+  @apply block rounded-lg px-3 py-1 text-sm text-green-400 font-semibold bg-green-200 shadow-md cursor-default;
+
   &:hover {
     @apply text-green-400 bg-green-200;
   }
+
   &:active {
     @apply text-green-400 bg-green-200;
   }
 }
 
-.pagy-nav .page.active,
-.pagy-nav-js .page.active {
-  @apply text-white cursor-default bg-green-400;
-  &:hover {
-    @apply text-white bg-green-400;
-  }
-  &:active {
-    @apply bg-green-400 text-white;
-  }
-}
-
-
+// Combo nav styles
 .pagy-combo-nav-js {
   @apply flex max-w-max rounded-full px-3 py-1 text-sm text-green-500 font-semibold bg-green-200 shadow-md;
 }
 
 .pagy-combo-nav-js .pagy-combo-input {
-  @apply bg-white px-2 rounded-sm
+  @apply bg-white px-2 rounded-sm;
 }
 
 .pagy-combo-nav-js .page.prev,
@@ -59,6 +64,7 @@
   &:hover {
     @apply text-green-800;
   }
+
   &:active {
     @apply text-green-800;
   }
