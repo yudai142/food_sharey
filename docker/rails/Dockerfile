@@ -39,15 +39,10 @@ RUN mkdir -p config tmp/pids tmp/cache tmp/sockets && \
     echo "0000000000000000000000000000000000000000000000000000000000000000" > config/master.key && \
     chmod 600 config/master.key
 
-# Precompile Rails assets (SCSS + Tailwind compilation happens here)
-# Use dummy SECRET_KEY_BASE for build
-RUN echo "=== Precompiling Rails assets (RAILS_ENV=production) ===" && \
-    SECRET_KEY_BASE=0000000000000000000000000000000000000000000000000000000000000000 \
-    bundle exec rails assets:precompile RAILS_ENV=production DATABASE_URL=postgresql://localhost/noop && \
-    echo "=== Rails asset precompilation completed ===" && \
-    echo "=== Verifying built assets ===" && \
-    ls -lh app/assets/builds/ && \
-    echo "=== Done ===" || (echo "Asset precompilation failed"; exit 1)
+# Verify that npm build generated both CSS and JS correctly
+RUN echo "=== Verifying asset build outputs ===" && \
+    ls -lh public/assets/ && \
+    echo "=== Done ===" || (echo "Asset build verification failed"; exit 1)
 
 # Verify Rails can find the assets
 RUN echo "=== Verifying asset files are accessible ===" && \

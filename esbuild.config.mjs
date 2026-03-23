@@ -7,7 +7,7 @@ const prod = process.env.NODE_ENV === 'production'
 let opts = {
   bundle: true,
   sourcemap: !prod,
-  outdir: 'app/assets/builds',
+  outdir: 'public/assets',
   publicPath: '/assets',
   entryPoints: ['app/javascript/application.js'],
   format: 'esm',
