@@ -3,13 +3,20 @@ class FoodsController < ApplicationController
   def index
     require "date"
     @date = Time.now
-    if (Time.parse("03:00")..Time.parse("09:59")).cover? @date
+    current_hour = @date.hour
+    
+    # Determine meal time based on current hour
+    if (3..9).cover?(current_hour)
       @ranking = Eatdate.where(timezone: 1).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
       @menu = "人気の朝食メニュー"
-    elsif (Time.parse("10:00")..Time.parse("14:59")).cover? @date
+    elsif (10..14).cover?(current_hour)
       @ranking = Eatdate.where(timezone: 2).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
       @menu = "人気の昼食メニュー"
-    elsif (Time.parse("15:00")..Time.parse("23:59")).cover? @date or (Time.parse("00:00")..Time.parse("02:59")).cover? @date
+    elsif (15..23).cover?(current_hour) || (0..2).cover?(current_hour)
+      @ranking = Eatdate.where(timezone: 4).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+      @menu = "人気の夕食メニュー"
+    else
+      # Default to evening if time doesn't match any category
       @ranking = Eatdate.where(timezone: 4).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
       @menu = "人気の夕食メニュー"
     end
@@ -41,15 +48,16 @@ class FoodsController < ApplicationController
       @timezone = params[:time]
     else
       @date = Time.now.to_date
-      if (Time.parse("03:00")..Time.parse("10:59")).cover? @date
+      current_hour = Time.now.hour
+      if (3..10).cover?(current_hour)
         @timezone = "朝食"
-      elsif (Time.parse("11:00")..Time.parse("14:59")).cover? @date
+      elsif (11..14).cover?(current_hour)
         @timezone = "昼食"
-      elsif (Time.parse("15:00")..Time.parse("16:59")).cover? @date
+      elsif (15..16).cover?(current_hour)
         @timezone = "間食"
-      elsif (Time.parse("17:00")..Time.parse("23:59")).cover? @date
+      elsif (17..23).cover?(current_hour)
         @timezone = "夕食"
-      elsif (Time.parse("00:00")..Time.parse("02:59")).cover? @date
+      elsif (0..2).cover?(current_hour)
         @timezone = "夜食"
       end
     end
