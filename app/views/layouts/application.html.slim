@@ -7,7 +7,7 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_import_module_tag "application"
+    script[src="/assets/application.js" type="module" data-turbo-track="reload"]
   body
     = render 'shared/header'
     = render 'shared/notifications'
