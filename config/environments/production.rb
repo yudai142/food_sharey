@@ -29,8 +29,8 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Assets are pre-compiled at build time (Dockerfile)
-  # Do NOT enable runtime compilation - it causes errors with custom paths
-  config.assets.compile = false
+  # Enable runtime compilation to allow asset pipeline to serve images and other assets
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
