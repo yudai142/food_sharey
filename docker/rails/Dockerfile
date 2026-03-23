@@ -31,7 +31,12 @@ ENV NODE_ENV=production
 # Build CSS and JavaScript assets
 RUN echo "=== Building assets ===" && \
     npm run build && \
-    echo "=== Asset build completed ==="
+    echo "=== Asset build completed ===" && \
+    echo "=== Copying asset images ===" && \
+    mkdir -p public/assets/images && \
+    cp -r app/assets/images/* public/assets/images/ 2>/dev/null || true && \
+    ls -lh public/assets/images/ || echo "No images to copy" && \
+    echo "=== Image copy completed ==="
 
 # Setup Rails (master key and directories)
 # Use dummy secret for build, real one will be set at runtime via environment variable
