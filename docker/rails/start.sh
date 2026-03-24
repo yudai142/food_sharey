@@ -4,6 +4,13 @@ set -e
 # Remove pid file if exists
 rm -f /app/tmp/pids/server.pid
 
+# Generate master.key from SECRET_KEY_BASE environment variable if provided
+if [ -n "$SECRET_KEY_BASE" ]; then
+  echo "Setting up master.key from SECRET_KEY_BASE..."
+  echo "$SECRET_KEY_BASE" > /app/config/master.key
+  chmod 600 /app/config/master.key
+fi
+
 # Create database if it doesn't exist (for production environment)
 if [ "$RAILS_ENV" = "production" ]; then
   echo "Creating database if not exists..."

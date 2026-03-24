@@ -6,7 +6,7 @@
     "build": "node build-css.mjs && node esbuild.config.mjs",
     "build:js": "node esbuild.config.mjs",
     "build:css": "node build-css.mjs",
-    "watch": "node build-css.mjs & node esbuild.config.mjs --watch",
+    "watch": "node build-css.mjs --watch & node esbuild.config.mjs --watch",
     "watch:js": "node esbuild.config.mjs --watch",
     "watch:css": "node build-css.mjs --watch"
   },
@@ -21,6 +21,9 @@
     "autoprefixer": "^10.4.0",
     "esbuild": "^0.17.0",
     "postcss": "^8.4.0",
+    "postcss-import": "^15.1.0",
+    "postcss-scss": "^4.0.0",
+    "sass": "^1.69.0",
     "tailwindcss": "^3.3.0"
   }
 }

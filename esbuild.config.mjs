@@ -11,10 +11,6 @@ let opts = {
   publicPath: '/assets',
   entryPoints: ['app/javascript/application.js'],
   format: 'esm',
-  loader: {
-    '.scss': 'copy',
-    '.css': 'copy',
-  },
 }
 
 if (watch) {
